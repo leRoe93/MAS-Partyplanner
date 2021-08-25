@@ -1,9 +1,10 @@
 # Compiled class file
 *.class
 
-.classpath
+bin/
 logs/
 dependency-reduced-pom.xml
+**/*DS_Store
 
 # Log file
 *.log

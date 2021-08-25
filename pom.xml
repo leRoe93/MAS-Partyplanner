@@ -14,6 +14,10 @@
           <id>jitpack.io</id>
           <url>https://jitpack.io</url>
       </repository>
+      <repository> 
+    	  <id>tilab</id> 
+    	  <url>https://jade.tilab.com/maven/</url> 
+	  </repository>  
   </repositories>
   <dependencies>
       <!-- https://mvnrepository.com/artifact/args4j/args4j -->
@@ -27,7 +31,18 @@
           <groupId>org.apache.logging.log4j</groupId>
           <artifactId>log4j-core</artifactId>
           <version>2.14.1</version>
+          <exclusions>
+	  		  <exclusion>
+	  		  <groupId>org.slf4j</groupId>
+	  		  <artifactId>slf4j-log4j12</artifactId>
+	  	  </exclusion>
+	  </exclusions>
       </dependency>
+      <dependency>  
+    	  <groupId>com.tilab.jade</groupId> 
+    	  <artifactId>jade</artifactId> 
+    	  <version>4.5.0</version>  
+	  </dependency>
       <!-- Does not work, maybe we can find this out
       <dependency>
           <groupId>com.gitlab.opendfki</groupId>

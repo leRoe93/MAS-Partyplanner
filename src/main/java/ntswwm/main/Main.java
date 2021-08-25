@@ -1,4 +1,4 @@
-package main;
+package ntswwm.main;
 
 public class Main {
 

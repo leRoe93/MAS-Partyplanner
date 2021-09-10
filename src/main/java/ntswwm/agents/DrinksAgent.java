@@ -1,9 +1,6 @@
 package ntswwm.agents;
 
 import jade.core.Agent;
-import jade.domain.DFService;
-import jade.domain.FIPAException;
-import jade.domain.FIPAAgentManagement.DFAgentDescription;
 
 public class DrinksAgent extends Agent {
     /**
@@ -13,15 +10,10 @@ public class DrinksAgent extends Agent {
 
     protected void setup() {
         System.out.println("Drinks Agent with ID: " + getAID().getName() + " is ready!");
-        // Register the book-selling service in the yellow pages
-        DFAgentDescription dfd = new DFAgentDescription();
-        dfd.setName(getAID());
-        try {
-            DFService.register(this, dfd);
-        } catch (FIPAException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+    }
+
+    public String ping() {
+        return "Hello, this is the drinks agent with ID: " + getAID().getName();
     }
 
 }

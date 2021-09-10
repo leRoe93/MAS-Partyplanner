@@ -48,6 +48,10 @@ public class ContextListenerServlet implements ServletContextListener {
                     DrinksAgent.class.getName(), null);
             AgentPlatform.AGENTS.add(retrievalAgent);
             AgentPlatform.AGENTS.add(drinksAgent);
+
+            for (AgentController controller : AgentPlatform.AGENTS) {
+                controller.start();
+            }
         } catch (StaleProxyException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

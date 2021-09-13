@@ -21,6 +21,29 @@
             <form role="form" action="AgentPingServlet" method="post">
                 <button class="btn col-md-12 btn-success" type="submit">Trigger Agents!</button>
             </form>
+            
+            <h2>
+                Do your <b>Query!</b>
+            </h2>
+            <form role="form" action="Queryservlet" method="post">
+                <label for="guestCount">Guest Count:</label>
+                <input id="guestCount" name ="guestCount" type="number"/>
+                <label for="month">Month:</label>
+                <select id="month" name="month" class="form-control">
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+                <button class="btn col-md-12 btn-success" type="submit">Start Query!</button>
+            </form>
         </div>
     </body>
 </html>

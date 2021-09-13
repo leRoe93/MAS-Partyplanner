@@ -8,14 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jade.wrapper.AgentController;
-import ntswwm.platform.AgentPlatform;
-
 /**
- * Servlet implementation class AgentPingServlet
+ * Servlet implementation class QueryServlet
  */
-@WebServlet("/AgentPingServlet")
-public class AgentPingServlet extends HttpServlet {
+@WebServlet("/QueryServlet")
+public class QueryServlet extends HttpServlet {
 
     private static final long serialVersionUID = 8490923752286470389L;
 
@@ -38,20 +35,6 @@ public class AgentPingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doGet(request, response);
-
-        String agentControllersHTMLString = "<ol>";
-        for (AgentController controller : AgentPlatform.AGENTS.values()) {
-            agentControllersHTMLString += "<li>" + controller.getClass().getName() + "</li>";
-        }
-        agentControllersHTMLString += "</ol>";
-
-        try {
-            request.setAttribute("agentControllers", agentControllersHTMLString);
-            request.getRequestDispatcher("/agent_ping.jsp").forward(request, response);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
     }
 }

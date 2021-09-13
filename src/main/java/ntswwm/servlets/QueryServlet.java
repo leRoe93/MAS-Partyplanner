@@ -8,6 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jade.core.AID;
+import jade.core.behaviours.OneShotBehaviour;
+import jade.lang.acl.ACLMessage;
+import jade.wrapper.ControllerException;
+import jade.wrapper.StaleProxyException;
+import jade.wrapper.gateway.JadeGateway;
+import ntswwm.platform.AgentPlatform;
+
 /**
  * Servlet implementation class QueryServlet
  */
@@ -35,6 +43,28 @@ public class QueryServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doGet(request, response);
+        JadeGateway.init(null, AgentPlatform.PROPERTIES);
+        try {
+            JadeGateway.execute(new OneShotBehaviour() {
 
+                @Override
+                public void action() {
+                    System.out.println("Sedning message ");
+                    ACLMessage message = new ACLMessage(ACLMessage.INFORM);
+                    message.addReceiver(new AID("RetrievalAgent", AID.ISLOCALNAME));
+                    message.setContent("Message sent from QueryServlet");
+                    myAgent.send(message);
+                }
+            });
+        } catch (StaleProxyException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ControllerException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }

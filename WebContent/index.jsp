@@ -25,7 +25,7 @@
             <h2>
                 Do your <b>Query!</b>
             </h2>
-            <form role="form" action="Queryservlet" method="post">
+            <form role="form" action="QueryServlet" method="post">
                 <label for="guestCount">Guest Count:</label>
                 <input id="guestCount" name ="guestCount" type="number"/>
                 <label for="month">Month:</label>

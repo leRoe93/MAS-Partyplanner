@@ -13,6 +13,7 @@ import jade.wrapper.AgentController;
 import jade.wrapper.StaleProxyException;
 import ntswwm.agents.BudgetAgent;
 import ntswwm.agents.DrinksAgent;
+import ntswwm.agents.FeedbackAgent;
 import ntswwm.agents.FoodAgent;
 import ntswwm.agents.RetrievalAgent;
 import ntswwm.platform.AgentPlatform;
@@ -62,7 +63,7 @@ public class ContextListenerServlet implements ServletContextListener {
             AgentController budgetAgent = AgentPlatform.CONTAINER_CONTROLLER.createNewAgent("BudgetAgent",
                     BudgetAgent.class.getName(), null);
             AgentController feedbackAgent = AgentPlatform.CONTAINER_CONTROLLER.createNewAgent("FeedbackAgent",
-                    DrinksAgent.class.getName(), null);
+                    FeedbackAgent.class.getName(), null);
             AgentPlatform.AGENTS.put("retrieval", retrievalAgent);
             AgentPlatform.AGENTS.put("drinks", drinksAgent);
             AgentPlatform.AGENTS.put("food", foodAgent);
@@ -72,6 +73,7 @@ public class ContextListenerServlet implements ServletContextListener {
             for (AgentController controller : AgentPlatform.AGENTS.values()) {
                 controller.start();
             }
+
         } catch (StaleProxyException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

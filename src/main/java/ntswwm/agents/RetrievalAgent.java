@@ -10,6 +10,7 @@ import de.dfki.mycbr.core.model.Concept;
 import de.dfki.mycbr.core.similarity.Similarity;
 import de.dfki.mycbr.util.Pair;
 import jade.core.Agent;
+import ntswwm.behaviours.RetrievalBehaviour;
 
 public class RetrievalAgent extends Agent {
 
@@ -49,10 +50,11 @@ public class RetrievalAgent extends Agent {
                 System.out.println("### PARTY DATE: "
                         + instance.getAttForDesc(concept.getAttributeDesc("date")).getValueAsString());
             }
+
+            addBehaviour(new RetrievalBehaviour());
         } catch (Exception e) {
             System.err.println("An exception occured whilst opening MyCBR project or processing the query: " + e);
         }
-
     }
 
     private List<Pair<Instance, Similarity>> performRetrieval() {

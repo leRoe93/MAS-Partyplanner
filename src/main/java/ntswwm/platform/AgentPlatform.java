@@ -7,6 +7,7 @@ import jade.core.Runtime;
 import jade.util.ExtendedProperties;
 import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
+import jade.wrapper.gateway.JadeGateway;
 
 public class AgentPlatform {
 
@@ -15,4 +16,5 @@ public class AgentPlatform {
     public static ContainerController CONTAINER_CONTROLLER;
     public static Profile MAIN_PROFILE;
     public static HashMap<String, AgentController> AGENTS;
+    public static JadeGateway GATEWAY;
 }

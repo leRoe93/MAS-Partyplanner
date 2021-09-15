@@ -90,7 +90,12 @@
                     <button class="btn col-md-12 btn-success" type="submit">Verify Party Information!</button>
                 </form>
             </c:if>
-
+            
+            <p>
+                <c:if test="${not empty message}">
+                    ${message}
+                </c:if>
+            </p>
         </div>
     </body>
 </html>

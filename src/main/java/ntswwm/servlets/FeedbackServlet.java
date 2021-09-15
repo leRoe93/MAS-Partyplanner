@@ -87,6 +87,8 @@ public class FeedbackServlet extends HttpServlet {
                     .getAttForDesc(attributeDescs.get(attributeName)).getValueAsString());
         }
 
+        RetrievalAgent.project.save();
+
         request.getRequestDispatcher("/feedback.jsp").forward(request, response);
     }
 }

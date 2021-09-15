@@ -1,6 +1,7 @@
 package ntswwm.agents;
 
 import jade.core.Agent;
+import ntswwm.behaviours.FeedbackBehaviour;
 
 public class FeedbackAgent extends Agent {
 
@@ -11,6 +12,7 @@ public class FeedbackAgent extends Agent {
 
     protected void setup() {
         System.out.println("Feedback Agent with ID: " + getAID().getName() + " is ready!");
+        addBehaviour(new FeedbackBehaviour());
     }
 
     public String ping() {

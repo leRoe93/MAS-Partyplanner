@@ -27,9 +27,6 @@
                 Welcome to the <b>MAS-Partyplanner!</b>
             </h1>
             <p>Want to organize a party, but don't know how to organize your buyings? Benefit from other's experiences!</p>
-            <form role="form" action="AgentPingServlet" method="post">
-                <button class="btn col-md-12 btn-success" type="submit">Trigger Agents!</button>
-            </form>
             
             <h2>
                 Do your <b>Query!</b>
@@ -53,12 +50,6 @@
                 </select>
                 <button class="btn col-md-12 btn-success" type="submit">Start Query!</button>
             </form>
-            
-            <p>
-                <c:if test="${not empty answer}">
-                    ${answer }
-                </c:if>
-            </p>
         </div>
     </body>
 </html>

@@ -8,14 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jade.wrapper.AgentController;
-import ntswwm.platform.AgentPlatform;
-
 /**
  * Servlet implementation class AgentPingServlet
  */
-@WebServlet("/AgentPingServlet")
-public class AgentPingServlet extends HttpServlet {
+@WebServlet("/AlterCaseServlet")
+public class AlterCaseServlet extends HttpServlet {
 
     private static final long serialVersionUID = 8490923752286470389L;
 
@@ -39,19 +36,9 @@ public class AgentPingServlet extends HttpServlet {
             throws ServletException, IOException {
         doGet(request, response);
 
-        String agentControllersHTMLString = "<ol>";
-        for (AgentController controller : AgentPlatform.AGENTS.values()) {
-            agentControllersHTMLString += "<li>" + controller.getClass().getName() + "</li>";
-        }
-        agentControllersHTMLString += "</ol>";
-
-        try {
-            request.setAttribute("agentControllers", agentControllersHTMLString);
-            request.getRequestDispatcher("/agent_ping.jsp").forward(request, response);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        var message = "Your feedback has been successfully saved, others now can benefit from your experience!";
+        request.setAttribute("agentControllers", message);
+        request.getRequestDispatcher("/feedback.jsp").forward(request, response);
 
     }
 }

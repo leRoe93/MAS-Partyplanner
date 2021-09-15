@@ -1,6 +1,7 @@
 package ntswwm.servlets;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import de.dfki.mycbr.core.model.AttributeDesc;
 import jade.core.AID;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
@@ -78,8 +80,13 @@ public class FeedbackServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        request.setAttribute("caseId", AgentToServletStack.FEEDBACK_INSTANCE
-                .getAttForDesc(RetrievalAgent.concept.getAttributeDesc("id")).getValueAsString());
+        HashMap<String, AttributeDesc> attributeDescs = RetrievalAgent.concept.getAllAttributeDescs();
+
+        for (String attributeName : attributeDescs.keySet()) {
+            request.setAttribute(attributeName, AgentToServletStack.FEEDBACK_INSTANCE
+                    .getAttForDesc(attributeDescs.get(attributeName)).getValueAsString());
+        }
+
         request.getRequestDispatcher("/feedback.jsp").forward(request, response);
     }
 }

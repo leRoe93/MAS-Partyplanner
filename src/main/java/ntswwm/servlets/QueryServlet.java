@@ -49,7 +49,7 @@ public class QueryServlet extends HttpServlet {
 
                 @Override
                 public void action() {
-                    System.out.println("Sedning message ");
+                    System.out.println("Sending message ");
                     ACLMessage message = new ACLMessage(ACLMessage.INFORM);
                     message.addReceiver(new AID("RetrievalAgent", AID.ISLOCALNAME));
                     message.setContent("Message sent from QueryServlet");
@@ -66,5 +66,7 @@ public class QueryServlet extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }

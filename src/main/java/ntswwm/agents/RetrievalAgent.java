@@ -19,9 +19,9 @@ public class RetrievalAgent extends Agent {
      */
     private static final long serialVersionUID = -1378286095267597345L;
 
-    Project project;
-    Concept concept;
-    ICaseBase caseBase;
+    public static Project project;
+    public static Concept concept;
+    public static ICaseBase caseBase;
 
     protected void setup() {
         System.out.println("Retrieval Agent with ID: " + getAID().getName() + " is ready!");
@@ -48,7 +48,8 @@ public class RetrievalAgent extends Agent {
                 System.out.println("### GUEST COUNT: "
                         + instance.getAttForDesc(concept.getAttributeDesc("guestCount")).getValueAsString());
                 System.out.println("### PARTY DATE: "
-                        + instance.getAttForDesc(concept.getAttributeDesc("date")).getValueAsString());
+                        + instance.getAttForDesc(concept.getAttributeDesc("month")).getValueAsString() + " - "
+                        + instance.getAttForDesc(concept.getAttributeDesc("year")).getValueAsString());
             }
 
             addBehaviour(new RetrievalBehaviour());

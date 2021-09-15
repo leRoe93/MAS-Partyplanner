@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +13,14 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
+    <nav id="nav" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href="index.jsp">Home</a></li>
+                <li><a href="feedback.jsp">Party Feedback</a></li>
+            </ul>
+        </div>
+    </nav>
     <body>
         <div class="jumbotron text-center">
             <h1>
@@ -44,6 +53,12 @@
                 </select>
                 <button class="btn col-md-12 btn-success" type="submit">Start Query!</button>
             </form>
+            
+            <p>
+                <c:if test="${not empty answer}">
+                    ${answer }
+                </c:if>
+            </p>
         </div>
     </body>
 </html>

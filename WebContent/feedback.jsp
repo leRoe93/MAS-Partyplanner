@@ -12,6 +12,16 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        <script type="text/javascript">
+            function calculateTotalBudget(val) {
+            	var totalSum = 0;
+            	totalSum += parseFloat(document.getElementById('foodBudget').value)
+            	totalSum += parseFloat(document.getElementById('drinksBudget').value)
+            	totalSum += parseFloat(document.getElementById('locationBudget').value)
+                document.getElementById('totalBudget').value = totalSum;
+            }
+        </script>
     </head>
     <body>
         <div class="jumbotron text-center">
@@ -35,13 +45,13 @@
                     <input id="guestCount" name ="guestCount" type="number" value="${guestCount}" />
                     
                     <label for="totalBudget">Total Budget:</label>
-                    <input id="totalBudget" name ="totalBudget" type="number" value="${totalBudget}" />
+                    <input id="totalBudget" name ="totalBudget" type="number" readonly value="${totalBudget}" />
                     <label for="locationBudget">Location Budget:</label>
-                    <input id="locationBudget" name ="locationBudget" type="number" value="${locationBudget}" />
+                    <input id="locationBudget" name ="locationBudget" type="number" value="${locationBudget}" onchange="calculateTotalBudget()" />
                     <label for="foodBudget">Food Budget:</label>
-                    <input id="foodBudget" name ="foodBudget" type="number" value="${foodBudget}" />
+                    <input id="foodBudget" name ="foodBudget" type="number" value="${foodBudget}" onchange="calculateTotalBudget()" />
                     <label for="drinksBudget">Drinks Budget:</label>
-                    <input id="drinksBudget" name ="drinksBudget" type="number" value="${drinksBudget}" />
+                    <input id="drinksBudget" name ="drinksBudget" type="number" value="${drinksBudget}"  onchange="calculateTotalBudget()"/>
                     
                     <label for="month">Month:</label>
                     <select id="month" name="month" class="form-control">
@@ -66,6 +76,15 @@
                         <option value="${locationType }" selected hidden>${locationType}</option>
                         <option value="private">private</option>
                         <option value="thirdparty">thirdparty</option>
+                    </select>
+                    
+                    <label for="occasion">Party Occasion:</label>
+                    <select id="occasion" name="occasion" class="form-control">
+                        <option value="${occasion }" selected hidden>${occasion}</option>
+                        <option value="anniversary">anniversary</option>
+                        <option value="birthday">birthday</option>
+                        <option value="wedding">wedding</option>
+                        <option value="regular">regular</option>
                     </select>
                     
                     <label for="beerAmount">Beer Amount:</label>

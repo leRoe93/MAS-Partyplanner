@@ -24,7 +24,8 @@ public class RetrievalBehaviour extends CyclicBehaviour {
         System.out.println("Waiting for message to be received");
 
         if (msg != null) {
-            System.out.println("I received a message!!!");
+            System.out.println("I received a retrieval request!");
+            System.out.println(msg.getUserDefinedParameter("month"));
         }
 
     }

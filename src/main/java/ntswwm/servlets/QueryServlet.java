@@ -1,6 +1,7 @@
 package ntswwm.servlets;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -53,6 +54,14 @@ public class QueryServlet extends HttpServlet {
                     ACLMessage message = new ACLMessage(ACLMessage.INFORM);
                     message.addReceiver(new AID("RetrievalAgent", AID.ISLOCALNAME));
                     message.setContent("Message sent from QueryServlet");
+
+                    Iterator<String> it = request.getParameterNames().asIterator();
+                    System.out.println("### QUERY PARAMS ###");
+                    while (it.hasNext()) {
+                        var paramName = it.next();
+                        message.addUserDefinedParameter(paramName, request.getParameter(paramName));
+                        System.out.println(paramName + ": " + request.getParameter(paramName));
+                    }
                     myAgent.send(message);
                 }
             });
@@ -66,7 +75,6 @@ public class QueryServlet extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }

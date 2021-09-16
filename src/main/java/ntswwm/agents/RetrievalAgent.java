@@ -1,6 +1,7 @@
 package ntswwm.agents;
 
 import jade.core.Agent;
+import ntswwm.behaviours.RetrievalBehaviour;
 
 public class RetrievalAgent extends Agent {
 
@@ -11,6 +12,7 @@ public class RetrievalAgent extends Agent {
 
     protected void setup() {
         System.out.println("Retrieval Agent with ID: " + getAID().getName() + " is ready!");
+        addBehaviour(new RetrievalBehaviour());
     }
 
     public String ping() {

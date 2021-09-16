@@ -8,10 +8,10 @@
         <title>MAS-Partyplanner</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <script type="text/javascript">
             function calculateTotalBudget(val) {
                 var totalSum = 0;
@@ -22,15 +22,18 @@
             }
         </script>
     </head>
-    <nav id="nav" class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <li><a href="index.jsp">Home</a></li>
-                <li><a href="feedback.jsp">Party Feedback</a></li>
-            </ul>
-        </div>
-    </nav>
     <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">MAS-Partyplanner</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="index.jsp">Home</a></li>
+              <li><a href="feedback.jsp">Feedback Page</a></li>
+            </ul>
+          </div>
+        </nav>
         <div class="jumbotron text-center">
             <h1>
                 Welcome to the <b>MAS-Partyplanner!</b>
@@ -40,7 +43,63 @@
             <h2>
                 Do your <b>Query!</b>
             </h2>
-                <form role="form" action="QueryServlet" method="post">       
+            
+            <div id="accordion">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-primary collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Budget Planner!
+                    </button>
+                  </h5>
+                </div>
+            
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    <h2>Wanna know how much <b>money</b> you'll most likely need for your party? Provide some information and we will tell you!</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button class="btn btn-primary collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Food Planner!
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body">
+                    <h2>Wanna know how much <b>food</b></b> you'll most likely need for your party? Provide some information and we will tell you!</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingThree">
+                  <h5 class="mb-0">
+                    <button class="btn btn-primary collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      Drinks Planner!
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                  <div class="card-body">
+                    <h2>Wanna know how much <b>drinks</b></b> you'll most likely need for your party? Provide some information and we will tell you!</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingThree">
+                  <h5 class="mb-0">
+                    <button class="btn btn-primary collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                      Party Planner!
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                  <div class="card-body">
+                    <h2>Wanna <b>create a wholesome</b> party plan? Provide some information and we will help you!</h2>
+                    <form role="form" action="QueryServlet" method="post">       
                     <label for="guestCount">Guest Count:</label>
                     <input id="guestCount" name ="guestCount" type="number"/>
                     <label for="totalBudget">Total Budget:</label>
@@ -104,6 +163,10 @@
                     
                     <button class="btn col-md-12 btn-success" type="submit">Start Query!</button>
                 </form>
+                  </div>
+                </div>
+              </div>              
+            </div>
         </div>
     </body>
 </html>

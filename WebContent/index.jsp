@@ -130,10 +130,11 @@
                 </select>
             </div>
             <div class="col-md-3">
-                <label for="year">Year:</label> <input id="year" name="year" type="number" value="2021" onchange="syncYear()"/>
+                <label for="year">Year:</label> <input id="year" name="year" type="number" value="2021" onchange="syncYear()" />
             </div>
             <div class="col-md-3">
-                <label for="guestCount">Expected Guests</label> <input id="guestCount" value="10" name="guestCount" type="number" onchange="syncGuestCount()"/>
+                <label for="guestCount">Expected Guests</label> <input id="guestCount" value="10" name="guestCount" type="number"
+                    onchange="syncGuestCount()" />
             </div>
             <div class="col-md-3">
                 <label for="occasion">Party Occasion:</label> <select id="occasion" name="occasion" onchange="syncOccasion()" class="form-control">
@@ -188,7 +189,7 @@
                         <h2>
                             Wanna know how much <b>food</b> you'll most likely need for your party? Provide some information and we will tell you!
                         </h2>
-                        <button id="budgetButton" class="btn col-md-4 btn-success" name="submit-button" value="BudgetAgent" type="submit">Tell
+                        <button id="foodButton" class="btn col-md-4 btn-success" name="submit-button" value="FoodAgent" type="submit">Tell
                             me!</button>
                         <c:if test="${not empty foodMessage}">
                             ${budgetMessage}
@@ -218,6 +219,8 @@
                     <h2>
                         Wanna know how much <b>drinks</b> you'll most likely need for your party? Provide some information and we will tell you!
                     </h2>
+                    <button id="drinksButton" class="btn col-md-4 btn-success" name="submit-button" value="DrinksAgent" type="submit">Tell
+                        me!</button>
                     <c:if test="${not empty drinksMessage}">
                             ${drinksMessage}
                         <label for="beerAmount">Beer Amount:</label>

@@ -128,6 +128,40 @@ public class QueryServlet extends HttpServlet {
 
             break;
         case "FoodAgent":
+            var foodMessage = "";
+            while (AgentToServletStack.BUDGET_AGENT_INSTANCES.size() == 0) {
+                try {
+                    Thread.sleep(sleepTime);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                timeOut += sleepTime;
+
+                // Need exit condition based on time, if there is no case in the stack
+                if (timeOut == 5000) {
+                    foodMessage = "Sorry, we could not find any case to derive budgets from.";
+                    timeOuted = true;
+                    break;
+                }
+            }
+            if (!timeOuted) {
+                Pair<Instance, Similarity> retrievalResult = AgentToServletStack.BUDGET_AGENT_INSTANCES
+                        .get(AgentToServletStack.BUDGET_AGENT_INSTANCES.size() - 1);
+                budgetMessage = "Derived budgets from a party with similarity of: "
+                        + retrievalResult.getSecond().toString();
+
+                for (String attributeName : BudgetAgent.ANSWER_ATTRIBUTES) {
+                    System.out.println("Setting attributes to request: " + attributeName + ", value: "
+                            + retrievalResult.getFirst()
+                                    .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName))
+                                    .getValueAsString());
+                    request.setAttribute(attributeName, retrievalResult.getFirst()
+                            .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName)).getValueAsString());
+                }
+
+            }
+            request.setAttribute("foodMessage", foodMessage);
             break;
         case "DrinksAgent":
             break;

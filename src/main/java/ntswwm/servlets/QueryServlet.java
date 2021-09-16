@@ -9,12 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import de.dfki.mycbr.core.casebase.Instance;
+import de.dfki.mycbr.core.similarity.Similarity;
+import de.dfki.mycbr.util.Pair;
 import jade.core.AID;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.wrapper.ControllerException;
 import jade.wrapper.StaleProxyException;
 import jade.wrapper.gateway.JadeGateway;
+import ntswwm.agents.BudgetAgent;
+import ntswwm.bean.AgentToServletStack;
+import ntswwm.bean.CBRManager;
 import ntswwm.platform.AgentPlatform;
 
 /**
@@ -44,6 +50,10 @@ public class QueryServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doGet(request, response);
+
+        // Use value of pressed button for agent name
+        var targetAgentName = request.getParameter("submit-button");
+
         JadeGateway.init(null, AgentPlatform.PROPERTIES);
         try {
             JadeGateway.execute(new OneShotBehaviour() {
@@ -52,9 +62,9 @@ public class QueryServlet extends HttpServlet {
                 public void action() {
                     System.out.println("Sending message ");
                     ACLMessage message = new ACLMessage(ACLMessage.INFORM);
-                    message.addReceiver(new AID("RetrievalAgent", AID.ISLOCALNAME));
+                    message.addReceiver(new AID(targetAgentName, AID.ISLOCALNAME));
                     message.setContent("Message sent from QueryServlet");
-
+                    message.addUserDefinedParameter("agentType", targetAgentName);
                     Iterator<String> it = request.getParameterNames().asIterator();
                     System.out.println("### QUERY PARAMS ###");
                     while (it.hasNext()) {
@@ -75,6 +85,55 @@ public class QueryServlet extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+        var timeOut = 0;
+        var sleepTime = 10;
+        var timeOuted = false;
+
+        switch (targetAgentName) {
+        case "BudgetAgent":
+            var budgetMessage = "";
+            while (AgentToServletStack.BUDGET_AGENT_INSTANCES.size() == 0) {
+                try {
+                    Thread.sleep(sleepTime);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                timeOut += sleepTime;
+
+                // Need exit condition based on time, if there is no case in the stack
+                if (timeOut == 5000) {
+                    budgetMessage = "Sorry, we could not find any case to derive budgets from.";
+                    timeOuted = true;
+                    break;
+                }
+            }
+            if (!timeOuted) {
+                Pair<Instance, Similarity> retrievalResult = AgentToServletStack.BUDGET_AGENT_INSTANCES
+                        .get(AgentToServletStack.BUDGET_AGENT_INSTANCES.size() - 1);
+                budgetMessage = "Derived budgets from a party with similarity of: "
+                        + retrievalResult.getSecond().toString();
+
+                for (String attributeName : BudgetAgent.attributeNames) {
+                    System.out.println("Setting attributes to request: " + attributeName + ", value: "
+                            + retrievalResult.getFirst()
+                                    .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName))
+                                    .getValueAsString());
+                    request.setAttribute(attributeName, retrievalResult.getFirst()
+                            .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName)).getValueAsString());
+                }
+
+            }
+            request.setAttribute("budgetMessage", budgetMessage);
+
+            break;
+        case "FoodAgent":
+            break;
+        case "DrinksAgent":
+            break;
+        }
+
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }

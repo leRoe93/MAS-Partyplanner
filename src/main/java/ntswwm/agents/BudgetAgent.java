@@ -10,7 +10,7 @@ public class BudgetAgent extends Agent {
      */
     private static final long serialVersionUID = -6407099766861309020L;
 
-    public static String[] attributeNames = { "totalBudget", "foodBudget", "drinksBudget", "locationBudget" };
+    public static String[] ANSWER_ATTRIBUTES = { "totalBudget", "foodBudget", "drinksBudget", "locationBudget" };
 
     protected void setup() {
         System.out.println("Budget Agent with ID: " + getAID().getName() + " is ready!");

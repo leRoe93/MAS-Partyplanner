@@ -70,7 +70,6 @@ public class QueryServlet extends HttpServlet {
                     while (it.hasNext()) {
                         var paramName = it.next();
                         message.addUserDefinedParameter(paramName, request.getParameter(paramName));
-                        System.out.println(paramName + ": " + request.getParameter(paramName));
                     }
                     myAgent.send(message);
                 }
@@ -115,7 +114,7 @@ public class QueryServlet extends HttpServlet {
                 budgetMessage = "Derived budgets from a party with similarity of: "
                         + retrievalResult.getSecond().toString();
 
-                for (String attributeName : BudgetAgent.attributeNames) {
+                for (String attributeName : BudgetAgent.ANSWER_ATTRIBUTES) {
                     System.out.println("Setting attributes to request: " + attributeName + ", value: "
                             + retrievalResult.getFirst()
                                     .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName))

@@ -13,11 +13,83 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	function calculateTotalBudget(val) {
+
+		// For the budget planner section
 		var totalSum = 0;
 		totalSum += parseFloat(document.getElementById('foodBudget').value)
 		totalSum += parseFloat(document.getElementById('drinksBudget').value)
 		totalSum += parseFloat(document.getElementById('locationBudget').value)
 		document.getElementById('totalBudget').value = totalSum;
+
+		// For the party planner section
+		var totalSumPlanner = 0;
+		totalSumPlanner += parseFloat(document
+				.getElementById('foodBudgetPlanner').value)
+		totalSumPlanner += parseFloat(document
+				.getElementById('drinksBudgetPlanner').value)
+		totalSumPlanner += parseFloat(document
+				.getElementById('locationBudgetPlanner').value)
+		document.getElementById('totalBudgetPlanner').value = totalSumPlanner;
+	}
+
+	function syncYear() {
+		document.getElementById('yearPlanner').value = document
+        .getElementById('year').value
+	}
+
+	function syncMonth() {
+        document.getElementById('monthPlanner').value = document
+        .getElementById('month').value
+	}
+
+	function syncOccasion() {
+        document.getElementById('occasionPlanner').value = document
+        .getElementById('occasion').value
+	}
+	
+	function syncGuestCount() {
+        document.getElementById('guestCountPlanner').value = document
+        .getElementById('guestCount').value
+	}
+
+	function adaptBudgetsToPartyPlan() {
+		var checkBox = document.getElementById("adaptBudgetValuesCheckBox")
+		if (checkBox.checked == true) {
+			document.getElementById('totalBudgetPlanner').value = document
+					.getElementById('totalBudget').value
+			document.getElementById('foodBudgetPlanner').value = document
+					.getElementById('foodBudget').value
+			document.getElementById('drinksBudgetPlanner').value = document
+					.getElementById('drinksBudget').value
+			document.getElementById('locationBudgetPlanner').value = document
+					.getElementById('locationBudget').value
+		}
+	}
+
+	function adaptFoodToPartyPlan() {
+		var checkBox = document.getElementById("adaptFoodValuesCheckBox")
+		if (checkBox.checked == true) {
+			document.getElementById('meatAmountPlanner').value = document
+					.getElementById('meatAmount').value
+			document.getElementById('garnishAmountPlanner').value = document
+					.getElementById('garnishAmount').value
+			document.getElementById('snacksAmountPlanner').value = document
+					.getElementById('snacksAmount').value
+		}
+	}
+
+	function adaptDrinksToPartyPlan() {
+		var checkBox = document.getElementById("adaptDrinksValuesCheckBox")
+		if (checkBox.checked == true) {
+			document.getElementById('beerAmountPlanner').value = document
+					.getElementById('beerAmount').value
+			document.getElementById('wineAmountPlanner').value = document
+					.getElementById('wineAmount').value
+			document.getElementById('spiritsAmountPlanner').value = document
+					.getElementById('spiritsAmount').value
+			document.getElementById('softsAmountPlanner').value = document
+					.getElementById('softsAmount').value
+		}
 	}
 </script>
 </head>
@@ -28,12 +100,8 @@
                 <a class="navbar-brand" href="#">MAS-Partyplanner</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="index.jsp">Home</a>
-                </li>
-                <li>
-                    <a href="feedback.jsp">Feedback Page</a>
-                </li>
+                <li class="active"><a href="index.jsp">Home</a></li>
+                <li><a href="feedback.jsp">Feedback Page</a></li>
             </ul>
         </div>
     </nav>
@@ -47,8 +115,7 @@
         <div id="metaInformation">
             <h2>To use our services, we need some initial meta information for your planned party!</h2>
             <div class="col-md-3">
-                <label for="monthMeta">Month:</label>
-                <select id="monthMeta" name="monthMeta" class="form-control">
+                <label for="month">Month:</label> <select id="month" name="month" class="form-control" onchange="syncMonth()">
                     <option value="January">January</option>
                     <option value="February">February</option>
                     <option value="March">March</option>
@@ -63,16 +130,13 @@
                 </select>
             </div>
             <div class="col-md-3">
-                <label for="yearMeta">Year:</label>
-                <input id="yearMeta" name="yearMeta" type="number" value="2021" />
+                <label for="year">Year:</label> <input id="year" name="year" type="number" value="2021" onchange="syncYear()"/>
             </div>
             <div class="col-md-3">
-                <label for="guestCountMeta">Expected Guests</label>
-                <input id="guestCountMeta" name="guestCountMeta" type="number" />
+                <label for="guestCount">Expected Guests</label> <input id="guestCount" value="10" name="guestCount" type="number" onchange="syncGuestCount()"/>
             </div>
             <div class="col-md-3">
-                <label for="occasionMeta">Party Occasion:</label>
-                <select id="occasionMeta" name="occasionMeta" class="form-control">
+                <label for="occasion">Party Occasion:</label> <select id="occasion" name="occasion" onchange="syncOccasion()" class="form-control">
                     <option value="anniversary">anniversary</option>
                     <option value="birthday">birthday</option>
                     <option value="wedding">wedding</option>
@@ -84,8 +148,8 @@
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
-                        <button type="button" class="btn btn-primary collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                            aria-controls="collapseOne">Budget Planner!</button>
+                        <button type="button" class="btn col-md-12 btn-primary collapsed" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">Budget Planner!</button>
                     </h5>
                 </div>
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
@@ -93,19 +157,20 @@
                         <h2>
                             Wanna know how much <b>money</b> you'll most likely need for your party? Provide some information and we will tell you!
                         </h2>
-                        <button id="budgetButton" class="btn col-md-12 btn-success" name="submit-button" value="BudgetAgent" type="submit">Tell
+                        <button id="budgetButton" class="btn col-md-4 btn-success" name="submit-button" value="BudgetAgent" type="submit">Tell
                             me!</button>
                         <c:if test="${not empty budgetMessage}">
                             ${budgetMessage}
                             <label for="totalBudget">Total Budget:</label>
-                            <input id="totalBudget" name="totalBudget" value="0.0" type="number" value="${totalBudget}" readonly />
+                            <input id="totalBudget" name="totalBudget" type="number" value="${totalBudget}" readonly />
                             <label for="locationBudget">Location Budget:</label>
                             <input id="locationBudget" name="locationBudget" value="${locationBudget}" type="number" onchange="calculateTotalBudget()" />
                             <label for="foodBudget">Food Budget:</label>
                             <input id="foodBudget" name="foodBudget" value="${foodBudget}" type="number" onchange="calculateTotalBudget()" />
                             <label for="drinksBudget">Drinks Budget:</label>
                             <input id="drinksBudget" name="drinksBudget" value="${drinksBudget}" type="number" onchange="calculateTotalBudget()" />
-                            <input id="adaptBudgetValuesCheckBox" name="adaptBudgetValuesCheckBox" value="0.0" type="checkbox" />
+                            <input id="adaptBudgetValuesCheckBox" name="adaptBudgetValuesCheckBox" value="0.0" type="checkbox"
+                                onchange="adaptBudgetsToPartyPlan()" />
                             <label for="adaptBudgetValuesCheckBox">Adapt for party plan?</label>
                         </c:if>
                     </div>
@@ -114,7 +179,7 @@
             <div class="card">
                 <div class="card-header" id="headingTwo">
                     <h5 class="mb-0">
-                        <button type="button" class="btn btn-primary collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                        <button type="button" class="btn col-md-12 btn-primary collapsed" data-toggle="collapse" data-target="#collapseTwo"
                             aria-expanded="false" aria-controls="collapseTwo">Food Planner!</button>
                     </h5>
                 </div>
@@ -123,92 +188,105 @@
                         <h2>
                             Wanna know how much <b>food</b> you'll most likely need for your party? Provide some information and we will tell you!
                         </h2>
+                        <button id="budgetButton" class="btn col-md-4 btn-success" name="submit-button" value="BudgetAgent" type="submit">Tell
+                            me!</button>
+                        <c:if test="${not empty foodMessage}">
+                            ${budgetMessage}
+                            <label for="meatAmount">Meat Amount:</label>
+                            <input id="meatAmount" name="meatAmount" type="number" value="${meatAmount}" readonly />
+                            <label for="garnishAmount">Garnish Amount:</label>
+                            <input id="garnishAmount" name="garnishAmount" value="${garnishAmount}" type="number" />
+                            <label for="snacksAmount">Food Budget:</label>
+                            <input id="snacksAmount" name="snacksAmount" value="${snacksAmount}" type="number" />
+                            <input id="adaptFoodValuesCheckBox" name="adaptFoodValuesCheckBox" value="0.0" type="checkbox"
+                                onchange="adaptFoodToPartyPlan()" />
+                            <label for="adaptFoodValuesCheckBox">Adapt for party plan?</label>
+                        </c:if>
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-header" id="headingThree">
-                    <h5 class="mb-0">
-                        <button type="button" class="btn collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                            aria-controls="collapseThree">Drinks Planner!</button>
-                    </h5>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                    <div class="card-body">
-                        <h2>
-                            Wanna know how much <b>drinks</b> you'll most likely need for your party? Provide some information and we will tell you!
-                        </h2>
-                    </div>
-                </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button type="button" class="btn col-md-12 btn-primary collapsed" data-toggle="collapse" data-target="#collapseThree"
+                        aria-expanded="false" aria-controls="collapseThree">Drinks Planner!</button>
+                </h5>
             </div>
-            <div class="card">
-                <div class="card-header" id="headingThree">
-                    <h5 class="mb-0">
-                        <button type="button" class="btn collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false"
-                            aria-controls="collapseThree">Party Planner!</button>
-                    </h5>
-                </div>
-                <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                    <div class="card-body">
-                        <h2>
-                            Wanna <b>create a wholesome</b> party plan? Provide some information and we will help you!
-                        </h2>
-                        <label for="guestCount">Guest Count:</label>
-                        <input id="guestCount" name="guestCount" type="number" />
-                        <label for="totalBudget">Total Budget:</label>
-                        <input id="totalBudget" name="totalBudget" type="number" readonly />
-                        <label for="locationBudget">Location Budget:</label>
-                        <input id="locationBudget" name="locationBudget" type="number" onchange="calculateTotalBudget()" />
-                        <label for="foodBudget">Food Budget:</label>
-                        <input id="foodBudget" name="foodBudget" type="number" onchange="calculateTotalBudget()" />
-                        <label for="drinksBudget">Drinks Budget:</label>
-                        <input id="drinksBudget" name="drinksBudget" type="number" onchange="calculateTotalBudget()" />
-                        <label for="month">Month:</label>
-                        <select id="month" name="month" class="form-control">
-                            <option value="January">January</option>
-                            <option value="February">February</option>
-                            <option value="March">March</option>
-                            <option value="April">April</option>
-                            <option value="June">June</option>
-                            <option value="July">July</option>
-                            <option value="August">August</option>
-                            <option value="September">September</option>
-                            <option value="October">October</option>
-                            <option value="November">November</option>
-                            <option value="December">December</option>
-                        </select>
-                        <label for="year">Year:</label>
-                        <input id="year" name="year" type="number" />
-                        <label for="locationType">Location Type:</label>
-                        <select id="locationType" name="locationType" class="form-control">
-                            <option value="private">private</option>
-                            <option value="thirdparty">thirdparty</option>
-                        </select>
-                        <label for="occasion">Party Occasion:</label>
-                        <select id="occasion" name="occasion" class="form-control">
-                            <option value="anniversary">anniversary</option>
-                            <option value="birthday">birthday</option>
-                            <option value="wedding">wedding</option>
-                            <option value="regular">regular</option>
-                        </select>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                    <h2>
+                        Wanna know how much <b>drinks</b> you'll most likely need for your party? Provide some information and we will tell you!
+                    </h2>
+                    <c:if test="${not empty drinksMessage}">
+                            ${drinksMessage}
                         <label for="beerAmount">Beer Amount:</label>
-                        <input id="beerAmount" name="beerAmount" type="number" />
+                        <input id="beerAmount" name="beerAmount" type="number" value="${beerAmount}" readonly />
                         <label for="wineAmount">Wine Amount:</label>
-                        <input id="wineAmount" name="wineAmount" type="number" />
+                        <input id="wineAmount" name="wineAmount" value="${wineAmount}" type="number" />
                         <label for="spiritsAmount">Spirits Amount:</label>
-                        <input id="spiritsAmount" name="spiritsAmount" type="number" />
+                        <input id="spiritsAmount" name="spiritsAmount" value="${spiritsAmount}" type="number" />
                         <label for="softsAmount">Softs Amount:</label>
-                        <input id="softsAmount" name="softsAmount" type="number" />
-                        <label for="meatAmount">Meat Amount:</label>
-                        <input id="meatAmount" name="meatAmount" type="number" />
-                        <label for="garnishAmount">Garnish Amount:</label>
-                        <input id="garnishAmount" name="garnishAmount" type="number" />
-                        <label for="snacksAmount">Snacks Amount:</label>
-                        <input id="snacksAmount" name="snacksAmount" type="number" />
-                        <button class="btn col-md-12 btn-success" type="submit">Start Query!</button>
-                    </div>
+                        <input id="softsAmount" name="softsAmount" value="${softsAmount}" type="number" />
+                        <input id="adaptDrinksValuesCheckBox" name="adaptDrinksValuesCheckBox" value="0.0" type="checkbox"
+                            onchange="adaptDrinksToPartyPlan()" />
+                        <label for="adaptDrinksValuesCheckBox">Adapt for party plan?</label>
+                    </c:if>
                 </div>
             </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button type="button" class="btn col-md-12 btn-primary collapsed" data-toggle="collapse" data-target="#collapseFour"
+                        aria-expanded="false" aria-controls="collapseThree">Party Planner!</button>
+                </h5>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                    <h2>
+                        Wanna <b>create a wholesome</b> party plan? Provide some information and we will help you!
+                    </h2>
+                    <label for="guestCountPlanner">Guest Count:</label> <input id="guestCountPlanner" name="guestCountPlanner" type="number" /> <label
+                        for="totalBudgetPlanner">Total Budget:</label> <input id="totalBudgetPlanner" name="totalBudgetPlanner" type="number" readonly />
+                    <label for="locationBudgetPlanner">Location Budget:</label> <input id="locationBudgetPlanner" name="locationBudgetPlanner"
+                        type="number" onchange="calculateTotalBudget()" /> <label for="foodBudgetPlanner">Food Budget:</label> <input
+                        id="foodBudgetPlanner" name="foodBudgetPlanner" type="number" onchange="calculateTotalBudget()" /> <label
+                        for="drinksBudgetPlanner">Drinks Budget:</label> <input id="drinksBudgetPlanner" name="drinksBudgetPlanner" type="number"
+                        onchange="calculateTotalBudget()" /> <label for="monthPlanner">Month:</label> <select id="monthPlanner" name="monthPlanner"
+                        class="form-control">
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select> <label for="yearPlanner">Year:</label> <input id="yearPlanner" name="yearPlanner" type="number" /> <label
+                        for="locationTypePlanner">Location Type:</label> <select id="locationTypePlanner" name="locationTypePlanner"
+                        class="form-control">
+                        <option value="private">private</option>
+                        <option value="thirdparty">thirdparty</option>
+                    </select> <label for="occasionPlanner">Party Occasion:</label> <select id="occasionPlanner" name="occasionPlanner" class="form-control">
+                        <option value="anniversary">anniversary</option>
+                        <option value="birthday">birthday</option>
+                        <option value="wedding">wedding</option>
+                        <option value="regular">regular</option>
+                    </select> <label for="beerAmountPlanner">Beer Amount:</label> <input id="beerAmountPlanner" name="beerAmountPlanner" type="number" /> <label
+                        for="wineAmountPlanner">Wine Amount:</label> <input id="wineAmountPlanner" name="wineAmountPlanner" type="number" /> <label
+                        for="spiritsAmountPlanner">Spirits Amount:</label> <input id="spiritsAmountPlanner" name="spiritsAmountPlanner" type="number" />
+                    <label for="softsAmountPlanner">Softs Amount:</label> <input id="softsAmountPlanner" name="softsAmountPlanner" type="number" /> <label
+                        for="meatAmountPlanner">Meat Amount:</label> <input id="meatAmountPlanner" name="meatAmountPlanner" type="number" /> <label
+                        for="garnishAmountPlanner">Garnish Amount:</label> <input id="garnishAmountPlanner" name="garnishAmountPlanner" type="number" />
+                    <label for="snacksAmountPlanner">Snacks Amount:</label> <input id="snacksAmountPlanner" name="snacksAmountPlanner" type="number" />
+                    <button class="btn col-md-4 btn-success" type="submit">Start Query!</button>
+                </div>
+            </div>
+        </div>
         </div>
     </form>
 </body>

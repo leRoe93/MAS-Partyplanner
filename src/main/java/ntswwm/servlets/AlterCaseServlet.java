@@ -12,8 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import de.dfki.mycbr.core.casebase.Instance;
 import de.dfki.mycbr.core.model.AttributeDesc;
-import ntswwm.agents.RetrievalAgent;
-import ntswwm.bean.AgentToServletStack;
+import ntswwm.bean.CBRManager;
 
 /**
  * Servlet implementation class AgentPingServlet
@@ -50,7 +49,7 @@ public class AlterCaseServlet extends HttpServlet {
         Iterator<String> it = request.getParameterNames().asIterator();
         while (it.hasNext()) {
             String paramName = it.next();
-            AttributeDesc aDesc = RetrievalAgent.concept.getAttributeDesc(paramName);
+            AttributeDesc aDesc = CBRManager.CONCEPT.getAttributeDesc(paramName);
 
             // Special case, after providing feedback a case is always considered to be
             // verified
@@ -67,13 +66,9 @@ public class AlterCaseServlet extends HttpServlet {
             }
         }
 
-        for (String attributeName : RetrievalAgent.concept.getAttributeDescs().keySet()) {
-            System.out.println(attributeName + ": " + AgentToServletStack.FEEDBACK_INSTANCE
-                    .getAttForDesc(RetrievalAgent.concept.getAttributeDescs().get(attributeName)).getValueAsString());
-        }
-
-        RetrievalAgent.project.addInstance(caseToBeAltered);
-        RetrievalAgent.caseBase.addCase(caseToBeAltered);
+        CBRManager.PROJECT.addInstance(caseToBeAltered);
+        CBRManager.CASE_BASE.addCase(caseToBeAltered);
+        CBRManager.PROJECT.save();
 
         request.setAttribute("message", message);
         request.getRequestDispatcher("/feedback.jsp").forward(request, response);
@@ -81,8 +76,8 @@ public class AlterCaseServlet extends HttpServlet {
     }
 
     private Instance searchCaseById(String id) {
-        for (Instance instance : RetrievalAgent.caseBase.getCases()) {
-            if (id.equals(instance.getAttForDesc(RetrievalAgent.concept.getAttributeDesc("id")).getValueAsString())) {
+        for (Instance instance : CBRManager.CASE_BASE.getCases()) {
+            if (id.equals(instance.getAttForDesc(CBRManager.CONCEPT.getAttributeDesc("id")).getValueAsString())) {
                 return instance;
             }
         }

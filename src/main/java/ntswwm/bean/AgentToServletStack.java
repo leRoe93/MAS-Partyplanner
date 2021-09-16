@@ -1,5 +1,7 @@
 package ntswwm.bean;
 
+import java.util.ArrayList;
+
 import de.dfki.mycbr.core.casebase.Instance;
 
 /**
@@ -10,5 +12,5 @@ import de.dfki.mycbr.core.casebase.Instance;
  *
  */
 public class AgentToServletStack {
-    public static Instance FEEDBACK_INSTANCE;
+    public static ArrayList<Instance> FEEDBACK_INSTANCES = new ArrayList<Instance>();
 }

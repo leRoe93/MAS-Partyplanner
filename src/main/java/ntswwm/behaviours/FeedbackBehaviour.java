@@ -3,8 +3,8 @@ package ntswwm.behaviours;
 import de.dfki.mycbr.core.casebase.Instance;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
-import ntswwm.agents.RetrievalAgent;
 import ntswwm.bean.AgentToServletStack;
+import ntswwm.bean.CBRManager;
 
 public class FeedbackBehaviour extends CyclicBehaviour {
 
@@ -23,13 +23,12 @@ public class FeedbackBehaviour extends CyclicBehaviour {
 
         if (msg != null) {
             System.out.println("I received a retrieval request!");
-            for (Instance instance : RetrievalAgent.caseBase.getCases()) {
+            for (Instance instance : CBRManager.CASE_BASE.getCases()) {
                 var id = msg.getContent();
 
-                if (id.equals(
-                        instance.getAttForDesc(RetrievalAgent.concept.getAttributeDesc("id")).getValueAsString())) {
+                if (id.equals(instance.getAttForDesc(CBRManager.CONCEPT.getAttributeDesc("id")).getValueAsString())) {
                     System.out.println("Found matching case for id: " + id);
-                    AgentToServletStack.FEEDBACK_INSTANCE = instance;
+                    AgentToServletStack.FEEDBACK_INSTANCES.add(instance);
                 }
             }
         }

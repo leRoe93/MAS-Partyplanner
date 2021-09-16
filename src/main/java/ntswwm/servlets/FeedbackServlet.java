@@ -16,8 +16,8 @@ import jade.lang.acl.ACLMessage;
 import jade.wrapper.ControllerException;
 import jade.wrapper.StaleProxyException;
 import jade.wrapper.gateway.JadeGateway;
-import ntswwm.agents.RetrievalAgent;
 import ntswwm.bean.AgentToServletStack;
+import ntswwm.bean.CBRManager;
 import ntswwm.platform.AgentPlatform;
 
 /**
@@ -49,6 +49,8 @@ public class FeedbackServlet extends HttpServlet {
         doGet(request, response);
 
         var id = request.getParameter("id");
+        var message = "Successfully retrieved party ID: " + id
+                + " - please adjust the above values and verify the party!";
 
         JadeGateway.init(null, AgentPlatform.PROPERTIES);
         try {
@@ -64,11 +66,6 @@ public class FeedbackServlet extends HttpServlet {
                 }
             });
 
-            while (AgentToServletStack.FEEDBACK_INSTANCE == null) {
-                System.out.println("Feedback instance is null");
-                Thread.sleep(100);
-            }
-
         } catch (StaleProxyException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -80,15 +77,39 @@ public class FeedbackServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        HashMap<String, AttributeDesc> attributeDescs = RetrievalAgent.concept.getAllAttributeDescs();
+        var timeOut = 0;
+        var sleepTime = 10;
+        var timeOuted = false;
+        while (AgentToServletStack.FEEDBACK_INSTANCES.size() == 0) {
+            System.out.println("Feedback instance is null");
+            try {
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            timeOut += sleepTime;
 
-        for (String attributeName : attributeDescs.keySet()) {
-            request.setAttribute(attributeName, AgentToServletStack.FEEDBACK_INSTANCE
-                    .getAttForDesc(attributeDescs.get(attributeName)).getValueAsString());
+            // Need exit condition based on time, if there is no case in the stack
+            if (timeOut == 5000) {
+                message = "Sorry, we could not find any party for ID: " + id + " - please check your input.";
+                timeOuted = true;
+                break;
+            }
         }
 
-        RetrievalAgent.project.save();
+        // Only if an instance has been found
+        if (!timeOuted) {
+            HashMap<String, AttributeDesc> attributeDescs = CBRManager.CONCEPT.getAllAttributeDescs();
 
+            for (String attributeName : attributeDescs.keySet()) {
+                request.setAttribute(attributeName, AgentToServletStack.FEEDBACK_INSTANCES.get(0)
+                        .getAttForDesc(attributeDescs.get(attributeName)).getValueAsString());
+            }
+
+            AgentToServletStack.FEEDBACK_INSTANCES.remove(0);
+        }
+        request.setAttribute("message", message);
         request.getRequestDispatcher("/feedback.jsp").forward(request, response);
     }
 }

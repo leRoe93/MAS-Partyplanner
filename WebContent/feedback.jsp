@@ -8,6 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="custom.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -38,14 +39,21 @@
         </div>
     </nav>
     <div class="jumbotron text-center">
-        <h2>
-            Do your <b>Feedback!</b>
+        <div class="container row">
+        <h2 class="display-4">
+            Do your <b>Feedback!</b> 
         </h2>
+        <p>
+        </div>
+        <div class="container row">
         <form role="form" action="FeedbackServlet" method="post">
-            <label for="id">Party ID:</label>
-            <input id="id" name="id" type="text" />
-            <button class="btn col-md-12 btn-success" type="submit">Get Case!</button>
+           <label for="id">Party ID:</label>
+           <input id="id" name="id" type="text" />
+           <button class="btn col-md-12 btn-success" type="submit">Get Case!</button>
         </form>
+        </div>
+        </div>
+        <div class="container">
         <c:if test="${not empty id}">
             <form role="form" action="AlterCaseServlet" method="post">
                 <label for="id">Party ID:</label>
@@ -115,6 +123,7 @@
                     ${message}
                 </c:if>
         </p>
-    </div>
+        </div>
+   <!--  </div>  -->
 </body>
 </html>

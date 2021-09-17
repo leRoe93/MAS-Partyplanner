@@ -1,0 +1,15 @@
+
+.jumbotron{
+    align-items:center;
+    display:flex;
+    background-image:url('img/bar_banner.jpg');
+    background-size:cover;
+    background-color:#898888;
+    height:500px;
+    color:white;
+}
+
+#id{
+	background-color:white;
+	color:black;
+}

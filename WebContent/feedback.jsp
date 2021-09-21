@@ -38,22 +38,30 @@
             </ul>
         </div>
     </nav>
-    <div class="jumbotron text-center">
+    
+
+    <div class="jumbotron jumbotron-fluid"> 
+        <div class="page-header row">
+        	<div class="col">
+		        <h2 class="display-4">
+		            Do your <b>Feedback!</b> 
+		        </h2>
+        	</div>
+        </div>
+    
         <div class="container row">
-        <h2 class="display-4">
-            Do your <b>Feedback!</b> 
-        </h2>
-        <p>
+        	<div class="col">
+	       		<form role="form" action="FeedbackServlet" method="post">
+	           		<p><label for="id">Party ID:</label></p>
+	           		<input id="id" name="id" type="text" />
+	         		<button class="btn btn-success" type="submit">Get Case!</button>
+	        	</form> 
+        	</div>
         </div>
-        <div class="container row">
-        <form role="form" action="FeedbackServlet" method="post">
-           <label for="id">Party ID:</label>
-           <input id="id" name="id" type="text" />
-           <button class="btn col-md-12 btn-success" type="submit">Get Case!</button>
-        </form>
-        </div>
-        </div>
-        <div class="container">
+     </div>
+
+        
+     <div class="container">
         <c:if test="${not empty id}">
             <form role="form" action="AlterCaseServlet" method="post">
                 <label for="id">Party ID:</label>
@@ -125,6 +133,8 @@
                 </c:if>
         </p>
         </div>
+        
    <!--  </div>  -->
+  
 </body>
 </html>

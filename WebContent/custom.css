@@ -1,7 +1,6 @@
 
 .jumbotron{
     align-items:center;
-    display:flex;
     background-image:url('img/bar_banner.jpg');
     background-size:cover;
     background-color:#898888;
@@ -12,4 +11,8 @@
 #id{
 	background-color:white;
 	color:black;
+}
+.jumbotron-fluid {
+  padding-right: 0;
+  padding-left: 20;
 }

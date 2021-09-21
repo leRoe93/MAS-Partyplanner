@@ -239,26 +239,28 @@
                 </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header" id="headingThree">
-                <h5 class="mb-0">
-                    <button type="button" class="btn col-md-12 btn-primary collapsed" data-toggle="collapse" data-target="#collapseFour"
-                        aria-expanded="false" aria-controls="collapseThree">Party Planner!</button>
-                </h5>
-            </div>
-            <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="card-body">
-                    <h2>
-                        Wanna <b>create a wholesome</b> party plan? Provide some information and we will help you!
-                    </h2>
-                    <label for="guestCountPlanner">Guest Count:</label> <input id="guestCountPlanner" name="guestCountPlanner" type="number" /> <label
-                        for="totalBudgetPlanner">Total Budget:</label> <input id="totalBudgetPlanner" name="totalBudgetPlanner" type="number" readonly />
-                    <label for="locationBudgetPlanner">Location Budget:</label> <input id="locationBudgetPlanner" name="locationBudgetPlanner"
-                        type="number" onchange="calculateTotalBudget()" /> <label for="foodBudgetPlanner">Food Budget:</label> <input
-                        id="foodBudgetPlanner" name="foodBudgetPlanner" type="number" onchange="calculateTotalBudget()" /> <label
-                        for="drinksBudgetPlanner">Drinks Budget:</label> <input id="drinksBudgetPlanner" name="drinksBudgetPlanner" type="number"
-                        onchange="calculateTotalBudget()" /> <label for="monthPlanner">Month:</label> <select id="monthPlanner" name="monthPlanner"
-                        class="form-control">
+    </form>
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button type="button" class="btn col-md-12 btn-primary collapsed" data-toggle="collapse" data-target="#collapseFour"
+                    aria-expanded="false" aria-controls="collapseThree">Party Planner!</button>
+            </h5>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                <h2>
+                    Wanna <b>create a wholesome</b> party plan? Provide some information and we will help you!
+                </h2>
+                <form role="form" action="CreateCaseServlet" method="post">
+                    <label for="guestCountPlanner">Guest Count:</label> <input required id="guestCountPlanner" name="guestCountPlanner" type="number" />
+                    <label for="totalBudgetPlanner">Total Budget:</label> <input required id="totalBudgetPlanner" name="totalBudgetPlanner"
+                        type="number" value="0.0" readonly /> <label for="locationBudgetPlanner">Location Budget:</label> <input required
+                        id="locationBudgetPlanner" name="locationBudgetPlanner" type="number" value="0.0" onchange="calculateTotalBudget()" /> <label
+                        for="foodBudgetPlanner">Food Budget:</label> <input required id="foodBudgetPlanner" value="0.0" name="foodBudgetPlanner"
+                        type="number" onchange="calculateTotalBudget()" /> <label for="drinksBudgetPlanner">Drinks Budget:</label> <input required
+                        id="drinksBudgetPlanner" name="drinksBudgetPlanner" type="number" value="0.0" onchange="calculateTotalBudget()" /> <label
+                        for="monthPlanner">Month:</label> <select id="monthPlanner" name="monthPlanner" class="form-control">
                         <option value="January">January</option>
                         <option value="February">February</option>
                         <option value="March">March</option>
@@ -270,8 +272,11 @@
                         <option value="October">October</option>
                         <option value="November">November</option>
                         <option value="December">December</option>
-                    </select> <label for="yearPlanner">Year:</label> <input id="yearPlanner" name="yearPlanner" type="number" /> <label
-                        for="locationTypePlanner">Location Type:</label> <select id="locationTypePlanner" name="locationTypePlanner"
+                    </select> <label for="yearPlanner">Year:</label><select id="yearPlanner" name="yearPlanner" class="form-control col-md-2" size="1">
+                        <% for( int i=2000; i<=2050; i++) { %>
+                        <option value="<%=i %>"><%= i %></option>
+                        <% } %>
+                    </select><label for="locationTypePlanner">Location Type:</label> <select id="locationTypePlanner" name="locationTypePlanner"
                         class="form-control">
                         <option value="private">private</option>
                         <option value="thirdparty">thirdparty</option>
@@ -280,18 +285,20 @@
                         <option value="birthday">birthday</option>
                         <option value="wedding">wedding</option>
                         <option value="regular">regular</option>
-                    </select> <label for="beerAmountPlanner">Beer Amount:</label> <input id="beerAmountPlanner" name="beerAmountPlanner" type="number" /> <label
-                        for="wineAmountPlanner">Wine Amount:</label> <input id="wineAmountPlanner" name="wineAmountPlanner" type="number" /> <label
-                        for="spiritsAmountPlanner">Spirits Amount:</label> <input id="spiritsAmountPlanner" name="spiritsAmountPlanner" type="number" />
-                    <label for="softsAmountPlanner">Softs Amount:</label> <input id="softsAmountPlanner" name="softsAmountPlanner" type="number" /> <label
-                        for="meatAmountPlanner">Meat Amount:</label> <input id="meatAmountPlanner" name="meatAmountPlanner" type="number" /> <label
-                        for="garnishAmountPlanner">Garnish Amount:</label> <input id="garnishAmountPlanner" name="garnishAmountPlanner" type="number" />
-                    <label for="snacksAmountPlanner">Snacks Amount:</label> <input id="snacksAmountPlanner" name="snacksAmountPlanner" type="number" />
-                    <button class="btn col-md-4 btn-success" type="submit">Start Query!</button>
-                </div>
+                    </select> <label for="beerAmountPlanner">Beer Amount:</label> <input required id="beerAmountPlanner" name="beerAmountPlanner" type="number" value="0.0"/> <label
+                        for="wineAmountPlanner">Wine Amount:</label> <input required id="wineAmountPlanner" name="wineAmountPlanner" type="number" value="0.0" /> <label
+                        for="spiritsAmountPlanner">Spirits Amount:</label> <input required id="spiritsAmountPlanner" name="spiritsAmountPlanner" type="number" value="0.0"/>
+                    <label for="softsAmountPlanner">Softs Amount:</label> <input required id="softsAmountPlanner" name="softsAmountPlanner" type="number" value="0.0" /> <label
+                        for="meatAmountPlanner">Meat Amount:</label> <input required id="meatAmountPlanner" name="meatAmountPlanner" type="number" value="0.0"/> <label
+                        for="garnishAmountPlanner">Garnish Amount:</label> <input required id="garnishAmountPlanner" name="garnishAmountPlanner" type="number" value="0.0" />
+                    <label for="snacksAmountPlanner">Snacks Amount:</label> <input required id="snacksAmountPlanner" name="snacksAmountPlanner" type="number" value="0.0" />
+                    <button class="btn col-md-4 btn-success" type="submit">Save Party to Database!</button>
+                </form>
             </div>
         </div>
-        </div>
-    </form>
+        <c:if test="${not empty caseCreationMessage}">
+                ${caseCreationMessage}
+            </c:if>
+    </div>
 </body>
 </html>

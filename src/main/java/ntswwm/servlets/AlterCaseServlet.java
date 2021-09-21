@@ -15,7 +15,7 @@ import de.dfki.mycbr.core.model.AttributeDesc;
 import ntswwm.bean.CBRManager;
 
 /**
- * Servlet implementation class AgentPingServlet
+ * Servlet implementation class AlterCaseServlet
  */
 @WebServlet("/AlterCaseServlet")
 public class AlterCaseServlet extends HttpServlet {

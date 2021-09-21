@@ -21,7 +21,7 @@ import ntswwm.bean.CBRManager;
 import ntswwm.platform.AgentPlatform;
 
 /**
- * Servlet implementation class QueryServlet
+ * Servlet implementation class FeedbackServlet
  */
 @WebServlet("/FeedbackServlet")
 public class FeedbackServlet extends HttpServlet {

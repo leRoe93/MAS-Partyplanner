@@ -120,6 +120,7 @@
                     <option value="February">February</option>
                     <option value="March">March</option>
                     <option value="April">April</option>
+                    <option value="May">May</option>
                     <option value="June">June</option>
                     <option value="July">July</option>
                     <option value="August">August</option>

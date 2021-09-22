@@ -122,7 +122,8 @@ public class QueryServlet extends HttpServlet {
         if (!timeOuted) {
             Pair<Instance, Similarity> retrievalResult = AgentToServletStack.QUERY_INSTANCES.get(agentType)
                     .get(AgentToServletStack.QUERY_INSTANCES.get(agentType).size() - 1);
-            message = "Derived data from a party with similarity of: " + retrievalResult.getSecond().toString();
+            message = "Derived data from a party with similarity of: "
+                    + retrievalResult.getSecond().getRoundedValue() * 100 + " %";
 
             var guestCountQuery = Integer.parseInt(request.getParameter("guestCount"));
             var guestCountCase = Integer.parseInt(retrievalResult.getFirst()
@@ -134,18 +135,20 @@ public class QueryServlet extends HttpServlet {
                     attributeNameInConcept = attributeName.split("_")[0];
 
                 }
-                System.out.println("Setting attributes to request: " + attributeName + ", value: "
-                        + retrievalResult.getFirst()
-                                .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeNameInConcept))
-                                .getValueAsString());
 
                 var value = Float.parseFloat(retrievalResult.getFirst()
                         .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeNameInConcept)).getValueAsString());
 
                 if (guestCountQuery != guestCountCase) {
+                    System.out.println("Previous value: " + value);
                     System.out.println("Found case does not have the same guest count, value gets normalized.");
+                    request.setAttribute("normalized" + agentType,
+                            "<br>Below values needed to be normalized based on the guest count!<br>" + "Your input: "
+                                    + guestCountQuery + ", case value: " + guestCountCase);
+
                     value = normalizeParameterValue(value, guestCountQuery, guestCountCase);
                 }
+                System.out.println("Setting attributes to request: " + attributeName + ", value: " + value);
                 request.setAttribute(attributeName, value);
             }
         }
@@ -158,7 +161,7 @@ public class QueryServlet extends HttpServlet {
     }
 
     private float normalizeParameterValue(float value, int guestCountQuery, int guestCountCase) {
-        return value * (guestCountQuery / guestCountCase);
+        return value * ((float) guestCountQuery / (float) guestCountCase);
     }
 
     /**

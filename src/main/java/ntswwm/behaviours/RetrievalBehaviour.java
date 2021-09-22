@@ -66,8 +66,7 @@ public class RetrievalBehaviour extends CyclicBehaviour {
     private Pair<Instance, Similarity> getMostSimilarCase(ACLMessage msg) {
         Retrieval ret = new Retrieval(CBRManager.CONCEPT, CBRManager.CASE_BASE);
         ret.setRetrievalMethod(RetrievalMethod.RETRIEVE_K_SORTED);
-        ret.setK(1);
-        ret.start();
+        ret.setK(10);
 
         Instance query = ret.getQueryInstance();
 
@@ -85,7 +84,17 @@ public class RetrievalBehaviour extends CyclicBehaviour {
             }
         }
 
-        return ret.getResult().get(0);
+        ret.start();
+
+        // Try to find a verified case by descending the retrieved cases
+        for (int i = 0; i < ret.getResult().size(); i++) {
+            if (ret.getResult().get(0).getFirst().getAttForDesc(CBRManager.CONCEPT.getAttributeDesc("verified"))
+                    .getValueAsString().equals("yes")) {
+                return ret.getResult().get(i);
+            }
+        }
+
+        return null;
     }
 
 }

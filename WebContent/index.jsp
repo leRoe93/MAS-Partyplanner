@@ -193,13 +193,15 @@
                         <button id="foodButton" class="btn col-md-4 btn-success" name="submit-button" value="FoodAgent" type="submit">Tell
                             me!</button>
                         <c:if test="${not empty foodMessage}">
-                            ${budgetMessage}
+                            ${foodMessage}
                             <label for="meatAmount">Meat Amount:</label>
                             <input id="meatAmount" name="meatAmount" type="number" value="${meatAmount}" readonly />
                             <label for="garnishAmount">Garnish Amount:</label>
                             <input id="garnishAmount" name="garnishAmount" value="${garnishAmount}" type="number" />
-                            <label for="snacksAmount">Food Budget:</label>
+                            <label for="snacksAmount">Snacks Amount:</label>
                             <input id="snacksAmount" name="snacksAmount" value="${snacksAmount}" type="number" />
+                            <label for="foodBudget">Food Budget:</label>
+                            <input id="foodBudget" name="foodBudget" value="${foodBudget}" type="number" />
                             <input id="adaptFoodValuesCheckBox" name="adaptFoodValuesCheckBox" value="0.0" type="checkbox"
                                 onchange="adaptFoodToPartyPlan()" />
                             <label for="adaptFoodValuesCheckBox">Adapt for party plan?</label>
@@ -232,6 +234,8 @@
                         <input id="spiritsAmount" name="spiritsAmount" value="${spiritsAmount}" type="number" />
                         <label for="softsAmount">Softs Amount:</label>
                         <input id="softsAmount" name="softsAmount" value="${softsAmount}" type="number" />
+                        <label for="drinksBudget">Drinks Budget:</label>
+                        <input id="drinksBudget" name="drinksBudget" value="${drinksBudget}" type="number" />
                         <input id="adaptDrinksValuesCheckBox" name="adaptDrinksValuesCheckBox" value="0.0" type="checkbox"
                             onchange="adaptDrinksToPartyPlan()" />
                         <label for="adaptDrinksValuesCheckBox">Adapt for party plan?</label>

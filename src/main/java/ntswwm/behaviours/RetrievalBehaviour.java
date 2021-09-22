@@ -20,6 +20,13 @@ public class RetrievalBehaviour extends CyclicBehaviour {
      */
     private static final long serialVersionUID = -4550436136565114827L;
 
+    String agentType;
+
+    public RetrievalBehaviour(String agentType) {
+        super();
+        this.agentType = agentType;
+    }
+
     @Override
     public void action() {
         // TODO Auto-generated method stub
@@ -43,8 +50,10 @@ public class RetrievalBehaviour extends CyclicBehaviour {
                 AgentToServletStack.BUDGET_AGENT_INSTANCES.add(getMostSimilarCase(msg));
                 break;
             case "FoodAgent":
+                AgentToServletStack.FOOD_AGENT_INSTANCES.add(getMostSimilarCase(msg));
                 break;
             case "DrinksAgent":
+                AgentToServletStack.DRINKS_AGENT_INSTANCES.add(getMostSimilarCase(msg));
                 break;
             default:
                 System.err.println("Message received from unsupport agent type: ");
@@ -61,6 +70,8 @@ public class RetrievalBehaviour extends CyclicBehaviour {
 
         for (AmalgamationFct function : CBRManager.CONCEPT.getAvailableAmalgamFcts()) {
             if (function.getName().contains(agentType)) {
+                System.out.println(
+                        "Picked amalgamation function '" + function.getName() + "' for agent type: " + agentType);
                 CBRManager.CONCEPT.setActiveAmalgamFct(function);
             }
         }

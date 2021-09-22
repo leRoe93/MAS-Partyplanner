@@ -19,6 +19,8 @@ import jade.wrapper.ControllerException;
 import jade.wrapper.StaleProxyException;
 import jade.wrapper.gateway.JadeGateway;
 import ntswwm.agents.BudgetAgent;
+import ntswwm.agents.DrinksAgent;
+import ntswwm.agents.FoodAgent;
 import ntswwm.bean.AgentToServletStack;
 import ntswwm.bean.CBRManager;
 import ntswwm.platform.AgentPlatform;
@@ -70,6 +72,7 @@ public class QueryServlet extends HttpServlet {
                     while (it.hasNext()) {
                         var paramName = it.next();
                         message.addUserDefinedParameter(paramName, request.getParameter(paramName));
+                        System.out.println(paramName + ":" + request.getParameter(paramName));
                     }
                     myAgent.send(message);
                 }
@@ -125,11 +128,11 @@ public class QueryServlet extends HttpServlet {
 
             }
             request.setAttribute("budgetMessage", budgetMessage);
-
+            AgentToServletStack.BUDGET_AGENT_INSTANCES.remove(AgentToServletStack.BUDGET_AGENT_INSTANCES.size() - 1);
             break;
         case "FoodAgent":
             var foodMessage = "";
-            while (AgentToServletStack.BUDGET_AGENT_INSTANCES.size() == 0) {
+            while (AgentToServletStack.FOOD_AGENT_INSTANCES.size() == 0) {
                 try {
                     Thread.sleep(sleepTime);
                 } catch (InterruptedException e) {
@@ -140,18 +143,18 @@ public class QueryServlet extends HttpServlet {
 
                 // Need exit condition based on time, if there is no case in the stack
                 if (timeOut == 5000) {
-                    foodMessage = "Sorry, we could not find any case to derive budgets from.";
+                    foodMessage = "Sorry, we could not find any case to derive food amounts from.";
                     timeOuted = true;
                     break;
                 }
             }
             if (!timeOuted) {
-                Pair<Instance, Similarity> retrievalResult = AgentToServletStack.BUDGET_AGENT_INSTANCES
-                        .get(AgentToServletStack.BUDGET_AGENT_INSTANCES.size() - 1);
+                Pair<Instance, Similarity> retrievalResult = AgentToServletStack.FOOD_AGENT_INSTANCES
+                        .get(AgentToServletStack.FOOD_AGENT_INSTANCES.size() - 1);
                 budgetMessage = "Derived budgets from a party with similarity of: "
                         + retrievalResult.getSecond().toString();
 
-                for (String attributeName : BudgetAgent.ANSWER_ATTRIBUTES) {
+                for (String attributeName : FoodAgent.ANSWER_ATTRIBUTES) {
                     System.out.println("Setting attributes to request: " + attributeName + ", value: "
                             + retrievalResult.getFirst()
                                     .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName))
@@ -162,8 +165,44 @@ public class QueryServlet extends HttpServlet {
 
             }
             request.setAttribute("foodMessage", foodMessage);
+            AgentToServletStack.FOOD_AGENT_INSTANCES.remove(AgentToServletStack.FOOD_AGENT_INSTANCES.size() - 1);
             break;
         case "DrinksAgent":
+            var drinksMessage = "";
+            while (AgentToServletStack.DRINKS_AGENT_INSTANCES.size() == 0) {
+                try {
+                    Thread.sleep(sleepTime);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                timeOut += sleepTime;
+
+                // Need exit condition based on time, if there is no case in the stack
+                if (timeOut == 5000) {
+                    drinksMessage = "Sorry, we could not find any case to derive drinks amounts from.";
+                    timeOuted = true;
+                    break;
+                }
+            }
+            if (!timeOuted) {
+                Pair<Instance, Similarity> retrievalResult = AgentToServletStack.DRINKS_AGENT_INSTANCES
+                        .get(AgentToServletStack.DRINKS_AGENT_INSTANCES.size() - 1);
+                budgetMessage = "Derived budgets from a party with similarity of: "
+                        + retrievalResult.getSecond().toString();
+
+                for (String attributeName : DrinksAgent.ANSWER_ATTRIBUTES) {
+                    System.out.println("Setting attributes to request: " + attributeName + ", value: "
+                            + retrievalResult.getFirst()
+                                    .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName))
+                                    .getValueAsString());
+                    request.setAttribute(attributeName, retrievalResult.getFirst()
+                            .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName)).getValueAsString());
+                }
+
+            }
+            request.setAttribute("drinksMessage", drinksMessage);
+            AgentToServletStack.DRINKS_AGENT_INSTANCES.remove(AgentToServletStack.DRINKS_AGENT_INSTANCES.size() - 1);
             break;
         }
 

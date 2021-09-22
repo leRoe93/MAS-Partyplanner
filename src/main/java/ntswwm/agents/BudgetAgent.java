@@ -14,7 +14,7 @@ public class BudgetAgent extends Agent {
 
     protected void setup() {
         System.out.println("Budget Agent with ID: " + getAID().getName() + " is ready!");
-        addBehaviour(new RetrievalBehaviour());
+        addBehaviour(new RetrievalBehaviour("BudgetAgent"));
     }
 
     public String ping() {

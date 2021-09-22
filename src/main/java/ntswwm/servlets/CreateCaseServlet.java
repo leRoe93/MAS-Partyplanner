@@ -53,6 +53,7 @@ public class CreateCaseServlet extends HttpServlet {
                     newCase.addAttribute(CBRManager.CONCEPT.getAttributeDesc("verified"), "no");
                 } else if (key.equals("id")) {
                     var id = UUID.randomUUID().toString();
+                    request.setAttribute("caseId", id);
                     newCase.addAttribute(CBRManager.CONCEPT.getAttributeDesc("id"), id);
                     caseCreationMessage += id;
                 } else {
@@ -70,6 +71,7 @@ public class CreateCaseServlet extends HttpServlet {
         }
 
         request.setAttribute("caseCreationMessage", caseCreationMessage);
+
         request.getRequestDispatcher("/index.jsp").forward(request, response);
 
     }

@@ -172,10 +172,10 @@
                                         <option value="wedding">wedding</option>
                                         <option value="regular">regular</option>
                                 </select></td>
-                                                                        <td><select id="locationType" name="locationType" class="form-control">
-                                                <option value="private">private</option>
-                                                <option value="thirdparty">third party</option>
-                                        </select></td>
+                                <td><select id="locationType" name="locationType" class="form-control">
+                                        <option value="private">private</option>
+                                        <option value="thirdparty">third party</option>
+                                </select></td>
                             </tr>
                         </tbody>
                     </table>
@@ -302,19 +302,26 @@
                     </div>
                 </div>
             </form>
-            <form role="form" action="CreateCaseServlet" method="post">
-                <div class="card">
-                    <div class="card-header" id="headingFour">
-                        <h2 class="mb-0">
-                            <button class="btn btn-primary btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Party
-                                Planner</button>
-                        </h2>
-                    </div>
-                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#agentAccordion">
-                        <div class="card-body">
-                            <c:if test="${not empty caseCreationMessage}">
+            <div class="card">
+                <div class="card-header" id="headingFour">
+                    <h2 class="mb-0">
+                        <button class="btn btn-primary btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Party
+                            Planner</button>
+                    </h2>
+                </div>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#agentAccordion">
+                    <div class="card-body">
+                        <c:if test="${not empty caseCreationMessage}">
                                  ${caseCreationMessage}
+                                 <c:if test="${not empty caseId}">
+                                <form role="form" action="SendMailServlet" method="post">
+                                <input id="caseId" name="caseId" type="text" value="${caseId }" required />
+                                <input id="email" name="email" type="email" placeholder="your.mail@someMail.com" required />
+                                <button class="btn col-md-4 btn-success" type="submit">Send Mail!</button>
+                                </form>
                             </c:if>
+                        </c:if>
+                        <form role="form" action="CreateCaseServlet" method="post">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -383,10 +390,10 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><input id="totalBudgetPlanner" name="totalBudgetPlanner" type="number" value="0.0" readonly /></td>
-                                        <td><input id="locationBudgetPlanner" name="locationBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()" /></td>
-                                        <td><input id="foodBudgetPlanner" name="foodBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()" /></td>
-                                        <td><input id="drinksBudgetPlanner" name="drinksBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()" /></td>
+                                        <td><input id="totalBudgetPlanner" name="totalBudgetPlanner" type="number" value="0.0" readonly required /></td>
+                                        <td><input id="locationBudgetPlanner" name="locationBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()" required /></td>
+                                        <td><input id="foodBudgetPlanner" name="foodBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()" required /></td>
+                                        <td><input id="drinksBudgetPlanner" name="drinksBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()" required /></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -400,9 +407,9 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><input id="meatAmountPlanner" name="meatAmountPlanner" type="number" value="0.0" /></td>
-                                        <td><input id="garnishAmountPlanner" name="garnishAmountPlanner" value="0.0" type="number" /></td>
-                                        <td><input id="snacksAmountPlanner" name="snacksAmountPlanner" value="0.0" type="number" /></td>
+                                        <td><input id="meatAmountPlanner" name="meatAmountPlanner" type="number" value="0.0" required /></td>
+                                        <td><input id="garnishAmountPlanner" name="garnishAmountPlanner" value="0.0" type="number" required /></td>
+                                        <td><input id="snacksAmountPlanner" name="snacksAmountPlanner" value="0.0" type="number" required /></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -425,10 +432,10 @@
                                 </tbody>
                             </table>
                             <button class="btn col-md-4 btn-success" type="submit">Save Party to Database!</button>
-                        </div>
+                        </form>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </body>

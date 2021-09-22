@@ -97,6 +97,18 @@
 					.getElementById('drinksBudget_Specific').value
 		}
 	}
+	
+	function toggleEmailInput() {
+		
+		var checkBox = document.getElementById('sendMailCheckBox')
+		if (checkBox.checked == true) {
+			alert("checkbox checked")
+			document.getElementById('email').style.visibility = "visible";
+		} else {
+			alert("checkbox unchecked")
+			document.getElementById('email').style.visibility = "hidden";
+		}
+	}
 </script>
 </head>
 <body>
@@ -323,11 +335,6 @@
                         <c:if test="${not empty caseCreationMessage}">
                                  ${caseCreationMessage}
                                  <c:if test="${not empty caseId}">
-                                <form role="form" action="SendMailServlet" method="post">
-                                <input id="caseId" name="caseId" type="text" value="${caseId }" required />
-                                <input id="email" name="email" type="email" placeholder="your.mail@someMail.com" required />
-                                <button class="btn col-md-4 btn-success" type="submit">Send Mail!</button>
-                                </form>
                             </c:if>
                         </c:if>
                         <form role="form" action="CreateCaseServlet" method="post">
@@ -441,6 +448,10 @@
                                 </tbody>
                             </table>
                             <button class="btn col-md-4 btn-success" type="submit">Save Party to Database!</button>
+                            <label
+                                for="sendMailCheckBox">Shall we drop you an eMail with your party details?</label>
+                            <input id="sendMailCheckBox" name="sendMailCheckBox" type="checkbox" onchange="toggleEmailInput()" /> 
+                            <input id="email" name="email" type="email" placeholder="your.mail@someMail.com" style="visibility: hidden;" />
                         </form>
                     </div>
                 </div>

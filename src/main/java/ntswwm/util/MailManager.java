@@ -36,7 +36,7 @@ public class MailManager {
             message.setFrom(new InternetAddress(SMTP_AUTH_USER));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailAdress));
             message.setSubject(subject);
-            message.setText(content);
+            message.setContent(content, "text/html; charset=utf-8");
 
             Transport.send(message);
 

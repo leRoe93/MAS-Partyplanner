@@ -55,6 +55,7 @@ public class QueryServlet extends HttpServlet {
 
         // Use value of pressed button for agent name
         var targetAgentName = request.getParameter("submit-button");
+        System.out.println("Started query for target agent: " + targetAgentName);
 
         JadeGateway.init(null, AgentPlatform.PROPERTIES);
         try {
@@ -151,7 +152,7 @@ public class QueryServlet extends HttpServlet {
             if (!timeOuted) {
                 Pair<Instance, Similarity> retrievalResult = AgentToServletStack.FOOD_AGENT_INSTANCES
                         .get(AgentToServletStack.FOOD_AGENT_INSTANCES.size() - 1);
-                budgetMessage = "Derived budgets from a party with similarity of: "
+                foodMessage = "Derived food amounts and budget from a party with similarity of: "
                         + retrievalResult.getSecond().toString();
 
                 for (String attributeName : FoodAgent.ANSWER_ATTRIBUTES) {
@@ -164,6 +165,7 @@ public class QueryServlet extends HttpServlet {
                 }
 
             }
+            System.out.println("Setting foodMessage: " + foodMessage);
             request.setAttribute("foodMessage", foodMessage);
             AgentToServletStack.FOOD_AGENT_INSTANCES.remove(AgentToServletStack.FOOD_AGENT_INSTANCES.size() - 1);
             break;
@@ -188,7 +190,7 @@ public class QueryServlet extends HttpServlet {
             if (!timeOuted) {
                 Pair<Instance, Similarity> retrievalResult = AgentToServletStack.DRINKS_AGENT_INSTANCES
                         .get(AgentToServletStack.DRINKS_AGENT_INSTANCES.size() - 1);
-                budgetMessage = "Derived budgets from a party with similarity of: "
+                drinksMessage = "Derived drinks amounts and budget from a party with similarity of: "
                         + retrievalResult.getSecond().toString();
 
                 for (String attributeName : DrinksAgent.ANSWER_ATTRIBUTES) {
@@ -201,6 +203,7 @@ public class QueryServlet extends HttpServlet {
                 }
 
             }
+            System.out.println("Setting drinksMessage: " + drinksMessage);
             request.setAttribute("drinksMessage", drinksMessage);
             AgentToServletStack.DRINKS_AGENT_INSTANCES.remove(AgentToServletStack.DRINKS_AGENT_INSTANCES.size() - 1);
             break;

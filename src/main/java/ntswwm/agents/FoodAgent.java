@@ -1,6 +1,7 @@
 package ntswwm.agents;
 
 import jade.core.Agent;
+import ntswwm.behaviours.RetrievalBehaviour;
 
 public class FoodAgent extends Agent {
 
@@ -13,6 +14,7 @@ public class FoodAgent extends Agent {
 
     protected void setup() {
         System.out.println("Food Agent with ID: " + getAID().getName() + " is ready!");
+        addBehaviour(new RetrievalBehaviour("FoodAgent"));
     }
 
     public String ping() {

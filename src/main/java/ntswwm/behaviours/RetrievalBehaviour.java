@@ -38,13 +38,13 @@ public class RetrievalBehaviour extends CyclicBehaviour {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        System.out.println("Waiting for message to be received");
+        System.out.println("[" + this.agentType + "] Waiting for retrieval request...");
 
         if (msg != null) {
-            var agentType = msg.getUserDefinedParameter("agentType");
-            System.out.println("I received a retrieval request from agent type: " + agentType);
-            setActiveAmalgamationFct(agentType);
-            switch (agentType) {
+            // var agentType = msg.getUserDefinedParameter("agentType");
+            System.out.println("[" + this.agentType + "] Received retrieval request from agent type");
+            setActiveAmalgamationFct(this.agentType);
+            switch (this.agentType) {
 
             case "BudgetAgent":
                 AgentToServletStack.BUDGET_AGENT_INSTANCES.add(getMostSimilarCase(msg));

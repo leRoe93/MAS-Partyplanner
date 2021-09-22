@@ -160,6 +160,14 @@ public class QueryServlet extends HttpServlet {
 
     }
 
+    /**
+     * Simple method to normalize values based on differences in the guest count.
+     * 
+     * @param value           the value that needs to be normalized.
+     * @param guestCountQuery the guestCount given in the query.
+     * @param guestCountCase  the guestCount given in the case.
+     * @return the normalized guest count.
+     */
     private float normalizeParameterValue(float value, int guestCountQuery, int guestCountCase) {
         return value * ((float) guestCountQuery / (float) guestCountCase);
     }

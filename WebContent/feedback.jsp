@@ -40,23 +40,26 @@
     </nav>
     
 
-    <div class="jumbotron jumbotron-fluid"> 
+    <div class="jumbotron jumbotron-fluid text-center"> 
         <div class="page-header row">
         	<div class="col">
-		        <h2 class="display-4">
+		        <h1 class="display-4">
 		            Do your <b>Feedback!</b> 
-		        </h2>
+		        </h1>
         	</div>
         </div>
     
-        <div class="container row">
-        	<div class="col">
+        <div class="container text-center align-items-center">
+        
 	       		<form role="form" action="FeedbackServlet" method="post">
-	           		<p><label for="id">Party ID:</label></p>
-	           		<input id="id" name="id" type="text" />
-	         		<button class="btn btn-success" type="submit">Get Case!</button>
+	           		<p> To return perfectly applicable cases, we need your feedback. Were the values predicted by the MAS party 
+	           			planner correct or have you had to adjust the values a bit? - Let us know! </p>
+	           		<p>Enter your <b>Party ID</b> here :</p>
+	           		<input id="id" name="id" class="id1" type="text" />
+	           		<p>
+	         		<button class="btn btn-success" type="submit">Get Case!</button></p>
 	        	</form> 
-        	</div>
+        	
         </div>
      </div>
 

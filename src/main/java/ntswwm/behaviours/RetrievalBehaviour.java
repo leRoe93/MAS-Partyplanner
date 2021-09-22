@@ -44,22 +44,8 @@ public class RetrievalBehaviour extends CyclicBehaviour {
             // var agentType = msg.getUserDefinedParameter("agentType");
             System.out.println("[" + this.agentType + "] Received retrieval request from agent type");
             setActiveAmalgamationFct(this.agentType);
-            switch (this.agentType) {
 
-            case "BudgetAgent":
-                AgentToServletStack.BUDGET_AGENT_INSTANCES.add(getMostSimilarCase(msg));
-                break;
-            case "FoodAgent":
-                AgentToServletStack.FOOD_AGENT_INSTANCES.add(getMostSimilarCase(msg));
-                break;
-            case "DrinksAgent":
-                AgentToServletStack.DRINKS_AGENT_INSTANCES.add(getMostSimilarCase(msg));
-                break;
-            default:
-                System.err.println("Message received from unsupport agent type: ");
-                System.exit(-1);
-
-            }
+            AgentToServletStack.QUERY_INSTANCES.get(agentType).add(getMostSimilarCase(msg));
         }
 
     }

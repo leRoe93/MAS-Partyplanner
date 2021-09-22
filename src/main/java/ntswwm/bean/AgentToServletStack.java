@@ -1,6 +1,7 @@
 package ntswwm.bean;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import de.dfki.mycbr.core.casebase.Instance;
 import de.dfki.mycbr.core.similarity.Similarity;
@@ -15,7 +16,5 @@ import de.dfki.mycbr.util.Pair;
  */
 public class AgentToServletStack {
     public static ArrayList<Instance> FEEDBACK_INSTANCES = new ArrayList<Instance>();
-    public static ArrayList<Pair<Instance, Similarity>> BUDGET_AGENT_INSTANCES = new ArrayList<Pair<Instance, Similarity>>();
-    public static ArrayList<Pair<Instance, Similarity>> FOOD_AGENT_INSTANCES = new ArrayList<Pair<Instance, Similarity>>();
-    public static ArrayList<Pair<Instance, Similarity>> DRINKS_AGENT_INSTANCES = new ArrayList<Pair<Instance, Similarity>>();
+    public static HashMap<String, ArrayList<Pair<Instance, Similarity>>> QUERY_INSTANCES = new HashMap<String, ArrayList<Pair<Instance, Similarity>>>();
 }

@@ -189,8 +189,8 @@
                     </div>
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#agentAccordion">
                         <div class="card-body">
-                            <c:if test="${not empty budgetMessage}">
-                            ${budgetMessage}
+                            <c:if test="${not empty messageBudgetAgent}">
+                            ${messageBudgetAgent}
                         </c:if>
                             <h2>
                                 Wanna know how much <b>money</b> you'll most likely need for your party? Provide some information and we will tell you!
@@ -229,8 +229,8 @@
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#agentAccordion">
                         <div class="card-body">
-                            <c:if test="${not empty foodMessage}">
-                            ${foodMessage}
+                            <c:if test="${not empty messageFoodAgent}">
+                            ${messageFoodAgent}
                         </c:if>
                             <h2>
                                 Wanna know how much <b>food</b> you'll most likely need for your party? Provide some information and we will tell you!
@@ -268,8 +268,8 @@
                     </div>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#agentAccordion">
                         <div class="card-body">
-                            <c:if test="${not empty drinksMessage}">
-                                ${drinksMessage}
+                            <c:if test="${not empty messageDrinksAgent}">
+                                ${messageDrinksAgent}
                             </c:if>
                             <h2>
                                 Wanna know how much <b>drinks</b> you'll most likely need for your party? Provide some information and we will tell you!

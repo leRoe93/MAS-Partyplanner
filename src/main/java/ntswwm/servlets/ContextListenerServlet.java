@@ -17,7 +17,6 @@ import ntswwm.agents.CoordinatorAgent;
 import ntswwm.agents.DrinksAgent;
 import ntswwm.agents.FeedbackAgent;
 import ntswwm.agents.FoodAgent;
-import ntswwm.agents.RetrievalAgent;
 import ntswwm.bean.CBRManager;
 import ntswwm.platform.AgentPlatform;
 
@@ -64,8 +63,6 @@ public class ContextListenerServlet implements ServletContextListener {
         try {
             AgentController coordinatorAgent = AgentPlatform.CONTAINER_CONTROLLER.createNewAgent("CoordinatorAgent",
                     CoordinatorAgent.class.getName(), null);
-            AgentController retrievalAgent = AgentPlatform.CONTAINER_CONTROLLER.createNewAgent("RetrievalAgent",
-                    RetrievalAgent.class.getName(), null);
             AgentController drinksAgent = AgentPlatform.CONTAINER_CONTROLLER.createNewAgent("DrinksAgent",
                     DrinksAgent.class.getName(), null);
             AgentController foodAgent = AgentPlatform.CONTAINER_CONTROLLER.createNewAgent("FoodAgent",
@@ -76,7 +73,6 @@ public class ContextListenerServlet implements ServletContextListener {
                     FeedbackAgent.class.getName(), null);
 
             AgentPlatform.AGENTS.put("coordinator", coordinatorAgent);
-            AgentPlatform.AGENTS.put("retrieval", retrievalAgent);
             AgentPlatform.AGENTS.put("drinks", drinksAgent);
             AgentPlatform.AGENTS.put("food", foodAgent);
             AgentPlatform.AGENTS.put("budget", budgetAgent);

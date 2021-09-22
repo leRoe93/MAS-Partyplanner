@@ -236,4 +236,8 @@ public class QueryServlet extends HttpServlet {
 
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
+
+    private HttpServletRequest appendRequest(HttpServletRequest request) {
+        return request;
+    }
 }

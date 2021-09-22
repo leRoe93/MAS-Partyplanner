@@ -156,12 +156,24 @@ public class QueryServlet extends HttpServlet {
                         + retrievalResult.getSecond().toString();
 
                 for (String attributeName : FoodAgent.ANSWER_ATTRIBUTES) {
-                    System.out.println("Setting attributes to request: " + attributeName + ", value: "
-                            + retrievalResult.getFirst()
-                                    .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName))
-                                    .getValueAsString());
-                    request.setAttribute(attributeName, retrievalResult.getFirst()
-                            .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName)).getValueAsString());
+                    if (attributeName.contains("Specific")) {
+                        System.out.println("Setting attributes to request: " + attributeName + ", value: "
+                                + retrievalResult.getFirst()
+                                        .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName.split("_")[0]))
+                                        .getValueAsString());
+                        request.setAttribute(attributeName,
+                                retrievalResult.getFirst()
+                                        .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName.split("_")[0]))
+                                        .getValueAsString());
+                    } else {
+
+                        System.out.println("Setting attributes to request: " + attributeName + ", value: "
+                                + retrievalResult.getFirst()
+                                        .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName))
+                                        .getValueAsString());
+                        request.setAttribute(attributeName, retrievalResult.getFirst()
+                                .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName)).getValueAsString());
+                    }
                 }
 
             }
@@ -194,12 +206,25 @@ public class QueryServlet extends HttpServlet {
                         + retrievalResult.getSecond().toString();
 
                 for (String attributeName : DrinksAgent.ANSWER_ATTRIBUTES) {
-                    System.out.println("Setting attributes to request: " + attributeName + ", value: "
-                            + retrievalResult.getFirst()
-                                    .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName))
-                                    .getValueAsString());
-                    request.setAttribute(attributeName, retrievalResult.getFirst()
-                            .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName)).getValueAsString());
+                    if (attributeName.contains("Specific")) {
+
+                        System.out.println("Setting attributes to request: " + attributeName + ", value: "
+                                + retrievalResult.getFirst()
+                                        .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName.split("_")[0]))
+                                        .getValueAsString());
+                        request.setAttribute(attributeName,
+                                retrievalResult.getFirst()
+                                        .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName.split("_")[0]))
+                                        .getValueAsString());
+                    } else {
+
+                        System.out.println("Setting attributes to request: " + attributeName + ", value: "
+                                + retrievalResult.getFirst()
+                                        .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName))
+                                        .getValueAsString());
+                        request.setAttribute(attributeName, retrievalResult.getFirst()
+                                .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeName)).getValueAsString());
+                    }
                 }
 
             }

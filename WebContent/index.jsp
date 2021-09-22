@@ -76,7 +76,7 @@
 			document.getElementById('snacksAmountPlanner').value = document
 					.getElementById('snacksAmount').value
 			document.getElementById('foodBudgetPlanner').value = document
-	                .getElementById('foodBudget').value
+	                .getElementById('foodBudget_Specific').value
 		}
 	}
 
@@ -92,7 +92,7 @@
 			document.getElementById('softsAmountPlanner').value = document
 					.getElementById('softsAmount').value
 		    document.getElementById('drinksBudgetPlanner').value = document
-                    .getElementById('drinksBudget').value					
+                    .getElementById('drinksBudget_Specific').value					
 		}
 	}
 </script>
@@ -204,8 +204,8 @@
                             <input id="garnishAmount" name="garnishAmount" value="${garnishAmount}" type="number" />
                             <label for="snacksAmount">Snacks Amount:</label>
                             <input id="snacksAmount" name="snacksAmount" value="${snacksAmount}" type="number" />
-                            <label for="foodBudget">Food Budget:</label>
-                            <input id="foodBudget" name="foodBudget" value="${foodBudget}" type="number" />
+                            <label for="foodBudget_Specific">Food Budget:</label>
+                            <input id="foodBudget_Specific" name="foodBudget_Specific" value="${foodBudget_Specific}" type="number" />
                             <input id="adaptFoodValuesCheckBox" name="adaptFoodValuesCheckBox" value="0.0" type="checkbox"
                                 onchange="adaptFoodToPartyPlan()" />
                             <label for="adaptFoodValuesCheckBox">Adapt for party plan?</label>
@@ -238,8 +238,8 @@
                         <input id="spiritsAmount" name="spiritsAmount" value="${spiritsAmount}" type="number" />
                         <label for="softsAmount">Softs Amount:</label>
                         <input id="softsAmount" name="softsAmount" value="${softsAmount}" type="number" />
-                        <label for="drinksBudget">Drinks Budget:</label>
-                        <input id="drinksBudget" name="drinksBudget" value="${drinksBudget}" type="number" />
+                        <label for="drinksBudget_Specific">Drinks Budget:</label>
+                        <input id="drinksBudget_Specific" name=drinksBudget_Specific value="${drinksBudget_Specific}" type="number" />
                         <input id="adaptDrinksValuesCheckBox" name="adaptDrinksValuesCheckBox" value="0.0" type="checkbox"
                             onchange="adaptDrinksToPartyPlan()" />
                         <label for="adaptDrinksValuesCheckBox">Adapt for party plan?</label>

@@ -1,6 +1,7 @@
 package ntswwm.servlets;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Iterator;
 
 import javax.servlet.ServletException;
@@ -129,6 +130,7 @@ public class QueryServlet extends HttpServlet {
 
             }
             request.setAttribute("budgetMessage", budgetMessage);
+            appendRequest(request, BudgetAgent.ANSWER_ATTRIBUTES);
             AgentToServletStack.BUDGET_AGENT_INSTANCES.remove(AgentToServletStack.BUDGET_AGENT_INSTANCES.size() - 1);
             break;
         case "FoodAgent":
@@ -179,6 +181,7 @@ public class QueryServlet extends HttpServlet {
             }
             System.out.println("Setting foodMessage: " + foodMessage);
             request.setAttribute("foodMessage", foodMessage);
+            appendRequest(request, FoodAgent.ANSWER_ATTRIBUTES);
             AgentToServletStack.FOOD_AGENT_INSTANCES.remove(AgentToServletStack.FOOD_AGENT_INSTANCES.size() - 1);
             break;
         case "DrinksAgent":
@@ -230,6 +233,7 @@ public class QueryServlet extends HttpServlet {
             }
             System.out.println("Setting drinksMessage: " + drinksMessage);
             request.setAttribute("drinksMessage", drinksMessage);
+            appendRequest(request, DrinksAgent.ANSWER_ATTRIBUTES);
             AgentToServletStack.DRINKS_AGENT_INSTANCES.remove(AgentToServletStack.DRINKS_AGENT_INSTANCES.size() - 1);
             break;
         }
@@ -237,7 +241,25 @@ public class QueryServlet extends HttpServlet {
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
-    private HttpServletRequest appendRequest(HttpServletRequest request) {
+    /**
+     * Helper method that ensures that previously filled form fields by any agent
+     * don't get lost if another agent is queried.
+     * 
+     * @param request        the current request object.
+     * @param excludedParams all parameters that were already handled by agent
+     *                       specific implementation.
+     * @return the updated request object.
+     */
+    private HttpServletRequest appendRequest(HttpServletRequest request, String[] excludedParams) {
+
+        Iterator<String> it = request.getParameterNames().asIterator();
+        while (it.hasNext()) {
+            var paramName = it.next();
+            if (!Arrays.asList(excludedParams).contains(paramName)) {
+                request.setAttribute(paramName, request.getParameter(paramName));
+            }
+        }
+
         return request;
     }
 }

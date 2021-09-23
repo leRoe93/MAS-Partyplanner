@@ -130,7 +130,7 @@ public class QueryServlet extends HttpServlet {
             message = "Derived data from a party with similarity of: "
                     + retrievalResult.getSecond().getRoundedValue() * 100 + " %";
 
-            var detailsTable = generateDetailsTable(retrievalResult, request);
+            var detailsTable = generateDetailsTable(retrievalResult, request, agentType);
             request.setAttribute("details" + agentType, detailsTable);
 
             var guestCountQuery = Integer.parseInt(request.getParameter("guestCount"));
@@ -168,8 +168,13 @@ public class QueryServlet extends HttpServlet {
 
     }
 
-    private String generateDetailsTable(Pair<Instance, Similarity> instance, HttpServletRequest request) {
-        String table = "<table class='table'><thead><tr>";
+    private String generateDetailsTable(Pair<Instance, Similarity> instance, HttpServletRequest request,
+            String agentType) {
+        String table = "<a data-toggle='collapse' href='#detailsTable" + agentType
+                + "' role='button' aria-expanded='false' aria-controls='detailsTable" + agentType + "'>"
+                + "View Details!</a>";
+        table += "<div class='collapse' id='detailsTable" + agentType
+                + "'><div class='card card-body'><table class='table'><thead><tr>";
         table += "<th>Parameter</th><th>Your Input</th><th>Case Value</th><th>Similarity</th><th>Weight</th></thead><tbody>";
 
         for (int i = 0; i < AttributeMappings.SORTED_ATTRIBUTES_FOR_DETAILS.length; i++) {
@@ -212,7 +217,7 @@ public class QueryServlet extends HttpServlet {
                 e1.printStackTrace();
             }
         }
-        table += "</tbody></table>";
+        table += "</tbody></table></div></div>";
         return table;
     }
 

@@ -232,6 +232,9 @@
                             <c:if test="${not empty normalizedBudgetAgent}">
                             ${normalizedBudgetAgent}
                         </c:if>
+                        <c:if test="${not empty detailsBudgetAgent}">
+                            ${detailsBudgetAgent}
+                        </c:if>
                             <h2>
                                 Wanna know how much <b>money</b> you'll most likely need for your party? Provide some information and we will tell you!
                             </h2>
@@ -319,6 +322,9 @@
                             </c:if>
                             <c:if test="${not empty normalizedDrinksAgent}">
                             ${normalizedDrinksAgent}
+                        </c:if>
+                        <c:if test="${not empty detailsDrinksAgent}">
+                            ${detailsDrinksAgent}
                         </c:if>
                             <h2>
                                 Wanna know how much <b>drinks</b> you'll most likely need for your party? Provide some information and we will tell you!

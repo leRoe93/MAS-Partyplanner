@@ -275,6 +275,9 @@
                             <c:if test="${not empty normalizedFoodAgent}">
                             ${normalizedFoodAgent}
                         </c:if>
+                            <c:if test="${not empty detailsFoodAgent}">
+                            ${detailsFoodAgent}
+                        </c:if>
                             <h2>
                                 Wanna know how much <b>food</b> you'll most likely need for your party? Provide some information and we will tell you!
                             </h2>

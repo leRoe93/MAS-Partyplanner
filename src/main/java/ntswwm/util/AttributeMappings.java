@@ -10,6 +10,10 @@ public class AttributeMappings {
 
     public static String[] ANSWER_ATTRIBUTES_BUDGET = { "totalBudget", "foodBudget", "drinksBudget", "locationBudget" };
 
+    public static String[] SORTED_ATTRIBUTES_FOR_DETAILS = { "month", "year", "guestCount", "occasion", "locationType",
+            "totalBudget", "foodBudget", "drinksBudget", "locationBudget", "meatAmount", "garnishAmount",
+            "snacksAmount", "beerAmount", "wineAmount", "spiritsAmount", "softsAmount" };
+
     public static String[] getAnswerAttributesForAgent(String agentType) {
         switch (agentType) {
 

@@ -12,6 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.dfki.mycbr.core.casebase.Instance;
+import de.dfki.mycbr.core.model.AttributeDesc;
+import de.dfki.mycbr.core.model.FloatDesc;
+import de.dfki.mycbr.core.model.IntegerDesc;
+import de.dfki.mycbr.core.model.SymbolDesc;
+import de.dfki.mycbr.core.similarity.ISimFct;
 import de.dfki.mycbr.core.similarity.Similarity;
 import de.dfki.mycbr.util.Pair;
 import jade.core.AID;
@@ -125,6 +130,9 @@ public class QueryServlet extends HttpServlet {
             message = "Derived data from a party with similarity of: "
                     + retrievalResult.getSecond().getRoundedValue() * 100 + " %";
 
+            var detailsTable = generateDetailsTable(retrievalResult, request);
+            request.setAttribute("details" + agentType, detailsTable);
+
             var guestCountQuery = Integer.parseInt(request.getParameter("guestCount"));
             var guestCountCase = Integer.parseInt(retrievalResult.getFirst()
                     .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc("guestCount")).getValueAsString());
@@ -158,6 +166,54 @@ public class QueryServlet extends HttpServlet {
         AgentToServletStack.QUERY_INSTANCES.get(agentType)
                 .remove(AgentToServletStack.QUERY_INSTANCES.get(agentType).size() - 1);
 
+    }
+
+    private String generateDetailsTable(Pair<Instance, Similarity> instance, HttpServletRequest request) {
+        String table = "<table class='table'><thead><tr>";
+        table += "<th>Parameter</th><th>Your Input</th><th>Case Value</th><th>Similarity</th><th>Weight</th></thead><tbody>";
+
+        for (int i = 0; i < AttributeMappings.SORTED_ATTRIBUTES_FOR_DETAILS.length; i++) {
+            var key = AttributeMappings.SORTED_ATTRIBUTES_FOR_DETAILS[i];
+            AttributeDesc desc = CBRManager.CONCEPT.getAttributeDesc(key);
+            var requestParam = request.getParameter(key);
+            var instanceValue = instance.getFirst().getAttForDesc(desc).getValueAsString();
+            ISimFct localFunction;
+            double similarity;
+            try {
+                if (desc instanceof SymbolDesc) {
+                    SymbolDesc descSymbol = (SymbolDesc) desc;
+                    localFunction = descSymbol.getFct("default function");
+
+                    similarity = localFunction.calculateSimilarity(descSymbol.getAttribute(request.getParameter(key)),
+                            instance.getFirst().getAttForDesc(desc)).getRoundedValue();
+                } else if (desc instanceof FloatDesc) {
+                    FloatDesc descFloat = (FloatDesc) desc;
+                    localFunction = descFloat.getFct("default function");
+                    similarity = localFunction
+                            .calculateSimilarity(descFloat.getAttribute(Float.parseFloat(request.getParameter(key))),
+                                    descFloat.getAttribute(Float
+                                            .parseFloat(instance.getFirst().getAttForDesc(desc).getValueAsString())))
+                            .getRoundedValue();
+                } else {
+                    IntegerDesc descInt = (IntegerDesc) desc;
+                    localFunction = ((IntegerDesc) desc).getFct("default function");
+                    similarity = localFunction
+                            .calculateSimilarity(descInt.getAttribute(Integer.parseInt(request.getParameter(key))),
+                                    descInt.getAttribute(Integer
+                                            .parseInt(instance.getFirst().getAttForDesc(desc).getValueAsString())))
+                            .getRoundedValue();
+                }
+
+                table += "<tr><td>" + key + "</td><td>" + requestParam + "</td><td>" + instanceValue + "</td><td>"
+                        + similarity + "</td><td>" + CBRManager.CONCEPT.getActiveAmalgamFct().getWeight(desc)
+                        + "</td></tr>";
+            } catch (Exception e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }
+        table += "</tbody></table>";
+        return table;
     }
 
     /**

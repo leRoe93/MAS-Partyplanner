@@ -86,9 +86,10 @@ public class RetrievalBehaviour extends CyclicBehaviour {
 
         ret.start();
 
+        System.out.println("Descending retrieved cases to find a verified one");
         // Try to find a verified case by descending the retrieved cases
         for (int i = 0; i < ret.getResult().size(); i++) {
-            if (ret.getResult().get(0).getFirst().getAttForDesc(CBRManager.CONCEPT.getAttributeDesc("verified"))
+            if (ret.getResult().get(i).getFirst().getAttForDesc(CBRManager.CONCEPT.getAttributeDesc("verified"))
                     .getValueAsString().equals("yes")) {
                 return ret.getResult().get(i);
             }

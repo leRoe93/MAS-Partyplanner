@@ -130,7 +130,8 @@
 		}
 	}
 	function checkStorage() {
-		if (localStorage.getItem("#collapseOne") != null) {
+/* 		commented out because it does not work everytime fluently
+        if (localStorage.getItem("#collapseOne") != null) {
 			$("#collapseOne").toggle();//to show panel 
 		}
 		if (localStorage.getItem("#collapseTwo") != null) {
@@ -142,12 +143,13 @@
 		if (localStorage.getItem("#collapseFour") != null) {
 			$("#collapseFour").toggle();//to show panel 
 		}
-	    localStorage.clear();
+	    localStorage.clear(); */
 
 	}
 	function save(el) {
-		var target = el.getAttribute("data-target")
-		localStorage.setItem(target, target)
+/* 		commented out because it does not work everytime fluently
+        var target = el.getAttribute("data-target")
+		localStorage.setItem(target, target) */
 	}
 </script>
 </head>

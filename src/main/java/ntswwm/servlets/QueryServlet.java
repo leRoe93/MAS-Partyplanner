@@ -149,7 +149,7 @@ public class QueryServlet extends HttpServlet {
                     value = normalizeParameterValue(value, guestCountQuery, guestCountCase);
                 }
                 System.out.println("Setting attributes to request: " + attributeName + ", value: " + value);
-                request.setAttribute(attributeName, value);
+                request.setAttribute(attributeName, Float.parseFloat(String.format("%.2f", value).replace(",", ".")));
             }
         }
         System.out.println("Setting message for query: " + message);

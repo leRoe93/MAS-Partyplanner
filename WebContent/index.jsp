@@ -13,6 +13,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+	window.onload = function() {
+		fillInDefaults();
+	}
+
+	function fillInDefaults() {
+		var itemIds = [ "foodBudget", "drinksBudget", "locationBudget",
+				"totalBudget", "meatAmount", "garnishAmount", "snacksAmount",
+				"foodBudget_Specific", "beerAmount", "wineAmount",
+				"spiritsAmount", "softsAmount", "drinksBudget_Specific" ];
+		for (var i = 0; i < itemIds.length; i++) {
+			if (document.getElementById(itemIds[i]).value == null
+					|| document.getElementById(itemIds[i]).value == "") {
+				document.getElementById(itemIds[i]).value = "0.00"
+			}
+		}
+	}
+
 	function calculateTotalBudget() {
 
 		// For the budget planner section
@@ -164,7 +181,7 @@
                                 </select></td>
                                 <td><select id="year" name="year" class="form-control" onchange="syncYear()">
                                         <c:if test="${not empty year}">
-                                            <option value="${year }" selected style="display:none">${year }</option>
+                                            <option value="${year }" selected style="display: none">${year }</option>
                                         </c:if>
                                         <%
                                             for (int i = 2000; i <= 2050; i++) {
@@ -176,9 +193,8 @@
                                 </select></td>
                                 <td><select id="guestCount" name="guestCount" class="form-control" onchange="syncGuestCount()">
                                         <c:if test="${not empty guestCount}">
-                                            <option value="${guestCount }" selected style="display:none">${guestCount }</option>
+                                            <option value="${guestCount }" selected style="display: none">${guestCount }</option>
                                         </c:if>
-                                        
                                         <%
                                             for (int i = 1; i <= 1000; i++) {
                                         %>
@@ -193,7 +209,7 @@
                                         <option ${occasion=="wedding"?"selected":""} value="wedding">wedding</option>
                                         <option ${occasion=="regular"?"selected":""} value="regular">regular</option>
                                 </select></td>
-                                <td><select id="locationType" name="locationType" class="form-control">
+                                <td><select id="locationType" name="locationType" class="form-control" onchange="syncLocationType()">
                                         <option ${locationType=="private"?"selected":""} value="private">private</option>
                                         <option ${locationType=="thirdparty"?"selected":""} value="thirdparty">third party</option>
                                 </select></td>

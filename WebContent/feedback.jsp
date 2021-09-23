@@ -53,9 +53,9 @@
                 </p>
                 <input id="id" name="id" class="id1" type="text" />
                 <p>
-                    <button class="btn btn-success" type="submit">Get Case!</button>
+                    <button id="buttonFeedback" class="btn" type="submit">Get Case!</button>
                 </p>
-            </form>
+            </form>d
         </div>
     </div>
     <div class="container">

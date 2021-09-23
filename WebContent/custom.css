@@ -27,10 +27,14 @@ h1 {
 }
 
 .btn {
-	margin-top: 10px;
 	background-color:#ff3300;
 	border-color: #ff3300;
 }
+
+#buttonFeedback {
+	margin-top: 10px;
+}
+
 .btn:hover{background-color:#ff3300;border-color:#ff3300;}
 .btn:focus{background-color:#ff3300;border-color:#ff3300;}
 .btn:active {background-color:#ff3300;border-color:#ff3300;}

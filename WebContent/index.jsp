@@ -15,6 +15,7 @@
 <script type="text/javascript">
 	window.onload = function() {
 		fillInDefaults();
+		checkStorage();
 	}
 
 	function fillInDefaults() {
@@ -128,6 +129,26 @@
 			document.getElementById('email').style.visibility = "hidden";
 		}
 	}
+	function checkStorage() {
+		if (localStorage.getItem("#collapseOne") != null) {
+			$("#collapseOne").toggle();//to show panel 
+		}
+		if (localStorage.getItem("#collapseTwo") != null) {
+			$("#collapseTwo").toggle();//to show panel 
+		}
+		if (localStorage.getItem("#collapseThree") != null) {
+			$("#collapseThree").toggle();//to show panel 
+		}
+		if (localStorage.getItem("#collapseFour") != null) {
+			$("#collapseFour").toggle();//to show panel 
+		}
+	    localStorage.clear();
+
+	}
+	function save(el) {
+		var target = el.getAttribute("data-target")
+		localStorage.setItem(target, target)
+	}
 </script>
 </head>
 <body>
@@ -220,21 +241,22 @@
                 <div class="card">
                     <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
-                            <button class="btn btn-secondary btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Budget
-                                Planner</button>
+                            <button class="btn btn-secondary btn-block collapsed" onClick="save(this)" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                aria-controls="collapseOne"
+                            >Budget Planner</button>
                         </h2>
                     </div>
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#agentAccordion">
                         <div class="card-body">
                             <c:if test="${not empty messageBudgetAgent}">
-                            ${messageBudgetAgent}
-                        </c:if>
+                                ${messageBudgetAgent}
+                            </c:if>
                             <c:if test="${not empty normalizedBudgetAgent}">
-                            ${normalizedBudgetAgent}
-                        </c:if>
-                        <c:if test="${not empty detailsBudgetAgent}">
-                            ${detailsBudgetAgent}
-                        </c:if>
+                                ${normalizedBudgetAgent}
+                            </c:if>
+                            <c:if test="${not empty detailsBudgetAgent}">
+                                ${detailsBudgetAgent}
+                            </c:if>
                             <h2>
                                 Wanna know how much <b>money</b> you'll most likely need for your party? Provide some information and we will tell you!
                             </h2>
@@ -266,21 +288,21 @@
                 <div class="card">
                     <div class="card-header" id="headingTwo">
                         <h2 class="mb-0">
-                            <button class="btn btn-warning btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Food
+                            <button class="btn btn-warning btn-block collapsed" type="button" onClick="save(this)" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Food
                                 Planner</button>
                         </h2>
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#agentAccordion">
                         <div class="card-body">
                             <c:if test="${not empty messageFoodAgent}">
-                            ${messageFoodAgent}
-                        </c:if>
+                                ${messageFoodAgent}
+                            </c:if>
                             <c:if test="${not empty normalizedFoodAgent}">
-                            ${normalizedFoodAgent}
-                        </c:if>
+                                ${normalizedFoodAgent}
+                            </c:if>
                             <c:if test="${not empty detailsFoodAgent}">
-                            ${detailsFoodAgent}
-                        </c:if>
+                                ${detailsFoodAgent}
+                            </c:if>
                             <h2>
                                 Wanna know how much <b>food</b> you'll most likely need for your party? Provide some information and we will tell you!
                             </h2>
@@ -311,7 +333,7 @@
                 <div class="card">
                     <div class="card-header" id="headingThree">
                         <h2 class="mb-0">
-                            <button class="btn btn-info btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Drinks
+                            <button class="btn btn-info btn-block collapsed" type="button" onClick="save(this)" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Drinks
                                 Planner</button>
                         </h2>
                     </div>
@@ -321,11 +343,11 @@
                                 ${messageDrinksAgent}
                             </c:if>
                             <c:if test="${not empty normalizedDrinksAgent}">
-                            ${normalizedDrinksAgent}
-                        </c:if>
-                        <c:if test="${not empty detailsDrinksAgent}">
-                            ${detailsDrinksAgent}
-                        </c:if>
+                                ${normalizedDrinksAgent}
+                            </c:if>
+                            <c:if test="${not empty detailsDrinksAgent}">
+                                ${detailsDrinksAgent}
+                            </c:if>
                             <h2>
                                 Wanna know how much <b>drinks</b> you'll most likely need for your party? Provide some information and we will tell you!
                             </h2>
@@ -360,7 +382,7 @@
             <div class="card">
                 <div class="card-header" id="headingFour">
                     <h2 class="mb-0">
-                        <button class="btn btn-primary btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Party
+                        <button class="btn btn-primary btn-block collapsed" type="button" onClick="save(this)" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Party
                             Planner</button>
                     </h2>
                 </div>

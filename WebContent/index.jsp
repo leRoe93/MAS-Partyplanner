@@ -52,8 +52,11 @@
 		document.getElementById('guestCountPlanner').value = document
 				.getElementById('guestCount').value
 	}
-	
-	
+
+	function syncLocationType() {
+		document.getElementById('locationTypePlanner').value = document
+				.getElementById('locationType').value
+	}
 
 	function adaptBudgetsToPartyPlan() {
 		var checkBox = document.getElementById("adaptBudgetValuesCheckBox")
@@ -98,9 +101,9 @@
 					.getElementById('drinksBudget_Specific').value
 		}
 	}
-	
+
 	function toggleEmailInput() {
-		
+
 		var checkBox = document.getElementById('sendMailCheckBox')
 		if (checkBox.checked == true) {
 			document.getElementById('email').style.visibility = "visible";
@@ -146,20 +149,23 @@
                         <tbody>
                             <tr>
                                 <td><select id="month" name="month" class="form-control" onchange="syncMonth()">
-                                        <option value="January">January</option>
-                                        <option value="February">February</option>
-                                        <option value="March">March</option>
-                                        <option value="April">April</option>
-                                        <option value="May">May</option>
-                                        <option value="June">June</option>
-                                        <option value="July">July</option>
-                                        <option value="August">August</option>
-                                        <option value="September">September</option>
-                                        <option value="October">October</option>
-                                        <option value="November">November</option>
-                                        <option value="December">December</option>
+                                        <option ${month=="January"?"selected":""} value="January">January</option>
+                                        <option ${month=="February"?"selected":""} value="February">February</option>
+                                        <option ${month=="March"?"selected":""} value="March">March</option>
+                                        <option ${month=="April"?"selected":""} value="April">April</option>
+                                        <option ${month=="May"?"selected":""} value="May">May</option>
+                                        <option ${month=="June"?"selected":""} value="June">June</option>
+                                        <option ${month=="July"?"selected":""} value="July">July</option>
+                                        <option ${month=="August"?"selected":""} value="August">August</option>
+                                        <option ${month=="September"?"selected":""} value="September">September</option>
+                                        <option ${month=="October"?"selected":""} value="October">October</option>
+                                        <option ${month=="November"?"selected":""} value="November">November</option>
+                                        <option ${month=="December"?"selected":""} value="December">December</option>
                                 </select></td>
                                 <td><select id="year" name="year" class="form-control" onchange="syncYear()">
+                                        <c:if test="${not empty year}">
+                                            <option value="${year }" selected style="display:none">${year }</option>
+                                        </c:if>
                                         <%
                                             for (int i = 2000; i <= 2050; i++) {
                                         %>
@@ -168,7 +174,11 @@
                                             }
                                         %>
                                 </select></td>
-                                <td><select id="guestCount" name="guestCount" class="form-control" onchange="syncGuestCount">
+                                <td><select id="guestCount" name="guestCount" class="form-control" onchange="syncGuestCount()">
+                                        <c:if test="${not empty guestCount}">
+                                            <option value="${guestCount }" selected style="display:none">${guestCount }</option>
+                                        </c:if>
+                                        
                                         <%
                                             for (int i = 1; i <= 1000; i++) {
                                         %>
@@ -178,14 +188,14 @@
                                         %>
                                 </select></td>
                                 <td><select id="occasion" name="occasion" onchange="syncOccasion()" class="form-control">
-                                        <option value="anniversary">anniversary</option>
-                                        <option value="birthday">birthday</option>
-                                        <option value="wedding">wedding</option>
-                                        <option value="regular">regular</option>
+                                        <option ${occasion=="anniversary"?"selected":""} value="anniversary">anniversary</option>
+                                        <option ${occasion=="birthday"?"selected":""} value="birthday">birthday</option>
+                                        <option ${occasion=="wedding"?"selected":""} value="wedding">wedding</option>
+                                        <option ${occasion=="regular"?"selected":""} value="regular">regular</option>
                                 </select></td>
                                 <td><select id="locationType" name="locationType" class="form-control">
-                                        <option value="private">private</option>
-                                        <option value="thirdparty">third party</option>
+                                        <option ${locationType=="private"?"selected":""} value="private">private</option>
+                                        <option ${locationType=="thirdparty"?"selected":""} value="thirdparty">third party</option>
                                 </select></td>
                             </tr>
                         </tbody>
@@ -203,7 +213,7 @@
                             <c:if test="${not empty messageBudgetAgent}">
                             ${messageBudgetAgent}
                         </c:if>
-                        <c:if test="${not empty normalizedBudgetAgent}">
+                            <c:if test="${not empty normalizedBudgetAgent}">
                             ${normalizedBudgetAgent}
                         </c:if>
                             <h2>
@@ -246,7 +256,7 @@
                             <c:if test="${not empty messageFoodAgent}">
                             ${messageFoodAgent}
                         </c:if>
-                        <c:if test="${not empty normalizedFoodAgent}">
+                            <c:if test="${not empty normalizedFoodAgent}">
                             ${normalizedFoodAgent}
                         </c:if>
                             <h2>
@@ -314,7 +324,7 @@
                                         <td><input id="wineAmount" name="wineAmount" value="${wineAmount}" type="number" /></td>
                                         <td><input id="spiritsAmount" name="spiritsAmount" value="${spiritsAmount}" type="number" /></td>
                                         <td><input id="softsAmount" name="softsAmount" value="${softsAmount}" type="number" /></td>
-                                        <td><input id="foodBudget_Specific" name="foodBudget_Specific" value="${foodBudget_Specific}" type="number" /></td>
+                                        <td><input id="drinksBudget_Specific" name="foodBudget_Specific" value="${drinksBudget_Specific}" type="number" /></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -447,10 +457,9 @@
                                 </tbody>
                             </table>
                             <button class="btn col-md-4 btn-success" type="submit">Save Party to Database!</button>
-                            <label
-                                for="sendMailCheckBox">Shall we drop you an eMail with your party details?</label>
-                            <input id="sendMailCheckBox" name="sendMailCheckBox" type="checkbox" onchange="toggleEmailInput()" /> 
-                            <input id="email" name="email" type="email" placeholder="your.mail@someMail.com" style="visibility: hidden;" />
+                            <label for="sendMailCheckBox">Shall we drop you an eMail with your party details?</label> <input id="sendMailCheckBox" name="sendMailCheckBox" type="checkbox"
+                                onchange="toggleEmailInput()"
+                            /> <input id="email" name="email" type="email" placeholder="your.mail@someMail.com" style="visibility: hidden;" />
                         </form>
                     </div>
                 </div>

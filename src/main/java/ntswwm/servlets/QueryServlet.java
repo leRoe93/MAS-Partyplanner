@@ -122,7 +122,6 @@ public class QueryServlet extends HttpServlet {
         if (!timeOuted) {
             Pair<Instance, Similarity> retrievalResult = AgentToServletStack.QUERY_INSTANCES.get(agentType)
                     .get(AgentToServletStack.QUERY_INSTANCES.get(agentType).size() - 1);
-            System.out.println(retrievalResult);
             message = "Derived data from a party with similarity of: "
                     + retrievalResult.getSecond().getRoundedValue() * 100 + " %";
 

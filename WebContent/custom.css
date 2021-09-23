@@ -39,3 +39,29 @@ h1 {
 .page-header {
 	border-color:#ff3300;
 }
+
+.form-control:hover{background-color:#ff3300 !important;border-color:#ff3300;}
+.form-control:focus{background-color:#ff3300 !important;border-color:#ff3300;}
+.form-control:active {background-color:#ff3300 !important;border-color:#ff3300;}
+.form-control:selected {background-color:#ff3300 !important;border-color:#ff3300;}
+
+.body {
+	background-color:red !important;
+}
+
+#buttonBudget {
+	background-image:url('img/budget.jpg') !important;
+    background-size:cover;
+}
+#buttonFood {
+	background-image:url('img/food.jpg') !important;
+    background-size:cover;
+}
+#buttonDrinks {
+	background-image:url('img/drinks.jpg') !important;
+    background-size:cover;
+}
+#buttonParty {
+	background-image:url('img/party.jpg') !important;
+    background-size:cover;
+}

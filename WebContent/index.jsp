@@ -155,7 +155,9 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">MAS-Partyplanner</a>
+                <a class="navbar-brand" href="#">
+                	<img src="img/MAS_Logo.png" class="d-inline-block align-top" alt="">
+                </a>
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="index.jsp">Home</a></li>
@@ -163,12 +165,22 @@
             </ul>
         </div>
     </nav>
-    <div class="jumbotron text-center">
-        <h1>
-            Welcome to the <b>MAS-Partyplanner!</b>
-        </h1>
-        <p>Want to organize a party, but don't know how to do it? Benefit from other's experiences!</p>
+    <div class="jumbotron jumbotron-fluid text-center">
+        <div class="page-header row">
+           <div class="col">
+              	<h1 class="display-4">
+          			 Welcome to the <b>MAS-Partyplanner!</b>
+        		</h1>
+        	</div>
+   		</div>
+   		<div class="container text-center align-items-center">
+       			 <p>Want to organize a party, but don't know how to do it? Benefit from other's experiences!</p>
+    	</div>
     </div>
+    
+    
+    
+    
     <div class="container">
         <div class="accordion" id="agentAccordion">
             <form role="form" action="QueryServlet" method="post">
@@ -241,7 +253,7 @@
                 <div class="card">
                     <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
-                            <button class="btn btn-secondary btn-block collapsed" onClick="save(this)" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                            <button id="buttonBudget" class="btn btn-block collapsed" onClick="save(this)" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
                                 aria-controls="collapseOne"
                             >Budget Planner</button>
                         </h2>
@@ -288,7 +300,7 @@
                 <div class="card">
                     <div class="card-header" id="headingTwo">
                         <h2 class="mb-0">
-                            <button class="btn btn-warning btn-block collapsed" type="button" onClick="save(this)" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Food
+                            <button id="buttonFood" class="btn btn-block collapsed" type="button" onClick="save(this)" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Food
                                 Planner</button>
                         </h2>
                     </div>
@@ -333,7 +345,7 @@
                 <div class="card">
                     <div class="card-header" id="headingThree">
                         <h2 class="mb-0">
-                            <button class="btn btn-info btn-block collapsed" type="button" onClick="save(this)" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Drinks
+                            <button id="buttonDrinks" class="btn btn-block collapsed" type="button" onClick="save(this)" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Drinks
                                 Planner</button>
                         </h2>
                     </div>
@@ -382,7 +394,7 @@
             <div class="card">
                 <div class="card-header" id="headingFour">
                     <h2 class="mb-0">
-                        <button class="btn btn-primary btn-block collapsed" type="button" onClick="save(this)" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Party
+                        <button id="buttonParty" class="btn btn-block collapsed" type="button" onClick="save(this)" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Party
                             Planner</button>
                     </h2>
                 </div>

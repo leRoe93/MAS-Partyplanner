@@ -22,12 +22,14 @@
             }
         </script>
 </head>
-<body>
+<body class="body">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">MAS-Partyplanner</a>
-            </div>
+         <div class=" navbar-header"> 
+            <a class="navbar-brand" href="#">
+            	<img src="img/MAS_Logo.png" class="d-inline-block align-top" alt="">
+                </a>
+            </div> 
             <ul class="nav navbar-nav">
                 <li><a href="index.jsp">Home</a></li>
                 <li class="active"><a href="feedback.jsp">Feedback Page</a></li>

@@ -99,6 +99,7 @@ public class QueryServlet extends HttpServlet {
         }
 
         modifyRequest(targetAgentName, request);
+        response.setContentType("text/html;charset=UTF-8");
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
@@ -128,10 +129,9 @@ public class QueryServlet extends HttpServlet {
             Pair<Instance, Similarity> retrievalResult = AgentToServletStack.QUERY_INSTANCES.get(agentType)
                     .get(AgentToServletStack.QUERY_INSTANCES.get(agentType).size() - 1);
             message = "Derived data from a party with similarity of: "
-                    + retrievalResult.getSecond().getRoundedValue() * 100 + " %";
+                    + retrievalResult.getSecond().getRoundedValue() * 100 + "% ";
 
-            var detailsTable = generateDetailsTable(retrievalResult, request, agentType);
-            request.setAttribute("details" + agentType, detailsTable);
+            message += generateDetailsTable(retrievalResult, request, agentType);
 
             var guestCountQuery = Integer.parseInt(request.getParameter("guestCount"));
             var guestCountCase = Integer.parseInt(retrievalResult.getFirst()
@@ -150,14 +150,15 @@ public class QueryServlet extends HttpServlet {
                 if (guestCountQuery != guestCountCase) {
                     System.out.println("Previous value: " + value);
                     System.out.println("Found case does not have the same guest count, value gets normalized.");
-                    request.setAttribute("normalized" + agentType,
-                            "<br>Below values needed to be normalized based on the guest count!<br>" + "Your input: "
-                                    + guestCountQuery + ", case value: " + guestCountCase);
-
                     value = normalizeParameterValue(value, guestCountQuery, guestCountCase);
                 }
                 System.out.println("Setting attributes to request: " + attributeName + ", value: " + value);
                 request.setAttribute(attributeName, Float.parseFloat(String.format("%.2f", value).replace(",", ".")));
+            }
+
+            if (guestCountQuery != guestCountCase) {
+                message += "<p>Below values needed to be normalized based on the guest count!<br>" + "Your input: "
+                        + guestCountQuery + ", case value: " + guestCountCase + "</p>";
             }
         }
         System.out.println("Setting message for query: " + message);
@@ -175,7 +176,7 @@ public class QueryServlet extends HttpServlet {
                 + "View Details!</a>";
         table += "<div class='collapse' id='detailsTable" + agentType
                 + "'><div class='card card-body'><table class='table'><thead><tr>";
-        table += "<th>Parameter</th><th>Your Input</th><th>Case Value</th><th>Similarity</th><th>Weight</th></thead><tbody>";
+        table += "<th class='text-center'>Parameter</th><th class='text-center'>Your Input</th><th class='text-center'>Case Value</th><th>Similarity</th><th class='text-center'>Weight</th></thead><tbody>";
 
         for (int i = 0; i < AttributeMappings.SORTED_ATTRIBUTES_FOR_DETAILS.length; i++) {
             var key = AttributeMappings.SORTED_ATTRIBUTES_FOR_DETAILS[i];
@@ -251,7 +252,6 @@ public class QueryServlet extends HttpServlet {
                 request.setAttribute(paramName, request.getParameter(paramName));
             }
         }
-
         return request;
     }
 }

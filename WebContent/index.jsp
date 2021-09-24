@@ -258,18 +258,14 @@
                     </div>
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#agentAccordion">
                         <div class="card-body text-center">
-                            <c:if test="${not empty messageBudgetAgent}">
-                                ${messageBudgetAgent}
-                            </c:if>
-                            <c:if test="${not empty normalizedBudgetAgent}">
-                                ${normalizedBudgetAgent}
-                            </c:if>
-                            <c:if test="${not empty detailsBudgetAgent}">
-                                ${detailsBudgetAgent}
-                            </c:if>
                             <div class="microserviceTexts">
                                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p><span class="question">Want to know how much <b>money</b> you will most likely need?</span>
                             </div>
+                            <c:if test="${not empty messageBudgetAgent}">
+                                <div class="agentResponse">
+                                    ${messageBudgetAgent}
+                                </div>
+                            </c:if>
                             <button id="budgetButton" class="btn" name="submit-button" value="BudgetAgent" type="submit">Tell me!<span class="glyphicon glyphicon-comment"></span></button>
                             <table class="table table-agents">
                                 <thead>
@@ -319,20 +315,16 @@
                         </h2>
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#agentAccordion">
-                        <div class="card-body">
-                            <c:if test="${not empty messageFoodAgent}">
-                                ${messageFoodAgent}
-                            </c:if>
-                            <c:if test="${not empty normalizedFoodAgent}">
-                                ${normalizedFoodAgent}
-                            </c:if>
-                            <c:if test="${not empty detailsFoodAgent}">
-                                ${detailsFoodAgent}
-                            </c:if>
+                        <div class="card-body text-center">
                             <div class="microserviceTexts">
                                 <p>Wanna know how much food you will need?</p>
                             </div>
-                            <button id="foodButton" class="btn col-md-4" name="submit-button" value="FoodAgent" type="submit">Tell me! <span class="glyphicon glyphicon-comment"></span></button>
+                            <c:if test="${not empty messageFoodAgent}">
+                                <div class="agentResponse">
+                                    ${messageFoodAgent}
+                                </div>
+                            </c:if>
+                            <button id="foodButton" class="btn" name="submit-button" value="FoodAgent" type="submit">Tell me! <span class="glyphicon glyphicon-comment"></span></button>
                             <table class="table table-agents">
                                 <thead>
                                     <tr>
@@ -376,20 +368,16 @@
                         </h2>
                     </div>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#agentAccordion">
-                        <div class="card-body">
-                            <c:if test="${not empty messageDrinksAgent}">
-                                ${messageDrinksAgent}
-                            </c:if>
-                            <c:if test="${not empty normalizedDrinksAgent}">
-                                ${normalizedDrinksAgent}
-                            </c:if>
-                            <c:if test="${not empty detailsDrinksAgent}">
-                                ${detailsDrinksAgent}
-                            </c:if>
+                        <div class="card-body text-center">
                             <div class="microserviceTexts">
                                 <p>Wanna know how much drinks you will need?</p>
                             </div>
-                            <button id="drinksButton" class="btn col-md-4" name="submit-button" value="DrinksAgent" type="submit">Tell me! <span class="glyphicon glyphicon-comment"></span></button>
+                            <c:if test="${not empty messageDrinksAgent}">
+                                <div class="agentResponse">
+                                    ${messageDrinksAgent}
+                                </div>
+                            </c:if>
+                            <button id="drinksButton" class="btn" name="submit-button" value="DrinksAgent" type="submit">Tell me! <span class="glyphicon glyphicon-comment"></span></button>
                             <table class="table table-agents">
                                 <thead>
                                     <tr>
@@ -637,7 +625,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-block" type="submit">Save Party to Database!</button>
+                            <button class="btn btn-block" type="submit">Save Party to Database!<span class="glyphicon glyphicon-floppy-save"></span></button>
                             <label for="sendMailCheckBox">Shall we drop you an eMail with your party details?</label> <input id="sendMailCheckBox" name="sendMailCheckBox" type="checkbox"
                                 onchange="toggleEmailInput()"
                             /> <input class="form-control" id="email" name="email" type="email" placeholder="your.mail@someMail.com" style="visibility: hidden;" />
@@ -650,7 +638,7 @@
     <footer class="text-center text-white">
         <span>Visit MAS-Partyplanner on GitHub!</span> <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/leRoe93/MAS-Partyplanner" role="button"><i
             class="fa fa-github fa-2x"
-        ></i></a><br> © 2021 <a href="https://www.uni-hildesheim.de/">University of Hildesheim</a>
+        ></i></a> © 2021 <a href="https://www.uni-hildesheim.de/">University of Hildesheim</a>
     </footer>
 </body>
 </html>

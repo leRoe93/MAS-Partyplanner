@@ -168,7 +168,13 @@
         </div>
         <div class="container text-center align-items-center">
             <h3 class="orangeText">Want to organize a party, but don't know how to do it? Benefit from other's experiences!</h3>
-            <p id="introText">Organizing parties can be quite a drag in terms of being aware of so many things. The MAS-Partyplanner introduces a multi-agent-based solution that is capable of answering specific questions in it's three separated micro-services<br><span class="orangeText">Budget Planner, Food Planner and Drinks Planner.</span><br>Each microservice is driven by an independent agent that looks up verified party data of others to provide experience-based information for you!<br>In our <span class="orangeText">Party Planner</span> section you can create your own event by combining the previously mentioned agent competences and make your very own adjustments!</p>
+            <p id="introText">
+                Organizing parties can be quite a drag in terms of being aware of so many things. The MAS-Partyplanner introduces a multi-agent-based solution that is capable of answering specific
+                questions in it's three separated micro-services<br>
+                <span class="orangeText">Budget Planner, Food Planner and Drinks Planner.</span><br>Each microservice is driven by an independent agent that looks up verified party data of others
+                to provide experience-based information for you!<br>In our <span class="orangeText">Party Planner</span> section you can create your own event by combining the previously
+                mentioned agent competences and make your very own adjustments!
+            </p>
         </div>
     </div>
     <div class="container">
@@ -240,6 +246,7 @@
                         </tbody>
                     </table>
                 </div>
+                <hr>
                 <div class="card">
                     <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
@@ -251,14 +258,17 @@
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#agentAccordion">
                         <div class="card-body text-center">
                             <div class="microserviceTexts">
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p><span class="question">Want to know how much <b>money</b> you will most likely need?</span>
+                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                                    vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                                <span class="question">Want to know how much <b>money</b> you will most likely need?
+                                </span>
                             </div>
                             <c:if test="${not empty messageBudgetAgent}">
-                                <div class="agentResponse">
-                                    ${messageBudgetAgent}
-                                </div>
+                                <div class="agentResponse">${messageBudgetAgent}</div>
                             </c:if>
-                            <button id="budgetButton" class="btn" name="submit-button" value="BudgetAgent" type="submit">Tell me!<span class="glyphicon glyphicon-comment"></span></button>
+                            <button id="budgetButton" class="btn" name="submit-button" value="BudgetAgent" type="submit">
+                                Tell me!<span class="glyphicon glyphicon-comment"></span>
+                            </button>
                             <table class="table table-agents">
                                 <thead>
                                     <tr>
@@ -271,22 +281,24 @@
                                 <tbody>
                                     <tr>
                                         <td><div class="input-group">
-                                                <input class="form-control" id="totalBudget" name="totalBudget" type="number" value="${totalBudget}" readonly /><span class="input-group-addon">&#128;</span>
-                                            </div></td>
-                                        <td><div class="input-group">
-                                                <input class="form-control" id="locationBudget" name="locationBudget" value="${locationBudget}" type="number" onchange="calculateTotalBudget()" /><span
+                                                <input class="form-control" id="totalBudget" name="totalBudget" type="number" min="0" max="100000" value="${totalBudget}" readonly /><span
                                                     class="input-group-addon"
                                                 >&#128;</span>
                                             </div></td>
                                         <td><div class="input-group">
-                                                <input class="form-control" id="foodBudget" name="foodBudget" value="${foodBudget}" type="number" onchange="calculateTotalBudget()" /><span
+                                                <input class="form-control" id="locationBudget" name="locationBudget" min="0" max="20000" value="${locationBudget}" type="number"
+                                                    onchange="calculateTotalBudget()"
+                                                /><span class="input-group-addon">&#128;</span>
+                                            </div></td>
+                                        <td><div class="input-group">
+                                                <input class="form-control" id="foodBudget" name="foodBudget" min="0" max="30000" value="${foodBudget}" type="number" onchange="calculateTotalBudget()" /><span
                                                     class="input-group-addon"
                                                 >&#128;</span>
                                             </div></td>
                                         <td><div class="input-group">
-                                                <input class="form-control" id="drinksBudget" name="drinksBudget" value="${drinksBudget}" type="number" onchange="calculateTotalBudget()" /><span
-                                                    class="input-group-addon"
-                                                >&#128;</span>
+                                                <input class="form-control" id="drinksBudget" name="drinksBudget" min="0" max="50000" value="${drinksBudget}" type="number"
+                                                    onchange="calculateTotalBudget()"
+                                                /><span class="input-group-addon">&#128;</span>
                                             </div></td>
                                     </tr>
                                 </tbody>
@@ -312,11 +324,11 @@
                                 <p>Wanna know how much food you will need?</p>
                             </div>
                             <c:if test="${not empty messageFoodAgent}">
-                                <div class="agentResponse">
-                                    ${messageFoodAgent}
-                                </div>
+                                <div class="agentResponse">${messageFoodAgent}</div>
                             </c:if>
-                            <button id="foodButton" class="btn" name="submit-button" value="FoodAgent" type="submit">Tell me! <span class="glyphicon glyphicon-comment"></span></button>
+                            <button id="foodButton" class="btn" name="submit-button" value="FoodAgent" type="submit">
+                                Tell me! <span class="glyphicon glyphicon-comment"></span>
+                            </button>
                             <table class="table table-agents">
                                 <thead>
                                     <tr>
@@ -329,16 +341,20 @@
                                 <tbody>
                                     <tr>
                                         <td><div class="input-group">
-                                                <input class="form-control" id="meatAmount" name="meatAmount" type="number" value="${meatAmount}" /><span class="input-group-addon">KG</span>
+                                                <input class="form-control" id="meatAmount" name="meatAmount" type="number" min="0" max="500" value="${meatAmount}" /><span class="input-group-addon">KG</span>
                                             </div></td>
                                         <td><div class="input-group">
-                                                <input class="form-control" id="garnishAmount" name="garnishAmount" value="${garnishAmount}" type="number" /><span class="input-group-addon">KG</span>
+                                                <input class="form-control" id="garnishAmount" name="garnishAmount" min="0" max="1000" value="${garnishAmount}" type="number" /><span
+                                                    class="input-group-addon"
+                                                >KG</span>
                                             </div></td>
                                         <td><div class="input-group">
-                                                <input class="form-control" id="snacksAmount" name="snacksAmount" value="${snacksAmount}" type="number" /><span class="input-group-addon">KG</span>
+                                                <input class="form-control" id="snacksAmount" name="snacksAmount" min="0" max="200" value="${snacksAmount}" type="number" /><span
+                                                    class="input-group-addon"
+                                                >KG</span>
                                             </div></td>
                                         <td><div class="input-group">
-                                                <input class="form-control" id="foodBudget_Specific" name="foodBudget_Specific" value="${foodBudget_Specific}" type="number" /><span
+                                                <input class="form-control" id="foodBudget_Specific" min="0" max="30000" name="foodBudget_Specific" value="${foodBudget_Specific}" type="number" /><span
                                                     class="input-group-addon"
                                                 >&#128;</span>
                                             </div></td>
@@ -365,11 +381,11 @@
                                 <p>Wanna know how much drinks you will need?</p>
                             </div>
                             <c:if test="${not empty messageDrinksAgent}">
-                                <div class="agentResponse">
-                                    ${messageDrinksAgent}
-                                </div>
+                                <div class="agentResponse">${messageDrinksAgent}</div>
                             </c:if>
-                            <button id="drinksButton" class="btn" name="submit-button" value="DrinksAgent" type="submit">Tell me! <span class="glyphicon glyphicon-comment"></span></button>
+                            <button id="drinksButton" class="btn" name="submit-button" value="DrinksAgent" type="submit">
+                                Tell me! <span class="glyphicon glyphicon-comment"></span>
+                            </button>
                             <table class="table table-agents">
                                 <thead>
                                     <tr>
@@ -383,19 +399,23 @@
                                 <tbody>
                                     <tr>
                                         <td><div class="input-group">
-                                                <input class="form-control" id="beerAmount" name="beerAmount" type="number" value="${beerAmount}" /> <span class="input-group-addon">L</span>
+                                                <input class="form-control" id="beerAmount" name="beerAmount" type="number" min="0" max="1000" value="${beerAmount}" /> <span class="input-group-addon">L</span>
                                             </div></td>
                                         <td><div class="input-group">
-                                                <input class="form-control" id="wineAmount" name="wineAmount" value="${wineAmount}" type="number" /><span class="input-group-addon">L</span>
+                                                <input class="form-control" id="wineAmount" name="wineAmount" min="0" max="10000" value="${wineAmount}" type="number" /><span class="input-group-addon">L</span>
                                             </div></td>
                                         <td><div class="input-group">
-                                                <input class="form-control" id="spiritsAmount" name="spiritsAmount" value="${spiritsAmount}" type="number" /><span class="input-group-addon">L</span>
+                                                <input class="form-control" id="spiritsAmount" name="spiritsAmount" min="0" max="500" value="${spiritsAmount}" type="number" /><span
+                                                    class="input-group-addon"
+                                                >L</span>
                                             </div></td>
                                         <td><div class="input-group">
-                                                <input class="form-control" id="softsAmount" name="softsAmount" value="${softsAmount}" type="number" /><span class="input-group-addon">L</span>
+                                                <input class="form-control" id="softsAmount" name="softsAmount" min="0" max="5000" value="${softsAmount}" type="number" /><span
+                                                    class="input-group-addon"
+                                                >L</span>
                                             </div></td>
                                         <td><div class="input-group">
-                                                <input class="form-control" id="drinksBudget_Specific" name="foodBudget_Specific" value="${drinksBudget_Specific}" type="number" /><span
+                                                <input class="form-control" id="drinksBudget_Specific" name="drinksBudget_Specific" min="0" max="50000" value="${drinksBudget_Specific}" type="number" /><span
                                                     class="input-group-addon"
                                                 >&#128;</span>
                                             </div></td>
@@ -421,9 +441,7 @@
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#agentAccordion">
                     <div class="card-body text-center">
                         <c:if test="${not empty caseCreationMessage}">
-                        <div class="agentResponse">
-                                 ${caseCreationMessage}
-                                 </div>
+                            <div class="agentResponse">${caseCreationMessage}</div>
                         </c:if>
                         <div class="microserviceTexts">
                             <p>Wanna plan your wholesome party?</p>
@@ -514,35 +532,41 @@
                                                 <th>Total</th>
                                             </tr>
                                             <tr>
-                                                <td><div class="input-group"><input class="form-control" id="totalBudgetPlanner" name="totalBudgetPlanner" type="number" value="0.0" readonly required /><span class="input-group-addon">&#128;</span>
-                                            </div></td>
+                                                <td><div class="input-group">
+                                                        <input class="form-control" id="totalBudgetPlanner" name="totalBudgetPlanner" type="number" min="0" max="100000" value="0.0" readonly required /><span
+                                                            class="input-group-addon"
+                                                        >&#128;</span>
+                                                    </div></td>
                                             </tr>
                                             <tr>
                                                 <th>Location</th>
                                             </tr>
                                             <tr>
-                                                <td><div class="input-group"><input class="form-control" id="locationBudgetPlanner" name="locationBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
-                                                    required
-                                                /><span class="input-group-addon">&#128;</span>
-                                            </div></td>
+                                                <td><div class="input-group">
+                                                        <input class="form-control" id="locationBudgetPlanner" name="locationBudgetPlanner" min="0" max="20000" value="0.0" type="number"
+                                                            onchange="calculateTotalBudget()" required
+                                                        /><span class="input-group-addon">&#128;</span>
+                                                    </div></td>
                                             </tr>
                                             <tr>
                                                 <th>Food</th>
                                             </tr>
                                             <tr>
-                                                <td><div class="input-group"><input class="form-control" id="foodBudgetPlanner" name="foodBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
-                                                    required
-                                                /><span class="input-group-addon">&#128;</span>
-                                            </div></td>
+                                                <td><div class="input-group">
+                                                        <input class="form-control" id="foodBudgetPlanner" name="foodBudgetPlanner" min="0" max="30000" value="0.0" type="number"
+                                                            onchange="calculateTotalBudget()" required
+                                                        /><span class="input-group-addon">&#128;</span>
+                                                    </div></td>
                                             </tr>
                                             <tr>
                                                 <th>Drinks</th>
                                             </tr>
                                             <tr>
-                                                <td><div class="input-group"><input class="form-control" id="drinksBudgetPlanner" name="drinksBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
-                                                    required
-                                                /><span class="input-group-addon">&#128;</span>
-                                            </div></td>
+                                                <td><div class="input-group">
+                                                        <input class="form-control" id="drinksBudgetPlanner" name="drinksBudgetPlanner" min="0" max="50000" value="0.0" type="number"
+                                                            onchange="calculateTotalBudget()" required
+                                                        /><span class="input-group-addon">&#128;</span>
+                                                    </div></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -558,22 +582,31 @@
                                                 <th>Meat Amount</th>
                                             </tr>
                                             <tr>
-                                                <td><div class="input-group"><input class="form-control" id="meatAmountPlanner" name="meatAmountPlanner" type="number" value="0.0" required /><span class="input-group-addon">KG</span>
-                                            </div></td>
+                                                <td><div class="input-group">
+                                                        <input class="form-control" id="meatAmountPlanner" name="meatAmountPlanner" type="number" min="0" max="500" value="0.0" required /><span
+                                                            class="input-group-addon"
+                                                        >KG</span>
+                                                    </div></td>
                                             </tr>
                                             <tr>
                                                 <th>Garnish Amount</th>
                                             </tr>
                                             <tr>
-                                                <td><div class="input-group"><input class="form-control" id="garnishAmountPlanner" name="garnishAmountPlanner" value="0.0" type="number" required /><span class="input-group-addon">KG</span>
-                                            </div></td>
+                                                <td><div class="input-group">
+                                                        <input class="form-control" id="garnishAmountPlanner" name="garnishAmountPlanner" min="0" max="1000" value="0.0" type="number" required /><span
+                                                            class="input-group-addon"
+                                                        >KG</span>
+                                                    </div></td>
                                             </tr>
                                             <tr>
                                                 <th>Snacks Amount</th>
                                             </tr>
                                             <tr>
-                                                <td><div class="input-group"><input class="form-control" id="snacksAmountPlanner" name="snacksAmountPlanner" value="0.0" type="number" required /><span class="input-group-addon">KG</span>
-                                            </div></td>
+                                                <td><div class="input-group">
+                                                        <input class="form-control" id="snacksAmountPlanner" name="snacksAmountPlanner" min="0" max="200" value="0.0" type="number" required /><span
+                                                            class="input-group-addon"
+                                                        >KG</span>
+                                                    </div></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -589,36 +622,53 @@
                                                 <th>Beer Amount</th>
                                             </tr>
                                             <tr>
-                                                <td><div class="input-group"><input class="form-control" id="beerAmountPlanner" name="beerAmountPlanner" type="number" value="0.0" /><span class="input-group-addon">L</span>
-                                            </div>
+                                                <td><div class="input-group">
+                                                        <input class="form-control" id="beerAmountPlanner" name="beerAmountPlanner" type="number" min="0" max="1000" value="0.0" /><span
+                                                            class="input-group-addon"
+                                                        >L</span>
+                                                    </div>
                                             </tr>
                                             <tr>
                                                 <th>Wine Amount</th>
                                             </tr>
                                             <tr>
-                                                <td><div class="input-group"><input class="form-control" id="wineAmountPlanner" name="wineAmountPlanner" value="0.0" type="number" /><span class="input-group-addon">L</span>
-                                            </div></td>
+                                                <td><div class="input-group">
+                                                        <input class="form-control" id="wineAmountPlanner" name="wineAmountPlanner" min="0" max="1000" value="0.0" type="number" /><span
+                                                            class="input-group-addon"
+                                                        >L</span>
+                                                    </div></td>
                                             </tr>
                                             <tr>
                                                 <th>Spirits Amount</th>
                                             </tr>
                                             <tr>
-                                                <td><div class="input-group"><input class="form-control" id="spiritsAmountPlanner" name="spiritsAmountPlanner" value="0.0" type="number" /><span class="input-group-addon">L</span>
-                                            </div></td>
+                                                <td><div class="input-group">
+                                                        <input class="form-control" id="spiritsAmountPlanner" name="spiritsAmountPlanner" min="0" max="500" value="0.0" type="number" /><span
+                                                            class="input-group-addon"
+                                                        >L</span>
+                                                    </div></td>
                                             </tr>
                                             <tr>
                                                 <th>Softs Amount</th>
                                             </tr>
                                             <tr>
-                                                <td><div class="input-group"><input class="form-control" id="softsAmountPlanner" name="softsAmountPlanner" value="0.0" type="number" /><span class="input-group-addon">L</span>
-                                            </div></td>
+                                                <td><div class="input-group">
+                                                        <input class="form-control" id="softsAmountPlanner" name="softsAmountPlanner" min="0" max="5000" value="0.0" type="number" /><span
+                                                            class="input-group-addon"
+                                                        >L</span>
+                                                    </div></td>
                                             </tr>
                                         </table>
                                     </div>
                                 </div>
                             </div>
-                            <button id="savePartyButton" class="btn btn-block" type="submit">Save Party to Database!<span class="glyphicon glyphicon-floppy-save"></span></button>
+                            <button id="savePartyButton" class="btn btn-block" type="submit">
+                                Save Party to Database!<span class="glyphicon glyphicon-floppy-save"></span>
+                            </button>
                             <label for="email">Want to receive an eMail with your party details?</label>
+                            <c:if test="${not empty mailConfirmationMessage}">
+                                <div>${mailConfirmationMessage }</div>
+                            </c:if>
                             <input class="form-control" id="email" name="email" type="email" placeholder="your.mail@someMail.com" />
                         </form>
                     </div>

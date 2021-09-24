@@ -59,6 +59,9 @@
         </div>
     </div>
     <div class="container">
+        <c:if test="${not empty message}">
+            <div class="microserviceTexts">${message}</div>
+        </c:if>
         <c:if test="${not empty id}">
             <form role="form" action="AlterCaseServlet" method="post">
                 <div class="row">
@@ -123,10 +126,10 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2"><select id="occasion" name="occasion" class="form-control">
-                                            <option value="anniversary">anniversary</option>
-                                            <option value="birthday">birthday</option>
-                                            <option value="wedding">wedding</option>
-                                            <option value="regular">regular</option>
+                                            <option ${occasion=="anniversary"?"selected":""} value="anniversary">anniversary</option>
+                                            <option ${occasion=="birthday"?"selected":""} value="birthday">birthday</option>
+                                            <option ${occasion=="wedding"?"selected":""} value="wedding">wedding</option>
+                                            <option ${occasion=="regular"?"selected":""} value="regular">regular</option>
                                     </select></td>
                                 </tr>
                                 <tr>
@@ -134,8 +137,8 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2"><select id="locationType" name="locationType" class="form-control">
-                                            <option value="private">private</option>
-                                            <option value="thirdparty">third party</option>
+                                            <option ${locationType=="private"?"selected":""} value="private">private</option>
+                                            <option ${locationType=="thirdparty"?"selected":""} value="thirdparty">third party</option>
                                     </select></td>
                                 </tr>
                             </table>
@@ -153,7 +156,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="totalBudget" name="totalBudget" type="number" value="${totalBudget}" readonly required /><span class="input-group-addon">&#128;</span>
+                                            <input class="form-control" id="totalBudget" name="totalBudget" type="number" min="0" max="100000" value="${totalBudget}" readonly required /><span class="input-group-addon">&#128;</span>
                                         </div></td>
                                 </tr>
                                 <tr>
@@ -161,7 +164,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="locationBudget" name="locationBudget" value="${locationBudget}" type="number" onchange="calculateTotalBudget()" required /><span
+                                            <input class="form-control" id="locationBudget" name="locationBudget" min="0" max="20000" value="${locationBudget}" type="number" onchange="calculateTotalBudget()" required /><span
                                                 class="input-group-addon"
                                             >&#128;</span>
                                         </div></td>
@@ -171,7 +174,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="foodBudget" name="foodBudget" value="${foodBudget}" type="number" onchange="calculateTotalBudget()" required /><span
+                                            <input class="form-control" id="foodBudget" name="foodBudget" min="0" max="30000" value="${foodBudget}" type="number" onchange="calculateTotalBudget()" required /><span
                                                 class="input-group-addon"
                                             >&#128;</span>
                                         </div></td>
@@ -181,7 +184,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="drinksBudget" name="drinksBudget" value="${drinksBudget}" type="number" onchange="calculateTotalBudget()" required /><span
+                                            <input class="form-control" id="drinksBudget" name="drinksBudget" min="0" max="50000" value="${drinksBudget}" type="number" onchange="calculateTotalBudget()" required /><span
                                                 class="input-group-addon"
                                             >&#128;</span>
                                         </div></td>
@@ -201,7 +204,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="meatAmount" name="meatAmount" type="number" value="${meatAmount}" required /><span class="input-group-addon">KG</span>
+                                            <input class="form-control" id="meatAmount" name="meatAmount" type="number" min="0" max="500" value="${meatAmount}" required /><span class="input-group-addon">KG</span>
                                         </div></td>
                                 </tr>
                                 <tr>
@@ -209,7 +212,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="garnishAmount" name="garnishAmount" value="${garnishAmount}" type="number" required /><span class="input-group-addon">KG</span>
+                                            <input class="form-control" id="garnishAmount" name="garnishAmount" min="0" max="1000" value="${garnishAmount}" type="number" required /><span class="input-group-addon">KG</span>
                                         </div></td>
                                 </tr>
                                 <tr>
@@ -217,7 +220,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="snacksAmount" name="snacksAmount" value="${snacksAmount}" type="number" required /><span class="input-group-addon">KG</span>
+                                            <input class="form-control" id="snacksAmount" name="snacksAmount" min="0" max="200" value="${snacksAmount}" type="number" required /><span class="input-group-addon">KG</span>
                                         </div></td>
                                 </tr>
                             </table>
@@ -235,7 +238,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="beerAmount" name="beerAmount" type="${beerAmount}" value="0.0" /><span class="input-group-addon">L</span>
+                                            <input class="form-control" id="beerAmount" name="beerAmount" min="0" max="1000" type="number" value="${beerAmount }" /><span class="input-group-addon">L</span>
                                         </div>
                                 </tr>
                                 <tr>
@@ -243,7 +246,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="wineAmount" name="wineAmount" value="${wineAmount}" type="number" /><span class="input-group-addon">L</span>
+                                            <input class="form-control" id="wineAmount" name="wineAmount" min="0" max="1000" value="${wineAmount}" type="number" /><span class="input-group-addon">L</span>
                                         </div></td>
                                 </tr>
                                 <tr>
@@ -251,7 +254,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="spiritsAmount" name="spiritsAmount" value="${spiritsAmount}" type="number" /><span class="input-group-addon">L</span>
+                                            <input class="form-control" id="spiritsAmount" name="spiritsAmount" min="0" max="500" value="${spiritsAmount}" type="number" /><span class="input-group-addon">L</span>
                                         </div></td>
                                 </tr>
                                 <tr>
@@ -259,21 +262,16 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="softsAmount" name="softsAmount" value="${softsAmount}" type="number" /><span class="input-group-addon">L</span>
+                                            <input class="form-control" id="softsAmount" name="softsAmount" min="0" max="5000" value="${softsAmount}" type="number" /><span class="input-group-addon">L</span>
                                         </div></td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                 </div>
-                <button class="btn col-md-12" type="submit">Verify Party Information!</button>
+                <button id="verifyPartyButton" class="btn btn-block" type="submit">Verify Party Information!</button>
             </form>
         </c:if>
-        <p>
-            <c:if test="${not empty message}">
-                <div class="agentResponse">${message}</div>
-            </c:if>
-        </p>
     </div>
     <footer class="text-center text-white navbar-fixed-bottom">
         <span>Visit MAS-Partyplanner on GitHub!</span> <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/leRoe93/MAS-PartyPlanner" role="button"><i

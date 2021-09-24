@@ -11,6 +11,9 @@
 .id1{
 	background-color:#222222;
 	color:white;
+	width:60%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #logo {
@@ -78,7 +81,6 @@ a:hover, a:active, a:focus {
 }
 
 .microserviceTexts {
-	width: 60%;
 	padding: 10px;
 	margin-left: auto;
 	margin-right: auto;
@@ -108,7 +110,6 @@ a:hover, a:active, a:focus {
 }
 .table-agents {
     background-color:#222222;
-    border: 0.5px solid #ff3300;
 }
 
 #heading {
@@ -119,11 +120,13 @@ a:hover, a:active, a:focus {
 	margin-bottom: 10px;
 }
 
+#verifyPartyButton {
+	margin-bottom: 50px;
+}
+
 #email {
-	width: 40%;
-	margin-left: auto;
-    margin-right: auto;
     margin-bottom: 50px;
+    background-color: #222222;
 }
 
 #introText {
@@ -142,6 +145,13 @@ background: radial-gradient(circle, rgba(121,121,121,1) 0%, rgba(69,69,69,1) 60%
 
 .glyphicon {
 	margin-left: 5px;
+}
+
+.success-true {
+	color: green;
+}
+.success-false {
+	color: red;
 }
 
 #buttonBudget {
@@ -192,6 +202,7 @@ background: radial-gradient(circle, rgba(121,121,121,1) 0%, rgba(69,69,69,1) 60%
 #buttonParty.btn.collapsed {
 	margin-bottom:50px;
 }
+
 hr {
 	color: #ff3300;
 	background-color: #ff3300;

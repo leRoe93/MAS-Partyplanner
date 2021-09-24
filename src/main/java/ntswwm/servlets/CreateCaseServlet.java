@@ -67,11 +67,19 @@ public class CreateCaseServlet extends HttpServlet {
             CBRManager.CASE_BASE.addCase(newCase);
             CBRManager.PROJECT.save();
 
-            if (request.getParameter("sendMailCheckBox") != null) {
-                var subject = "Party Plan ID: " + id;
-                var content = generateEmailContent(newCase);
-                MailManager.sendMessage(request.getParameter("email"), subject, content);
+            if (request.getParameter("email") != null || request.getParameter("email").isBlank()) {
+                var sendSuccessful = true;
+                try {
+                    var subject = "Party Plan ID: " + id;
+                    var content = generateEmailContent(newCase);
+                    MailManager.sendMessage(request.getParameter("email"), subject, content);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    sendSuccessful = false;
+                }
 
+                request.setAttribute("mailConfirmationMessage",
+                        generateMailConfirmationMessage(sendSuccessful, request.getParameter("email")));
             }
         } catch (ParseException e) {
             caseCreationMessage = "Something went wrong while creating your party in our system, please try again!";
@@ -82,6 +90,16 @@ public class CreateCaseServlet extends HttpServlet {
 
         request.getRequestDispatcher("/index.jsp").forward(request, response);
 
+    }
+
+    private String generateMailConfirmationMessage(boolean sendSuccessful, String email) {
+        String glyphicon = sendSuccessful == false ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-ok";
+        String message = sendSuccessful == false ? "Failed to send eMail to '" + email + "'."
+                : "Successfully sent eMail to '" + email + "'.";
+        String container = "<span class='success-" + sendSuccessful + "'><span class='" + glyphicon + "'></span>"
+                + message + "</span>";
+
+        return container;
     }
 
     private String generateEmailContent(Instance instance) {

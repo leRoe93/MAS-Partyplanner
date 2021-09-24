@@ -174,7 +174,7 @@
     <div class="container">
         <div class="accordion" id="agentAccordion">
             <form role="form" action="QueryServlet" method="post">
-                <div id="metaInformation" class="">
+                <div id="metaInformation" class="text-center">
                     <h3>To use our services, we need some initial meta information for your planned party!</h3>
                     <table class="table table-agents">
                         <thead>

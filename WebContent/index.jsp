@@ -121,15 +121,6 @@
 		}
 	}
 
-	function toggleEmailInput() {
-
-		var checkBox = document.getElementById('sendMailCheckBox')
-		if (checkBox.checked == true) {
-			document.getElementById('email').style.visibility = "visible";
-		} else {
-			document.getElementById('email').style.visibility = "hidden";
-		}
-	}
 	function checkStorage() {
 		/* 		commented out because it does not work everytime fluently
 		 if (localStorage.getItem("#collapseOne") != null) {
@@ -170,20 +161,21 @@
     <div class="jumbotron jumbotron-fluid text-center">
         <div class="page-header row">
             <div class="col">
-                <h1 class="display-4">
+                <h1 id="heading" class="display-4">
                     Welcome to the <b>MAS-Partyplanner!</b>
                 </h1>
             </div>
         </div>
         <div class="container text-center align-items-center">
-            <p>Want to organize a party, but don't know how to do it? Benefit from other's experiences!</p>
+            <h3 class="orangeText">Want to organize a party, but don't know how to do it? Benefit from other's experiences!</h3>
+            <p id="introText">Organizing parties can be quite a drag in terms of being aware of so many things. The MAS-Partyplanner introduces a multi-agent-based solution that is capable of answering specific questions in it's three separated micro-services<br><span class="orangeText">Budget Planner, Food Planner and Drinks Planner.</span><br>Each microservice is driven by an independent agent that looks up verified party data of others to provide experience-based information for you!<br>In our <span class="orangeText">Party Planner</span> section you can create your own event by combining the previously mentioned agent competences and make your very own adjustments!</p>
         </div>
     </div>
     <div class="container">
         <div class="accordion" id="agentAccordion">
             <form role="form" action="QueryServlet" method="post">
-                <div id="metaInformation">
-                    <h2>To use our services, we need some initial meta information for your planned party!</h2>
+                <div id="metaInformation" class="">
+                    <h3>To use our services, we need some initial meta information for your planned party!</h3>
                     <table class="table table-agents">
                         <thead>
                             <tr>
@@ -427,7 +419,7 @@
                     </h2>
                 </div>
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#agentAccordion">
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <c:if test="${not empty caseCreationMessage}">
                                  ${caseCreationMessage}
                                  <c:if test="${not empty caseId}">
@@ -625,10 +617,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-block" type="submit">Save Party to Database!<span class="glyphicon glyphicon-floppy-save"></span></button>
-                            <label for="sendMailCheckBox">Shall we drop you an eMail with your party details?</label> <input id="sendMailCheckBox" name="sendMailCheckBox" type="checkbox"
-                                onchange="toggleEmailInput()"
-                            /> <input class="form-control" id="email" name="email" type="email" placeholder="your.mail@someMail.com" style="visibility: hidden;" />
+                            <button id="savePartyButton" class="btn btn-block" type="submit">Save Party to Database!<span class="glyphicon glyphicon-floppy-save"></span></button>
+                            <label for="email">Want to receive an eMail with your party details?</label>
+                            <input class="form-control" id="email" name="email" type="email" placeholder="your.mail@someMail.com" />
                         </form>
                     </div>
                 </div>

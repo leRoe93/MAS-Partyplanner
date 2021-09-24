@@ -281,10 +281,24 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><div class="input-group"><input class="form-control" id="totalBudget" name="totalBudget" type="number" value="${totalBudget}" readonly /><span class="input-group-addon">€</span></div></td>
-                                        <td><div class="input-group"><input class="form-control" id="locationBudget" name="locationBudget" value="${locationBudget}" type="number" onchange="calculateTotalBudget()" /><span class="input-group-addon">€</span></div></td>
-                                        <td><div class="input-group"><input class="form-control" id="foodBudget" name="foodBudget" value="${foodBudget}" type="number" onchange="calculateTotalBudget()" /><span class="input-group-addon">€</span></div></td>
-                                        <td><div class="input-group"><input class="form-control" id="drinksBudget" name="drinksBudget" value="${drinksBudget}" type="number" onchange="calculateTotalBudget()" /><span class="input-group-addon">€</span></div></td>
+                                        <td><div class="input-group">
+                                                <input class="form-control" id="totalBudget" name="totalBudget" type="number" value="${totalBudget}" readonly /><span class="input-group-addon">€</span>
+                                            </div></td>
+                                        <td><div class="input-group">
+                                                <input class="form-control" id="locationBudget" name="locationBudget" value="${locationBudget}" type="number" onchange="calculateTotalBudget()" /><span
+                                                    class="input-group-addon"
+                                                >€</span>
+                                            </div></td>
+                                        <td><div class="input-group">
+                                                <input class="form-control" id="foodBudget" name="foodBudget" value="${foodBudget}" type="number" onchange="calculateTotalBudget()" /><span
+                                                    class="input-group-addon"
+                                                >€</span>
+                                            </div></td>
+                                        <td><div class="input-group">
+                                                <input class="form-control" id="drinksBudget" name="drinksBudget" value="${drinksBudget}" type="number" onchange="calculateTotalBudget()" /><span
+                                                    class="input-group-addon"
+                                                >€</span>
+                                            </div></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -329,10 +343,20 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><div class="input-group"><input class="form-control" id="meatAmount" name="meatAmount" type="number" value="${meatAmount}" /><span class="input-group-addon">KG</span></div></td>
-                                        <td><div class="input-group"><input class="form-control" id="garnishAmount" name="garnishAmount" value="${garnishAmount}" type="number" /><span class="input-group-addon">KG</span></div></td>
-                                        <td><div class="input-group"><input class="form-control" id="snacksAmount" name="snacksAmount" value="${snacksAmount}" type="number" /><span class="input-group-addon">KG</span></div></td>
-                                        <td><div class="input-group"><input class="form-control" id="foodBudget_Specific" name="foodBudget_Specific" value="${foodBudget_Specific}" type="number" /><span class="input-group-addon">€</span></div></td>
+                                        <td><div class="input-group">
+                                                <input class="form-control" id="meatAmount" name="meatAmount" type="number" value="${meatAmount}" /><span class="input-group-addon">KG</span>
+                                            </div></td>
+                                        <td><div class="input-group">
+                                                <input class="form-control" id="garnishAmount" name="garnishAmount" value="${garnishAmount}" type="number" /><span class="input-group-addon">KG</span>
+                                            </div></td>
+                                        <td><div class="input-group">
+                                                <input class="form-control" id="snacksAmount" name="snacksAmount" value="${snacksAmount}" type="number" /><span class="input-group-addon">KG</span>
+                                            </div></td>
+                                        <td><div class="input-group">
+                                                <input class="form-control" id="foodBudget_Specific" name="foodBudget_Specific" value="${foodBudget_Specific}" type="number" /><span
+                                                    class="input-group-addon"
+                                                >€</span>
+                                            </div></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -380,10 +404,20 @@
                                         <td><div class="input-group">
                                                 <input class="form-control" id="beerAmount" name="beerAmount" type="number" value="${beerAmount}" /> <span class="input-group-addon">L</span>
                                             </div></td>
-                                        <td><div class="input-group"><input class="form-control" id="wineAmount" name="wineAmount" value="${wineAmount}" type="number" /><span class="input-group-addon">L</span></div></td>
-                                        <td><div class="input-group"><input class="form-control" id="spiritsAmount" name="spiritsAmount" value="${spiritsAmount}" type="number" /><span class="input-group-addon">L</span></div></td>
-                                        <td><div class="input-group"><input class="form-control" id="softsAmount" name="softsAmount" value="${softsAmount}" type="number" /><span class="input-group-addon">L</span></div></td>
-                                        <td><div class="input-group"><input class="form-control" id="drinksBudget_Specific" name="foodBudget_Specific" value="${drinksBudget_Specific}" type="number" /><span class="input-group-addon">€</span></div></td>
+                                        <td><div class="input-group">
+                                                <input class="form-control" id="wineAmount" name="wineAmount" value="${wineAmount}" type="number" /><span class="input-group-addon">L</span>
+                                            </div></td>
+                                        <td><div class="input-group">
+                                                <input class="form-control" id="spiritsAmount" name="spiritsAmount" value="${spiritsAmount}" type="number" /><span class="input-group-addon">L</span>
+                                            </div></td>
+                                        <td><div class="input-group">
+                                                <input class="form-control" id="softsAmount" name="softsAmount" value="${softsAmount}" type="number" /><span class="input-group-addon">L</span>
+                                            </div></td>
+                                        <td><div class="input-group">
+                                                <input class="form-control" id="drinksBudget_Specific" name="foodBudget_Specific" value="${drinksBudget_Specific}" type="number" /><span
+                                                    class="input-group-addon"
+                                                >€</span>
+                                            </div></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -414,19 +448,21 @@
                             <p>Wanna plan your wholesome party?</p>
                         </div>
                         <form role="form" action="CreateCaseServlet" method="post">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Month</th>
-                                        <th scope="col">Year</th>
-                                        <th scope="col">Expected Guests</th>
-                                        <th scope="col">Occasion</th>
-                                        <th scope="col">Location Type</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><select id="monthPlanner" name="monthPlanner" class="form-control">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="thumbnail">
+                                    <img src="img/bar_banner.jpg" alt="...">
+                                    <div class="caption">
+                                        <h3>Metadata</h3>
+                                    </div>
+                                    <table class="table">
+                                        <tr>
+                                            <th>Month</th>
+                                            <th>Year</th>
+                                        </tr>
+                                        <tr>
+                                        <td>
+                                            <select id="monthPlanner" name="monthPlanner" class="form-control">
                                                 <option value="January">January</option>
                                                 <option value="February">February</option>
                                                 <option value="March">March</option>
@@ -439,7 +475,8 @@
                                                 <option value="October">October</option>
                                                 <option value="November">November</option>
                                                 <option value="December">December</option>
-                                        </select></td>
+                                        </select>
+                                        </td>
                                         <td><select id="yearPlanner" name="yearPlanner" class="form-control">
                                                 <%
                                                     for (int i = 2000; i <= 2050; i++) {
@@ -448,8 +485,13 @@
                                                 <%
                                                     }
                                                 %>
-                                        </select></td>
-                                        <td><select id="guestCountPlanner" name="guestCountPlanner" class="form-control">
+                                        </select>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                        <th colspan="2">Expected Guests</th>
+                                        </tr>
+                                        <tr><td colspan="2"><select id="guestCountPlanner" name="guestCountPlanner" class="form-control">
                                                 <%
                                                     for (int i = 1; i <= 1000; i++) {
                                                 %>
@@ -458,73 +500,123 @@
                                                     }
                                                 %>
                                         </select></td>
-                                        <td><select id="occasionPlanner" name="occasionPlanner" class="form-control">
+                                        </tr>
+                                        <tr>
+                                        <th colspan="2">Occasion</th>
+                                        </tr>
+                                        <tr><td colspan="2"><select id="occasionPlanner" name="occasionPlanner" class="form-control">
                                                 <option value="anniversary">anniversary</option>
                                                 <option value="birthday">birthday</option>
                                                 <option value="wedding">wedding</option>
                                                 <option value="regular">regular</option>
                                         </select></td>
-                                        <td><select id="locationTypePlanner" name="locationTypePlanner" class="form-control">
+                                        </tr>
+                                        <tr>
+                                        <th colspan="2">Location Type</th>
+                                        </tr>
+                                        <tr><td colspan="2"><select id="locationTypePlanner" name="locationTypePlanner" class="form-control">
                                                 <option value="private">private</option>
                                                 <option value="thirdparty">third party</option>
                                         </select></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Total Budget</th>
-                                        <th scope="col">Location Budget</th>
-                                        <th scope="col">Food Budget</th>
-                                        <th scope="col">Drinks Budget</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input class="form-control" id="totalBudgetPlanner" name="totalBudgetPlanner" type="number" value="0.0" readonly required /></td>
-                                        <td><input class="form-control" id="locationBudgetPlanner" name="locationBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
+                                        </tr>
+                                    </table>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="thumbnail">
+                                    <img src="img/budget.jpg" alt="...">
+                                    <div class="caption">
+                                        <h3>Budgets</h3>
+                                    </div>
+                                    <table class="table">
+                                        <tr>
+                                            <th>Total</th>
+                                        </tr>
+                                        <tr>
+                                        <td>
+                                            <input class="form-control" id="totalBudgetPlanner" name="totalBudgetPlanner" type="number" value="0.0" readonly required />
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                        <th>Location</th>
+                                        </tr>
+                                        <tr><td><input class="form-control" id="locationBudgetPlanner" name="locationBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
                                             required
                                         /></td>
-                                        <td><input class="form-control" id="foodBudgetPlanner" name="foodBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()" required /></td>
-                                        <td><input class="form-control" id="drinksBudgetPlanner" name="drinksBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()" required /></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Meat Amount</th>
-                                        <th scope="col">Garnish Amount</th>
-                                        <th scope="col">Snacks Amount</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input class="form-control" id="meatAmountPlanner" name="meatAmountPlanner" type="number" value="0.0" required /></td>
-                                        <td><input class="form-control" id="garnishAmountPlanner" name="garnishAmountPlanner" value="0.0" type="number" required /></td>
-                                        <td><input class="form-control" id="snacksAmountPlanner" name="snacksAmountPlanner" value="0.0" type="number" required /></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Beer Amount</th>
-                                        <th scope="col">Wine Amount</th>
-                                        <th scope="col">Spirits Amount</th>
-                                        <th scope="col">Softs Amount</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input class="form-control" id="beerAmountPlanner" name="beerAmountPlanner" type="number" value="0.0" /></td>
-                                        <td><input class="form-control" id="wineAmountPlanner" name="wineAmountPlanner" value="0.0" type="number" /></td>
-                                        <td><input class="form-control" id="spiritsAmountPlanner" name="spiritsAmountPlanner" value="0.0" type="number" /></td>
-                                        <td><input class="form-control" id="softsAmountPlanner" name="softsAmountPlanner" value="0.0" type="number" /></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                        </tr>
+                                        <tr>
+                                        <th>Food</th>
+                                        </tr>
+                                        <tr><td><input class="form-control" id="foodBudgetPlanner" name="foodBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()" required /></td>
+                                        </tr>
+                                        <tr>
+                                        <th>Drinks</th>
+                                        </tr>
+                                        <tr><td><input class="form-control" id="drinksBudgetPlanner" name="drinksBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()" required /></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="thumbnail">
+                                    <img src="img/food.jpg" alt="...">
+                                    <div class="caption">
+                                        <h3>Food</h3>
+                                    </div>
+                                    <table class="table">
+                                        <tr>
+                                            <th>Meat Amount</th>
+                                        </tr>
+                                        <tr>
+                                        <td>
+<input class="form-control" id="meatAmountPlanner" name="meatAmountPlanner" type="number" value="0.0" required />                                        </td>
+                                        </tr>
+                                        <tr>
+                                        <th>Garnish Amount</th>
+                                        </tr>
+                                        <tr><td><input class="form-control" id="garnishAmountPlanner" name="garnishAmountPlanner" value="0.0" type="number" required /></td>
+                                        </tr>
+                                        <tr>
+                                        <th>Snacks Amount</th>
+                                        </tr>
+                                        <tr><td><input class="form-control" id="snacksAmountPlanner" name="snacksAmountPlanner" value="0.0" type="number" required /></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="thumbnail">
+                                    <img src="img/drinks.jpg" alt="...">
+                                    <div class="caption">
+                                        <h3>Drinks</h3>
+                                    </div>
+                                                                        <table class="table">
+                                        <tr>
+                                            <th>Beer Amount</th>
+                                        </tr>
+                                        <tr>
+                                        <td>
+<input class="form-control" id="beerAmountPlanner" name="beerAmountPlanner" type="number" value="0.0" />                                        </tr>
+                                        <tr>
+                                        <th>Wine Amount</th>
+                                        </tr>
+                                        <tr><td><input class="form-control" id="wineAmountPlanner" name="wineAmountPlanner" value="0.0" type="number" /></td>
+                                        </tr>
+                                        <tr>
+                                        <th>Spirits Amount</th>
+                                        </tr>
+                                        <tr><td><input class="form-control" id="spiritsAmountPlanner" name="spiritsAmountPlanner" value="0.0" type="number" /></td>
+                                        </tr>
+                                                                                <tr>
+                                        <th>Softs Amount</th>
+                                        </tr>
+                                        <tr><td><input class="form-control" id="softsAmountPlanner" name="softsAmountPlanner" value="0.0" type="number" /></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                             <button class="btn btn-block" type="submit">Save Party to Database!</button>
                             <label for="sendMailCheckBox">Shall we drop you an eMail with your party details?</label> <input id="sendMailCheckBox" name="sendMailCheckBox" type="checkbox"
                                 onchange="toggleEmailInput()"

@@ -51,6 +51,16 @@ button {
 .page-header {
 	border-color:#ff3300;
 }
+.thumbnail {
+	background:#222222 !important;
+}
+.caption h3 {
+	color:white;
+}
+
+.thumbnail img {
+	height: 100px;
+}
 
 .form-control:hover{background-color:#ff3300 !important;border-color:#ff3300;}
 .form-control:focus{background-color:#222222 !important;border-color:#222222; color: white;}

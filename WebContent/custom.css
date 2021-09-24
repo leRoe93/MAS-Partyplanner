@@ -31,17 +31,14 @@ h1 {
 	padding-right: 0;
 }
 
-.btn {
-	background-color:#ff3300;
-	border-color: #ff3300;
-}
-.btn:hover {
-	font-weight: bold;
-	color: white;
+.button:hover {
+	font-weight: bold !important;
+	color: white !important;
 }
 
 button {
-	border: none;
+    background-color:#ff3300;
+    border-color: #ff3300;
 }
 
 #buttonFeedback {
@@ -70,8 +67,20 @@ button {
 	color: black;
 }
 
+a {
+	color: #ff3300;
+}
+
+a:hover, a:active, a:visited {
+    font-weight:bold;
+    color: #ff3300;
+}
+
+
+
 body {
-	background-color:#484848 !important;
+background: rgb(121,121,121);
+background: radial-gradient(circle, rgba(121,121,121,1) 0%, rgba(69,69,69,1) 60%, rgba(34,34,32,1) 100%);
 	color: white;
 }
 
@@ -126,4 +135,10 @@ hr {
 	background-color: #ff3300;
 	height: 2px;
 	border: none;
+}
+
+footer {
+    border-top: 3px solid #ff3300;
+    margin-top: 30px;
+    background-color: #222222;
 }

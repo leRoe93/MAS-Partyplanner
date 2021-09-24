@@ -8,6 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" href="custom.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -448,175 +449,183 @@
                             <p>Wanna plan your wholesome party?</p>
                         </div>
                         <form role="form" action="CreateCaseServlet" method="post">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="thumbnail">
-                                    <img src="img/bar_banner.jpg" alt="...">
-                                    <div class="caption">
-                                        <h3>Metadata</h3>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <img src="img/bar_banner.jpg" alt="...">
+                                        <div class="caption">
+                                            <h3>Metadata</h3>
+                                        </div>
+                                        <table class="table">
+                                            <tr>
+                                                <th>Month</th>
+                                                <th>Year</th>
+                                            </tr>
+                                            <tr>
+                                                <td><select id="monthPlanner" name="monthPlanner" class="form-control">
+                                                        <option value="January">January</option>
+                                                        <option value="February">February</option>
+                                                        <option value="March">March</option>
+                                                        <option value="April">April</option>
+                                                        <option value="May">May</option>
+                                                        <option value="June">June</option>
+                                                        <option value="July">July</option>
+                                                        <option value="August">August</option>
+                                                        <option value="September">September</option>
+                                                        <option value="October">October</option>
+                                                        <option value="November">November</option>
+                                                        <option value="December">December</option>
+                                                </select></td>
+                                                <td><select id="yearPlanner" name="yearPlanner" class="form-control">
+                                                        <%
+                                                            for (int i = 2000; i <= 2050; i++) {
+                                                        %>
+                                                        <option value="<%=i%>"><%=i%></option>
+                                                        <%
+                                                            }
+                                                        %>
+                                                </select></td>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="2">Expected Guests</th>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><select id="guestCountPlanner" name="guestCountPlanner" class="form-control">
+                                                        <%
+                                                            for (int i = 1; i <= 1000; i++) {
+                                                        %>
+                                                        <option value="<%=i%>"><%=i%></option>
+                                                        <%
+                                                            }
+                                                        %>
+                                                </select></td>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="2">Occasion</th>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><select id="occasionPlanner" name="occasionPlanner" class="form-control">
+                                                        <option value="anniversary">anniversary</option>
+                                                        <option value="birthday">birthday</option>
+                                                        <option value="wedding">wedding</option>
+                                                        <option value="regular">regular</option>
+                                                </select></td>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="2">Location Type</th>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><select id="locationTypePlanner" name="locationTypePlanner" class="form-control">
+                                                        <option value="private">private</option>
+                                                        <option value="thirdparty">third party</option>
+                                                </select></td>
+                                            </tr>
+                                        </table>
                                     </div>
-                                    <table class="table">
-                                        <tr>
-                                            <th>Month</th>
-                                            <th>Year</th>
-                                        </tr>
-                                        <tr>
-                                        <td>
-                                            <select id="monthPlanner" name="monthPlanner" class="form-control">
-                                                <option value="January">January</option>
-                                                <option value="February">February</option>
-                                                <option value="March">March</option>
-                                                <option value="April">April</option>
-                                                <option value="May">May</option>
-                                                <option value="June">June</option>
-                                                <option value="July">July</option>
-                                                <option value="August">August</option>
-                                                <option value="September">September</option>
-                                                <option value="October">October</option>
-                                                <option value="November">November</option>
-                                                <option value="December">December</option>
-                                        </select>
-                                        </td>
-                                        <td><select id="yearPlanner" name="yearPlanner" class="form-control">
-                                                <%
-                                                    for (int i = 2000; i <= 2050; i++) {
-                                                %>
-                                                <option value="<%=i%>"><%=i%></option>
-                                                <%
-                                                    }
-                                                %>
-                                        </select>
-                                        </td>
-                                        </tr>
-                                        <tr>
-                                        <th colspan="2">Expected Guests</th>
-                                        </tr>
-                                        <tr><td colspan="2"><select id="guestCountPlanner" name="guestCountPlanner" class="form-control">
-                                                <%
-                                                    for (int i = 1; i <= 1000; i++) {
-                                                %>
-                                                <option value="<%=i%>"><%=i%></option>
-                                                <%
-                                                    }
-                                                %>
-                                        </select></td>
-                                        </tr>
-                                        <tr>
-                                        <th colspan="2">Occasion</th>
-                                        </tr>
-                                        <tr><td colspan="2"><select id="occasionPlanner" name="occasionPlanner" class="form-control">
-                                                <option value="anniversary">anniversary</option>
-                                                <option value="birthday">birthday</option>
-                                                <option value="wedding">wedding</option>
-                                                <option value="regular">regular</option>
-                                        </select></td>
-                                        </tr>
-                                        <tr>
-                                        <th colspan="2">Location Type</th>
-                                        </tr>
-                                        <tr><td colspan="2"><select id="locationTypePlanner" name="locationTypePlanner" class="form-control">
-                                                <option value="private">private</option>
-                                                <option value="thirdparty">third party</option>
-                                        </select></td>
-                                        </tr>
-                                    </table>
-                                    
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <img src="img/budget.jpg" alt="...">
+                                        <div class="caption">
+                                            <h3>Budgets</h3>
+                                        </div>
+                                        <table class="table">
+                                            <tr>
+                                                <th>Total</th>
+                                            </tr>
+                                            <tr>
+                                                <td><input class="form-control" id="totalBudgetPlanner" name="totalBudgetPlanner" type="number" value="0.0" readonly required /></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Location</th>
+                                            </tr>
+                                            <tr>
+                                                <td><input class="form-control" id="locationBudgetPlanner" name="locationBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
+                                                    required
+                                                /></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Food</th>
+                                            </tr>
+                                            <tr>
+                                                <td><input class="form-control" id="foodBudgetPlanner" name="foodBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
+                                                    required
+                                                /></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Drinks</th>
+                                            </tr>
+                                            <tr>
+                                                <td><input class="form-control" id="drinksBudgetPlanner" name="drinksBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
+                                                    required
+                                                /></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <img src="img/food.jpg" alt="...">
+                                        <div class="caption">
+                                            <h3>Food</h3>
+                                        </div>
+                                        <table class="table">
+                                            <tr>
+                                                <th>Meat Amount</th>
+                                            </tr>
+                                            <tr>
+                                                <td><input class="form-control" id="meatAmountPlanner" name="meatAmountPlanner" type="number" value="0.0" required /></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Garnish Amount</th>
+                                            </tr>
+                                            <tr>
+                                                <td><input class="form-control" id="garnishAmountPlanner" name="garnishAmountPlanner" value="0.0" type="number" required /></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Snacks Amount</th>
+                                            </tr>
+                                            <tr>
+                                                <td><input class="form-control" id="snacksAmountPlanner" name="snacksAmountPlanner" value="0.0" type="number" required /></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <img src="img/drinks.jpg" alt="...">
+                                        <div class="caption">
+                                            <h3>Drinks</h3>
+                                        </div>
+                                        <table class="table">
+                                            <tr>
+                                                <th>Beer Amount</th>
+                                            </tr>
+                                            <tr>
+                                                <td><input class="form-control" id="beerAmountPlanner" name="beerAmountPlanner" type="number" value="0.0" />
+                                            </tr>
+                                            <tr>
+                                                <th>Wine Amount</th>
+                                            </tr>
+                                            <tr>
+                                                <td><input class="form-control" id="wineAmountPlanner" name="wineAmountPlanner" value="0.0" type="number" /></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Spirits Amount</th>
+                                            </tr>
+                                            <tr>
+                                                <td><input class="form-control" id="spiritsAmountPlanner" name="spiritsAmountPlanner" value="0.0" type="number" /></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Softs Amount</th>
+                                            </tr>
+                                            <tr>
+                                                <td><input class="form-control" id="softsAmountPlanner" name="softsAmountPlanner" value="0.0" type="number" /></td>
+                                            </tr>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="thumbnail">
-                                    <img src="img/budget.jpg" alt="...">
-                                    <div class="caption">
-                                        <h3>Budgets</h3>
-                                    </div>
-                                    <table class="table">
-                                        <tr>
-                                            <th>Total</th>
-                                        </tr>
-                                        <tr>
-                                        <td>
-                                            <input class="form-control" id="totalBudgetPlanner" name="totalBudgetPlanner" type="number" value="0.0" readonly required />
-                                        </td>
-                                        </tr>
-                                        <tr>
-                                        <th>Location</th>
-                                        </tr>
-                                        <tr><td><input class="form-control" id="locationBudgetPlanner" name="locationBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
-                                            required
-                                        /></td>
-                                        </tr>
-                                        <tr>
-                                        <th>Food</th>
-                                        </tr>
-                                        <tr><td><input class="form-control" id="foodBudgetPlanner" name="foodBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()" required /></td>
-                                        </tr>
-                                        <tr>
-                                        <th>Drinks</th>
-                                        </tr>
-                                        <tr><td><input class="form-control" id="drinksBudgetPlanner" name="drinksBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()" required /></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="thumbnail">
-                                    <img src="img/food.jpg" alt="...">
-                                    <div class="caption">
-                                        <h3>Food</h3>
-                                    </div>
-                                    <table class="table">
-                                        <tr>
-                                            <th>Meat Amount</th>
-                                        </tr>
-                                        <tr>
-                                        <td>
-<input class="form-control" id="meatAmountPlanner" name="meatAmountPlanner" type="number" value="0.0" required />                                        </td>
-                                        </tr>
-                                        <tr>
-                                        <th>Garnish Amount</th>
-                                        </tr>
-                                        <tr><td><input class="form-control" id="garnishAmountPlanner" name="garnishAmountPlanner" value="0.0" type="number" required /></td>
-                                        </tr>
-                                        <tr>
-                                        <th>Snacks Amount</th>
-                                        </tr>
-                                        <tr><td><input class="form-control" id="snacksAmountPlanner" name="snacksAmountPlanner" value="0.0" type="number" required /></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="thumbnail">
-                                    <img src="img/drinks.jpg" alt="...">
-                                    <div class="caption">
-                                        <h3>Drinks</h3>
-                                    </div>
-                                                                        <table class="table">
-                                        <tr>
-                                            <th>Beer Amount</th>
-                                        </tr>
-                                        <tr>
-                                        <td>
-<input class="form-control" id="beerAmountPlanner" name="beerAmountPlanner" type="number" value="0.0" />                                        </tr>
-                                        <tr>
-                                        <th>Wine Amount</th>
-                                        </tr>
-                                        <tr><td><input class="form-control" id="wineAmountPlanner" name="wineAmountPlanner" value="0.0" type="number" /></td>
-                                        </tr>
-                                        <tr>
-                                        <th>Spirits Amount</th>
-                                        </tr>
-                                        <tr><td><input class="form-control" id="spiritsAmountPlanner" name="spiritsAmountPlanner" value="0.0" type="number" /></td>
-                                        </tr>
-                                                                                <tr>
-                                        <th>Softs Amount</th>
-                                        </tr>
-                                        <tr><td><input class="form-control" id="softsAmountPlanner" name="softsAmountPlanner" value="0.0" type="number" /></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
                             <button class="btn btn-block" type="submit">Save Party to Database!</button>
                             <label for="sendMailCheckBox">Shall we drop you an eMail with your party details?</label> <input id="sendMailCheckBox" name="sendMailCheckBox" type="checkbox"
                                 onchange="toggleEmailInput()"
@@ -627,5 +636,10 @@
             </div>
         </div>
     </div>
+    <footer class="text-center text-white">
+        <span>Visit MAS-Partyplanner on GitHub!</span> <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/leRoe93/MAS-Partyplanner" role="button"><i
+            class="fa fa-github fa-2x"
+        ></i></a><br> © 2021 <a href="https://www.uni-hildesheim.de/">University of Hildesheim</a>
+    </footer>
 </body>
 </html>

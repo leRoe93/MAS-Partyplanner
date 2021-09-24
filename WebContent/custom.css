@@ -13,6 +13,11 @@
 	color:white;
 }
 
+#logo {
+	max-height: 100%;
+	max-width: 100%;
+}
+
 #id:hover{border-color:#ff3300;}
 #id:focus{outline:none; border-color:#ff3300;}
 #id:active {border-color:#ff3300;}
@@ -45,27 +50,71 @@ h1 {
 }
 
 .form-control:hover{background-color:#ff3300 !important;border-color:#ff3300;}
-.form-control:focus{background-color:#ff3300 !important;border-color:#ff3300;}
-.form-control:active {background-color:#ff3300 !important;border-color:#ff3300;}
-.form-control:selected {background-color:#ff3300 !important;border-color:#ff3300;}
+.form-control:focus{background-color:#222222 !important;border-color:#222222; color: white;}
+.form-control:active {background-color:#222222 !important;border-color:#222222; color: white;}
 
-.body {
-	background-color:red !important;
+.form-control { 
+	color: black;
+}
+
+body {
+	background-color:#484848 !important;
+	color: white;
 }
 
 #buttonBudget {
 	background-image:url('img/budget.jpg') !important;
     background-size:cover;
+    border: none;
+    height: 100px !important;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px #ff3300, 0px 0px 10px #ff3300, 0px 0px 10px #ff3300;
 }
 #buttonFood {
 	background-image:url('img/food.jpg') !important;
     background-size:cover;
+    border: none;
+    height: 100px !important;
+        color: white;
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px #ff3300, 0px 0px 10px #ff3300, 0px 0px 10px #ff3300;
 }
 #buttonDrinks {
 	background-image:url('img/drinks.jpg') !important;
     background-size:cover;
+    border: none;
+    height: 100px !important;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px #ff3300, 0px 0px 10px #ff3300, 0px 0px 10px #ff3300;
 }
 #buttonParty {
 	background-image:url('img/party.jpg') !important;
     background-size:cover;
+    border: none;
+    height: 100px !important; 
+    color: white;
+    font-size: 50px;
+    font-weight: bold; 
+    text-shadow: 0px 0px 10px #ff3300, 0px 0px 10px #ff3300, 0px 0px 10px #ff3300;
+}
+#buttonBudget:hover, #buttonFood:hover, #buttonDrinks:hover, #buttonParty:hover {
+    border: 5px solid #ff3300;
+    cursor: pointer;
+}
+
+#buttonBudget:selected, #buttonFood:selected, #buttonDrinks:selected, #buttonParty:selected {
+	
+}
+
+
+hr {
+	color: #ff3300;
+	background-color: #ff3300;
+	height: 2px;
+	border: none;
 }

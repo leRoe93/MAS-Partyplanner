@@ -55,7 +55,7 @@
                 <p>
                     <button id="buttonFeedback" class="btn" type="submit">Get Case!</button>
                 </p>
-            </form>d
+            </form>
         </div>
     </div>
     <div class="container">

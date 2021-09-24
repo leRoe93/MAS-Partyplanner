@@ -257,7 +257,7 @@
                         </h2>
                     </div>
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#agentAccordion">
-                        <div class="card-body">
+                        <div class="card-body text-center">
                             <c:if test="${not empty messageBudgetAgent}">
                                 ${messageBudgetAgent}
                             </c:if>
@@ -268,9 +268,9 @@
                                 ${detailsBudgetAgent}
                             </c:if>
                             <div class="microserviceTexts">
-                                <p>Wanna know how much money you will need?</p>
+                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p><span class="question">Want to know how much <b>money</b> you will most likely need?</span>
                             </div>
-                            <button id="budgetButton" class="btn col-md-4" name="submit-button" value="BudgetAgent" type="submit">Tell me!<span class="glyphicon glyphicon-comment"></span></button>
+                            <button id="budgetButton" class="btn" name="submit-button" value="BudgetAgent" type="submit">Tell me!<span class="glyphicon glyphicon-comment"></span></button>
                             <table class="table table-agents">
                                 <thead>
                                     <tr>

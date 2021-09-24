@@ -35,15 +35,18 @@ h1 {
 	background-color:#ff3300;
 	border-color: #ff3300;
 }
+.btn:hover {
+	font-weight: bold;
+	color: white;
+}
+
+button {
+	border: none;
+}
 
 #buttonFeedback {
 	margin-top: 10px;
 }
-
-.btn:hover{background-color:#ff3300;border-color:#ff3300;}
-.btn:focus{background-color:#ff3300;border-color:#ff3300;}
-.btn:active {background-color:#ff3300;border-color:#ff3300;}
-.btn:selected {background-color:#ff3300;border-color:#ff3300;}
 
 .page-header {
 	border-color:#ff3300;
@@ -103,12 +106,8 @@ body {
     text-shadow: 0px 0px 10px #ff3300, 0px 0px 10px #ff3300, 0px 0px 10px #ff3300;
 }
 #buttonBudget:hover, #buttonFood:hover, #buttonDrinks:hover, #buttonParty:hover {
-    border: 5px solid #ff3300;
+    border: 5px solid #ff3300 !important;
     cursor: pointer;
-}
-
-#buttonBudget:selected, #buttonFood:selected, #buttonDrinks:selected, #buttonParty:selected {
-	
 }
 
 

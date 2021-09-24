@@ -274,7 +274,7 @@
                             <h2>
                                 Wanna know how much <b>money</b> you'll most likely need for your party? Provide some information and we will tell you!
                             </h2>
-                            <button id="budgetButton" class="btn col-md-4 btn-success" name="submit-button" value="BudgetAgent" type="submit">Tell me!</button>
+                            <button id="budgetButton" class="btn col-md-4" name="submit-button" value="BudgetAgent" type="submit">Tell me!</button>
                             <input id="adaptBudgetValuesCheckBox" name="adaptBudgetValuesCheckBox" value="0.0" type="checkbox" onchange="adaptBudgetsToPartyPlan()" /> <label
                                 for="adaptBudgetValuesCheckBox"
                             >Adapt for party plan?</label>
@@ -321,7 +321,7 @@
                             <h2>
                                 Wanna know how much <b>food</b> you'll most likely need for your party? Provide some information and we will tell you!
                             </h2>
-                            <button id="foodButton" class="btn col-md-4 btn-success" name="submit-button" value="FoodAgent" type="submit">Tell me!</button>
+                            <button id="foodButton" class="btn col-md-4" name="submit-button" value="FoodAgent" type="submit">Tell me!</button>
                             <input id="adaptFoodValuesCheckBox" name="adaptFoodValuesCheckBox" value="0.0" type="checkbox" onchange="adaptFoodToPartyPlan()" /> <label for="adaptFoodValuesCheckBox">Adapt
                                 for party plan?</label>
                             <table class="table">
@@ -367,7 +367,7 @@
                             <h2>
                                 Wanna know how much <b>drinks</b> you'll most likely need for your party? Provide some information and we will tell you!
                             </h2>
-                            <button id="drinksButton" class="btn col-md-4 btn-success" name="submit-button" value="DrinksAgent" type="submit">Tell me!</button>
+                            <button id="drinksButton" class="btn col-md-4" name="submit-button" value="DrinksAgent" type="submit">Tell me!</button>
                             <input id="adaptDrinksValuesCheckBox" name="adaptDrinksValuesCheckBox" value="0.0" type="checkbox" onchange="adaptDrinksToPartyPlan()" /> <label
                                 for="adaptDrinksValuesCheckBox"
                             >Adapt for party plan?</label>

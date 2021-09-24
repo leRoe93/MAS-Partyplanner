@@ -184,7 +184,7 @@
             <form role="form" action="QueryServlet" method="post">
                 <div id="metaInformation">
                     <h2>To use our services, we need some initial meta information for your planned party!</h2>
-                    <table class="table">
+                    <table class="table table-agents">
                         <thead>
                             <tr>
                                 <th scope="col">Month</th>
@@ -270,8 +270,8 @@
                             <div class="microserviceTexts">
                                 <p>Wanna know how much money you will need?</p>
                             </div>
-                            <button id="budgetButton" class="btn col-md-4" name="submit-button" value="BudgetAgent" type="submit">Tell me!</button>
-                            <table class="table">
+                            <button id="budgetButton" class="btn col-md-4" name="submit-button" value="BudgetAgent" type="submit">Tell me!<span class="glyphicon glyphicon-comment"></span></button>
+                            <table class="table table-agents">
                                 <thead>
                                     <tr>
                                         <th scope="col">Total Budget</th>
@@ -332,8 +332,8 @@
                             <div class="microserviceTexts">
                                 <p>Wanna know how much food you will need?</p>
                             </div>
-                            <button id="foodButton" class="btn col-md-4" name="submit-button" value="FoodAgent" type="submit">Tell me!</button>
-                            <table class="table">
+                            <button id="foodButton" class="btn col-md-4" name="submit-button" value="FoodAgent" type="submit">Tell me! <span class="glyphicon glyphicon-comment"></span></button>
+                            <table class="table table-agents">
                                 <thead>
                                     <tr>
                                         <th scope="col">Meat Amount</th>
@@ -389,8 +389,8 @@
                             <div class="microserviceTexts">
                                 <p>Wanna know how much drinks you will need?</p>
                             </div>
-                            <button id="drinksButton" class="btn col-md-4" name="submit-button" value="DrinksAgent" type="submit">Tell me!</button>
-                            <table class="table">
+                            <button id="drinksButton" class="btn col-md-4" name="submit-button" value="DrinksAgent" type="submit">Tell me! <span class="glyphicon glyphicon-comment"></span></button>
+                            <table class="table table-agents">
                                 <thead>
                                     <tr>
                                         <th scope="col">Beer Amount</th>
@@ -534,31 +534,35 @@
                                                 <th>Total</th>
                                             </tr>
                                             <tr>
-                                                <td><input class="form-control" id="totalBudgetPlanner" name="totalBudgetPlanner" type="number" value="0.0" readonly required /></td>
+                                                <td><div class="input-group"><input class="form-control" id="totalBudgetPlanner" name="totalBudgetPlanner" type="number" value="0.0" readonly required /><span class="input-group-addon">€</span>
+                                            </div></td>
                                             </tr>
                                             <tr>
                                                 <th>Location</th>
                                             </tr>
                                             <tr>
-                                                <td><input class="form-control" id="locationBudgetPlanner" name="locationBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
+                                                <td><div class="input-group"><input class="form-control" id="locationBudgetPlanner" name="locationBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
                                                     required
-                                                /></td>
+                                                /><span class="input-group-addon">€</span>
+                                            </div></td>
                                             </tr>
                                             <tr>
                                                 <th>Food</th>
                                             </tr>
                                             <tr>
-                                                <td><input class="form-control" id="foodBudgetPlanner" name="foodBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
+                                                <td><div class="input-group"><input class="form-control" id="foodBudgetPlanner" name="foodBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
                                                     required
-                                                /></td>
+                                                /><span class="input-group-addon">€</span>
+                                            </div></td>
                                             </tr>
                                             <tr>
                                                 <th>Drinks</th>
                                             </tr>
                                             <tr>
-                                                <td><input class="form-control" id="drinksBudgetPlanner" name="drinksBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
+                                                <td><div class="input-group"><input class="form-control" id="drinksBudgetPlanner" name="drinksBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
                                                     required
-                                                /></td>
+                                                /><span class="input-group-addon">€</span>
+                                            </div></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -574,19 +578,22 @@
                                                 <th>Meat Amount</th>
                                             </tr>
                                             <tr>
-                                                <td><input class="form-control" id="meatAmountPlanner" name="meatAmountPlanner" type="number" value="0.0" required /></td>
+                                                <td><div class="input-group"><input class="form-control" id="meatAmountPlanner" name="meatAmountPlanner" type="number" value="0.0" required /><span class="input-group-addon">KG</span>
+                                            </div></td>
                                             </tr>
                                             <tr>
                                                 <th>Garnish Amount</th>
                                             </tr>
                                             <tr>
-                                                <td><input class="form-control" id="garnishAmountPlanner" name="garnishAmountPlanner" value="0.0" type="number" required /></td>
+                                                <td><div class="input-group"><input class="form-control" id="garnishAmountPlanner" name="garnishAmountPlanner" value="0.0" type="number" required /><span class="input-group-addon">KG</span>
+                                            </div></td>
                                             </tr>
                                             <tr>
                                                 <th>Snacks Amount</th>
                                             </tr>
                                             <tr>
-                                                <td><input class="form-control" id="snacksAmountPlanner" name="snacksAmountPlanner" value="0.0" type="number" required /></td>
+                                                <td><div class="input-group"><input class="form-control" id="snacksAmountPlanner" name="snacksAmountPlanner" value="0.0" type="number" required /><span class="input-group-addon">KG</span>
+                                            </div></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -602,25 +609,29 @@
                                                 <th>Beer Amount</th>
                                             </tr>
                                             <tr>
-                                                <td><input class="form-control" id="beerAmountPlanner" name="beerAmountPlanner" type="number" value="0.0" />
+                                                <td><div class="input-group"><input class="form-control" id="beerAmountPlanner" name="beerAmountPlanner" type="number" value="0.0" /><span class="input-group-addon">L</span>
+                                            </div>
                                             </tr>
                                             <tr>
                                                 <th>Wine Amount</th>
                                             </tr>
                                             <tr>
-                                                <td><input class="form-control" id="wineAmountPlanner" name="wineAmountPlanner" value="0.0" type="number" /></td>
+                                                <td><div class="input-group"><input class="form-control" id="wineAmountPlanner" name="wineAmountPlanner" value="0.0" type="number" /><span class="input-group-addon">L</span>
+                                            </div></td>
                                             </tr>
                                             <tr>
                                                 <th>Spirits Amount</th>
                                             </tr>
                                             <tr>
-                                                <td><input class="form-control" id="spiritsAmountPlanner" name="spiritsAmountPlanner" value="0.0" type="number" /></td>
+                                                <td><div class="input-group"><input class="form-control" id="spiritsAmountPlanner" name="spiritsAmountPlanner" value="0.0" type="number" /><span class="input-group-addon">L</span>
+                                            </div></td>
                                             </tr>
                                             <tr>
                                                 <th>Softs Amount</th>
                                             </tr>
                                             <tr>
-                                                <td><input class="form-control" id="softsAmountPlanner" name="softsAmountPlanner" value="0.0" type="number" /></td>
+                                                <td><div class="input-group"><input class="form-control" id="softsAmountPlanner" name="softsAmountPlanner" value="0.0" type="number" /><span class="input-group-addon">L</span>
+                                            </div></td>
                                             </tr>
                                         </table>
                                     </div>

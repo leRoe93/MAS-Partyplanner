@@ -271,22 +271,22 @@
                                 <tbody>
                                     <tr>
                                         <td><div class="input-group">
-                                                <input class="form-control" id="totalBudget" name="totalBudget" type="number" value="${totalBudget}" readonly /><span class="input-group-addon">€</span>
+                                                <input class="form-control" id="totalBudget" name="totalBudget" type="number" value="${totalBudget}" readonly /><span class="input-group-addon">&#128;</span>
                                             </div></td>
                                         <td><div class="input-group">
                                                 <input class="form-control" id="locationBudget" name="locationBudget" value="${locationBudget}" type="number" onchange="calculateTotalBudget()" /><span
                                                     class="input-group-addon"
-                                                >€</span>
+                                                >&#128;</span>
                                             </div></td>
                                         <td><div class="input-group">
                                                 <input class="form-control" id="foodBudget" name="foodBudget" value="${foodBudget}" type="number" onchange="calculateTotalBudget()" /><span
                                                     class="input-group-addon"
-                                                >€</span>
+                                                >&#128;</span>
                                             </div></td>
                                         <td><div class="input-group">
                                                 <input class="form-control" id="drinksBudget" name="drinksBudget" value="${drinksBudget}" type="number" onchange="calculateTotalBudget()" /><span
                                                     class="input-group-addon"
-                                                >€</span>
+                                                >&#128;</span>
                                             </div></td>
                                     </tr>
                                 </tbody>
@@ -340,7 +340,7 @@
                                         <td><div class="input-group">
                                                 <input class="form-control" id="foodBudget_Specific" name="foodBudget_Specific" value="${foodBudget_Specific}" type="number" /><span
                                                     class="input-group-addon"
-                                                >€</span>
+                                                >&#128;</span>
                                             </div></td>
                                     </tr>
                                 </tbody>
@@ -397,7 +397,7 @@
                                         <td><div class="input-group">
                                                 <input class="form-control" id="drinksBudget_Specific" name="foodBudget_Specific" value="${drinksBudget_Specific}" type="number" /><span
                                                     class="input-group-addon"
-                                                >€</span>
+                                                >&#128;</span>
                                             </div></td>
                                     </tr>
                                 </tbody>
@@ -421,9 +421,9 @@
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#agentAccordion">
                     <div class="card-body text-center">
                         <c:if test="${not empty caseCreationMessage}">
+                        <div class="agentResponse">
                                  ${caseCreationMessage}
-                                 <c:if test="${not empty caseId}">
-                            </c:if>
+                                 </div>
                         </c:if>
                         <div class="microserviceTexts">
                             <p>Wanna plan your wholesome party?</p>
@@ -514,7 +514,7 @@
                                                 <th>Total</th>
                                             </tr>
                                             <tr>
-                                                <td><div class="input-group"><input class="form-control" id="totalBudgetPlanner" name="totalBudgetPlanner" type="number" value="0.0" readonly required /><span class="input-group-addon">€</span>
+                                                <td><div class="input-group"><input class="form-control" id="totalBudgetPlanner" name="totalBudgetPlanner" type="number" value="0.0" readonly required /><span class="input-group-addon">&#128;</span>
                                             </div></td>
                                             </tr>
                                             <tr>
@@ -523,7 +523,7 @@
                                             <tr>
                                                 <td><div class="input-group"><input class="form-control" id="locationBudgetPlanner" name="locationBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
                                                     required
-                                                /><span class="input-group-addon">€</span>
+                                                /><span class="input-group-addon">&#128;</span>
                                             </div></td>
                                             </tr>
                                             <tr>
@@ -532,7 +532,7 @@
                                             <tr>
                                                 <td><div class="input-group"><input class="form-control" id="foodBudgetPlanner" name="foodBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
                                                     required
-                                                /><span class="input-group-addon">€</span>
+                                                /><span class="input-group-addon">&#128;</span>
                                             </div></td>
                                             </tr>
                                             <tr>
@@ -541,7 +541,7 @@
                                             <tr>
                                                 <td><div class="input-group"><input class="form-control" id="drinksBudgetPlanner" name="drinksBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
                                                     required
-                                                /><span class="input-group-addon">€</span>
+                                                /><span class="input-group-addon">&#128;</span>
                                             </div></td>
                                             </tr>
                                         </table>
@@ -626,7 +626,7 @@
             </div>
         </div>
     </div>
-    <footer class="text-center text-white">
+    <footer class="text-center text-white navbar-fixed-bottom">
         <span>Visit MAS-Partyplanner on GitHub!</span> <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/leRoe93/MAS-Partyplanner" role="button"><i
             class="fa fa-github fa-2x"
         ></i></a> © 2021 <a href="https://www.uni-hildesheim.de/">University of Hildesheim</a>

@@ -57,7 +57,8 @@ public class QueryServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doGet(request, response);
-
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         // Use value of pressed button for agent name
         var targetAgentName = request.getParameter("submit-button");
         System.out.println("Started query for target agent: " + targetAgentName);
@@ -99,7 +100,6 @@ public class QueryServlet extends HttpServlet {
         }
 
         modifyRequest(targetAgentName, request);
-        response.setContentType("text/html;charset=UTF-8");
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 

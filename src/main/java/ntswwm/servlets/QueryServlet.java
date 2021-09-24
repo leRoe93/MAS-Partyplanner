@@ -57,8 +57,6 @@ public class QueryServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doGet(request, response);
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
         // Use value of pressed button for agent name
         var targetAgentName = request.getParameter("submit-button");
         System.out.println("Started query for target agent: " + targetAgentName);
@@ -118,54 +116,64 @@ public class QueryServlet extends HttpServlet {
             timeOut += sleepTime;
 
             // Need exit condition based on time, if there is no case in the stack
-            if (timeOut == 5000) {
-                message = "Sorry, the " + agentType + " could not find any case to derive data from.";
+            if (timeOut > 10000) {
+                message = "<span class='success-false'><span class='glyphicon glyphicon-remove'></span>Sorry, the "
+                        + agentType + " could not find any party to derive data from.</span>";
                 timeOuted = true;
                 break;
             }
         }
 
         if (!timeOuted) {
-            Pair<Instance, Similarity> retrievalResult = AgentToServletStack.QUERY_INSTANCES.get(agentType)
-                    .get(AgentToServletStack.QUERY_INSTANCES.get(agentType).size() - 1);
-            message = "Derived data from a party with similarity of: "
-                    + retrievalResult.getSecond().getRoundedValue() * 100 + "% ";
+            if (AgentToServletStack.QUERY_INSTANCES.get(agentType)
+                    .get(AgentToServletStack.QUERY_INSTANCES.get(agentType).size() - 1) != null) {
 
-            message += generateDetailsTable(retrievalResult, request, agentType);
+                Pair<Instance, Similarity> retrievalResult = AgentToServletStack.QUERY_INSTANCES.get(agentType)
+                        .get(AgentToServletStack.QUERY_INSTANCES.get(agentType).size() - 1);
+                message = "<span class='success-true'><span class='glyphicon glyphicon-ok'></span>Successfully derived data from a party with similarity of: "
+                        + retrievalResult.getSecond().getRoundedValue() * 100 + "% </span>";
 
-            var guestCountQuery = Integer.parseInt(request.getParameter("guestCount"));
-            var guestCountCase = Integer.parseInt(retrievalResult.getFirst()
-                    .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc("guestCount")).getValueAsString());
+                message += generateDetailsTable(retrievalResult, request, agentType);
 
-            for (String attributeName : AttributeMappings.getAnswerAttributesForAgent(agentType)) {
-                var attributeNameInConcept = attributeName;
-                if (attributeName.contains("Specific")) {
-                    attributeNameInConcept = attributeName.split("_")[0];
+                var guestCountQuery = Integer.parseInt(request.getParameter("guestCount"));
+                var guestCountCase = Integer.parseInt(retrievalResult.getFirst()
+                        .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc("guestCount")).getValueAsString());
 
+                for (String attributeName : AttributeMappings.getAnswerAttributesForAgent(agentType)) {
+                    var attributeNameInConcept = attributeName;
+                    if (attributeName.contains("Specific")) {
+                        attributeNameInConcept = attributeName.split("_")[0];
+
+                    }
+
+                    var value = Float.parseFloat(retrievalResult.getFirst()
+                            .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeNameInConcept))
+                            .getValueAsString());
+
+                    if (guestCountQuery != guestCountCase) {
+                        System.out.println("Previous value: " + value);
+                        System.out.println("Found case does not have the same guest count, value gets normalized.");
+                        value = normalizeParameterValue(value, guestCountQuery, guestCountCase);
+                    }
+                    System.out.println("Setting attributes to request: " + attributeName + ", value: " + value);
+                    request.setAttribute(attributeName,
+                            Float.parseFloat(String.format("%.2f", value).replace(",", ".")));
                 }
-
-                var value = Float.parseFloat(retrievalResult.getFirst()
-                        .getAttForDesc(CBRManager.CONCEPT.getAttributeDesc(attributeNameInConcept)).getValueAsString());
 
                 if (guestCountQuery != guestCountCase) {
-                    System.out.println("Previous value: " + value);
-                    System.out.println("Found case does not have the same guest count, value gets normalized.");
-                    value = normalizeParameterValue(value, guestCountQuery, guestCountCase);
+                    message += "<p>Below values needed to be normalized based on the guest count!<br>" + "Your input: "
+                            + guestCountQuery + ", case value: " + guestCountCase + "</p>";
                 }
-                System.out.println("Setting attributes to request: " + attributeName + ", value: " + value);
-                request.setAttribute(attributeName, Float.parseFloat(String.format("%.2f", value).replace(",", ".")));
-            }
-
-            if (guestCountQuery != guestCountCase) {
-                message += "<p>Below values needed to be normalized based on the guest count!<br>" + "Your input: "
-                        + guestCountQuery + ", case value: " + guestCountCase + "</p>";
+                AgentToServletStack.QUERY_INSTANCES.get(agentType)
+                        .remove(AgentToServletStack.QUERY_INSTANCES.get(agentType).size() - 1);
+            } else {
+                message = "<span class='success-false'><span class='glyphicon glyphicon-remove'></span>Sorry, the "
+                        + agentType + " could not find any verified party to derive data from.</span>";
             }
         }
         System.out.println("Setting message for query: " + message);
         request.setAttribute("message" + agentType, message);
         appendRequest(request, AttributeMappings.getAnswerAttributesForAgent(agentType));
-        AgentToServletStack.QUERY_INSTANCES.get(agentType)
-                .remove(AgentToServletStack.QUERY_INSTANCES.get(agentType).size() - 1);
 
     }
 

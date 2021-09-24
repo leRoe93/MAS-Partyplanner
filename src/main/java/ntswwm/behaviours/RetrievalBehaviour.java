@@ -42,10 +42,11 @@ public class RetrievalBehaviour extends CyclicBehaviour {
 
         if (msg != null) {
             // var agentType = msg.getUserDefinedParameter("agentType");
-            System.out.println("[" + this.agentType + "] Received retrieval request from agent type");
+            System.out
+                    .println("[" + this.agentType + "] Received retrieval request from agent type: " + this.agentType);
             setActiveAmalgamationFct(this.agentType);
 
-            AgentToServletStack.QUERY_INSTANCES.get(agentType).add(getMostSimilarCase(msg));
+            AgentToServletStack.QUERY_INSTANCES.get(this.agentType).add(getMostSimilarCase(msg));
         }
 
     }
@@ -65,9 +66,7 @@ public class RetrievalBehaviour extends CyclicBehaviour {
 
     private Pair<Instance, Similarity> getMostSimilarCase(ACLMessage msg) {
         Retrieval ret = new Retrieval(CBRManager.CONCEPT, CBRManager.CASE_BASE);
-        ret.setRetrievalMethod(RetrievalMethod.RETRIEVE_K_SORTED);
-        ret.setK(10);
-
+        ret.setRetrievalMethod(RetrievalMethod.RETRIEVE_SORTED);
         Instance query = ret.getQueryInstance();
 
         for (String paramName : CBRManager.CONCEPT.getAllAttributeDescs().keySet()) {

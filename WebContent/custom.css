@@ -59,10 +59,6 @@ button {
 	color:white;
 }
 
-.thumbnail img {
-	height: 100px;
-}
-
 .form-control:hover{background-color:#ff3300 !important;border-color:#ff3300;}
 .form-control:focus{background-color:#222222 !important;border-color:#222222; color: white;}
 .form-control:active {background-color:#222222 !important;border-color:#222222; color: white;}
@@ -75,9 +71,21 @@ a {
 	color: #ff3300;
 }
 
+
 a:hover, a:active, a:focus {
     font-weight:bold;
     color: #ff3300;
+}
+
+#footerLogo {
+	height: 50px;
+}
+
+#loadingGif, #loadingGif_budgetButton, #loadingGif_foodButton, #loadingGif_drinksButton, #loadingGif_savePartyButton {
+    display:none;
+}
+.loadingGifImage {
+	height: 80px;
 }
 
 .microserviceTexts {
@@ -94,7 +102,6 @@ a:hover, a:active, a:focus {
 
 .agentResponse {
 	text-align: center;
-	    border-bottom: 2px solid #ff3300;
 }
 
 .question {
@@ -112,8 +119,8 @@ a:hover, a:active, a:focus {
     background-color:#222222;
 }
 
-#heading {
-	text-shadow: 0px 0px 10px #ff3300, 0px 0px 10px #ff3300, 0px 0px 10px #ff3300;
+.jumbotron h1 {
+	text-shadow: 0px 0px 5px black, 0px 0px 10px black;
 }
 
 #savePartyButton {
@@ -133,7 +140,7 @@ a:hover, a:active, a:focus {
 	text-shadow: 0px 0px 5px black, 0px 0px 10px black;
 }
 .orangeText {
-	color: #ff3300;
+	text-shadow: 0px 0px 5px #ff3300, 0px 0px 5px #ff3300;
 	font-weight: bold;
 }
 
@@ -145,13 +152,16 @@ background: radial-gradient(circle, rgba(121,121,121,1) 0%, rgba(69,69,69,1) 60%
 
 .glyphicon {
 	margin-left: 5px;
+	margin-right: 5px;
 }
 
 .success-true {
-	color: green;
+	font-weight: bold;
+	color: #96d082;
 }
 .success-false {
-	color: red;
+	color: #ff8080;
+	font-weight: bold;
 }
 
 #buttonBudget {
@@ -162,7 +172,7 @@ background: radial-gradient(circle, rgba(121,121,121,1) 0%, rgba(69,69,69,1) 60%
     color: white;
     font-size: 50px;
     font-weight: bold;
-    text-shadow: 0px 0px 10px #ff3300, 0px 0px 10px #ff3300, 0px 0px 10px #ff3300;
+    text-shadow: 0px 0px 5px black, 0px 0px 10px black;
 }
 #buttonFood {
 	background-image:url('img/food.jpg') !important;
@@ -172,7 +182,7 @@ background: radial-gradient(circle, rgba(121,121,121,1) 0%, rgba(69,69,69,1) 60%
         color: white;
     font-size: 50px;
     font-weight: bold;
-    text-shadow: 0px 0px 10px #ff3300, 0px 0px 10px #ff3300, 0px 0px 10px #ff3300;
+    text-shadow: 0px 0px 5px black, 0px 0px 10px black;
 }
 #buttonDrinks {
 	background-image:url('img/drinks.jpg') !important;
@@ -182,7 +192,7 @@ background: radial-gradient(circle, rgba(121,121,121,1) 0%, rgba(69,69,69,1) 60%
     color: white;
     font-size: 50px;
     font-weight: bold;
-    text-shadow: 0px 0px 10px #ff3300, 0px 0px 10px #ff3300, 0px 0px 10px #ff3300;
+    text-shadow: 0px 0px 5px black, 0px 0px 10px black;
 }
 #buttonParty {
 	background-image:url('img/party.jpg') !important;
@@ -192,10 +202,10 @@ background: radial-gradient(circle, rgba(121,121,121,1) 0%, rgba(69,69,69,1) 60%
     color: white;
     font-size: 50px;
     font-weight: bold; 
-    text-shadow: 0px 0px 10px #ff3300, 0px 0px 10px #ff3300, 0px 0px 10px #ff3300;
+    text-shadow: 0px 0px 5px black, 0px 0px 10px black;
 }
 #buttonBudget:hover, #buttonFood:hover, #buttonDrinks:hover, #buttonParty:hover {
-    border: 5px solid #ff3300 !important;
+    border: 3px solid #ff3300 !important;
     cursor: pointer;
 }
 

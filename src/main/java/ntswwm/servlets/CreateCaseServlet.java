@@ -42,7 +42,7 @@ public class CreateCaseServlet extends HttpServlet {
             throws ServletException, IOException {
         doGet(request, response);
 
-        var caseCreationMessage = "Your party has been successfully saved with ID: ";
+        var caseCreationMessage = "<span class='success-true'><span class='glyphicon glyphicon-ok'></span>Your party has been successfully saved with ID: ";
 
         var id = UUID.randomUUID().toString();
 
@@ -56,7 +56,7 @@ public class CreateCaseServlet extends HttpServlet {
                     newCase.addAttribute(CBRManager.CONCEPT.getAttributeDesc("verified"), "no");
                 } else if (key.equals("id")) {
                     newCase.addAttribute(CBRManager.CONCEPT.getAttributeDesc("id"), id);
-                    caseCreationMessage += id;
+                    caseCreationMessage += id + "</span>";
                 } else {
                     System.out.println("Value in case creation form: " + request.getParameter(key + "Planner"));
                     newCase.addAttribute(CBRManager.CONCEPT.getAttributeDesc(key),
@@ -67,7 +67,7 @@ public class CreateCaseServlet extends HttpServlet {
             CBRManager.CASE_BASE.addCase(newCase);
             CBRManager.PROJECT.save();
 
-            if (request.getParameter("email") != null || request.getParameter("email").isBlank()) {
+            if (request.getParameter("email") != null && !request.getParameter("email").isBlank()) {
                 var sendSuccessful = true;
                 try {
                     var subject = "Party Plan ID: " + id;

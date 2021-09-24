@@ -19,6 +19,10 @@
 		checkStorage();
 	}
 
+	function showGif(el) {
+		document.getElementById("loadingGif_" + el.id).style.display = "block";
+	}
+
 	function fillInDefaults() {
 		var itemIds = [ "foodBudget", "drinksBudget", "locationBudget",
 				"totalBudget", "meatAmount", "garnishAmount", "snacksAmount",
@@ -161,7 +165,7 @@
     <div class="jumbotron jumbotron-fluid text-center">
         <div class="page-header row">
             <div class="col">
-                <h1 id="heading" class="display-4">
+                <h1 class="display-4">
                     Welcome to the <b>MAS-Partyplanner!</b>
                 </h1>
             </div>
@@ -170,10 +174,9 @@
             <h3 class="orangeText">Want to organize a party, but don't know how to do it? Benefit from other's experiences!</h3>
             <p id="introText">
                 Organizing parties can be quite a drag in terms of being aware of so many things. The MAS-Partyplanner introduces a multi-agent-based solution that is capable of answering specific
-                questions in it's three separated micro-services<br>
-                <span class="orangeText">Budget Planner, Food Planner and Drinks Planner.</span><br>Each microservice is driven by an independent agent that looks up verified party data of others
-                to provide experience-based information for you!<br>In our <span class="orangeText">Party Planner</span> section you can create your own event by combining the previously
-                mentioned agent competences and make your very own adjustments!
+                questions in it's three separated micro-services<br> <span class="orangeText">Budget Planner, Food Planner and Drinks Planner.</span><br>Each microservice is driven by an
+                independent agent that looks up verified party data of others to provide experience-based information for you!<br>In our <span class="orangeText">Party Planner</span> section you
+                can create your own event by combining the previously mentioned agent competences and make your very own adjustments!
             </p>
         </div>
     </div>
@@ -266,7 +269,11 @@
                             <c:if test="${not empty messageBudgetAgent}">
                                 <div class="agentResponse">${messageBudgetAgent}</div>
                             </c:if>
-                            <button id="budgetButton" class="btn" name="submit-button" value="BudgetAgent" type="submit">
+                            <div id="loadingGif_budgetButton" class="text-center">
+                                <img class="loadingGifImage" src="img/loading.gif"></img>
+                                <p>Searching in database ...</p>
+                            </div>
+                            <button id="budgetButton" class="btn" name="submit-button" onclick="showGif(this)" value="BudgetAgent" type="submit">
                                 Tell me!<span class="glyphicon glyphicon-comment"></span>
                             </button>
                             <table class="table table-agents">
@@ -326,7 +333,11 @@
                             <c:if test="${not empty messageFoodAgent}">
                                 <div class="agentResponse">${messageFoodAgent}</div>
                             </c:if>
-                            <button id="foodButton" class="btn" name="submit-button" value="FoodAgent" type="submit">
+                            <div id="loadingGif_foodButton" class="text-center">
+                                <img class="loadingGifImage" src="img/loading.gif"></img>
+                                <p>Searching in database ...</p>
+                            </div>
+                            <button id="foodButton" class="btn" onclick="showGif(this)" name="submit-button" value="FoodAgent" type="submit">
                                 Tell me! <span class="glyphicon glyphicon-comment"></span>
                             </button>
                             <table class="table table-agents">
@@ -383,7 +394,11 @@
                             <c:if test="${not empty messageDrinksAgent}">
                                 <div class="agentResponse">${messageDrinksAgent}</div>
                             </c:if>
-                            <button id="drinksButton" class="btn" name="submit-button" value="DrinksAgent" type="submit">
+                            <div id="loadingGif_drinksButton" class="text-center">
+                                <img class="loadingGifImage" src="img/loading.gif"></img>
+                                <p>Searching in database ...</p>
+                            </div>
+                            <button id="drinksButton" class="btn" onclick="showGif(this)" name="submit-button" value="DrinksAgent" type="submit">
                                 Tell me! <span class="glyphicon glyphicon-comment"></span>
                             </button>
                             <table class="table table-agents">
@@ -440,9 +455,6 @@
                 </div>
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#agentAccordion">
                     <div class="card-body text-center">
-                        <c:if test="${not empty caseCreationMessage}">
-                            <div class="agentResponse">${caseCreationMessage}</div>
-                        </c:if>
                         <div class="microserviceTexts">
                             <p>Wanna plan your wholesome party?</p>
                         </div>
@@ -450,7 +462,7 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="thumbnail">
-                                        <img src="img/bar_banner.jpg" alt="...">
+                                        <img src="img/metadataBig.jpg" alt="...">
                                         <div class="caption">
                                             <h3>Metadata</h3>
                                         </div>
@@ -523,7 +535,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="thumbnail">
-                                        <img src="img/budget.jpg" alt="...">
+                                        <img src="img/budgetBig.jpg" alt="...">
                                         <div class="caption">
                                             <h3>Budgets</h3>
                                         </div>
@@ -573,7 +585,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="thumbnail">
-                                        <img src="img/food.jpg" alt="...">
+                                        <img src="img/foodBig.jpg" alt="...">
                                         <div class="caption">
                                             <h3>Food</h3>
                                         </div>
@@ -613,7 +625,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="thumbnail">
-                                        <img src="img/drinks.jpg" alt="...">
+                                        <img src="img/drinksBig.jpg" alt="...">
                                         <div class="caption">
                                             <h3>Drinks</h3>
                                         </div>
@@ -662,7 +674,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <button id="savePartyButton" class="btn btn-block" type="submit">
+                            <div id="loadingGif_savePartyButton" class="text-center">
+                                <img class="loadingGifImage" src="img/loading.gif"></img>
+                                <p>Processing request ...</p>
+                            </div>
+                            <c:if test="${not empty caseCreationMessage}">
+                                <div class="agentResponse">${caseCreationMessage}</div>
+                            </c:if>
+                            <button id="savePartyButton" onclick="showGif(this)" class="btn btn-block" type="submit">
                                 Save Party to Database!<span class="glyphicon glyphicon-floppy-save"></span>
                             </button>
                             <label for="email">Want to receive an eMail with your party details?</label>

@@ -21,6 +21,9 @@
 		totalSum += parseFloat(document.getElementById('locationBudget').value)
 		document.getElementById('totalBudget').value = totalSum;
 	}
+	function showGif() {
+		document.getElementById("loadingGif").style.display = "block";
+	}
 </script>
 </head>
 <body class="body">
@@ -53,12 +56,16 @@
                 </p>
                 <input id="id" name="id" class="form-control id1" type="text" />
                 <p>
-                    <button id="buttonFeedback" class="btn" type="submit">Get Case!</button>
+                    <button id="buttonFeedback" onclick="showGif()" class="btn" type="submit">Get Case!</button>
                 </p>
             </form>
         </div>
     </div>
     <div class="container">
+        <div id="loadingGif" class="text-center">
+            <img class="loadingGifImage" src="img/loading.gif"></img>
+            <p>Searching in database ...</p>
+        </div>
         <c:if test="${not empty message}">
             <div class="microserviceTexts">${message}</div>
         </c:if>
@@ -67,7 +74,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="thumbnail">
-                            <img src="img/bar_banner.jpg" alt="...">
+                            <img src="img/metadataBig.jpg" alt="...">
                             <div class="caption">
                                 <h3>Metadata</h3>
                             </div>
@@ -146,7 +153,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="thumbnail">
-                            <img src="img/budget.jpg" alt="...">
+                            <img src="img/budgetBig.jpg" alt="...">
                             <div class="caption">
                                 <h3>Budgets</h3>
                             </div>
@@ -156,7 +163,9 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="totalBudget" name="totalBudget" type="number" min="0" max="100000" value="${totalBudget}" readonly required /><span class="input-group-addon">&#128;</span>
+                                            <input class="form-control" id="totalBudget" name="totalBudget" type="number" min="0" max="100000" value="${totalBudget}" readonly required /><span
+                                                class="input-group-addon"
+                                            >&#128;</span>
                                         </div></td>
                                 </tr>
                                 <tr>
@@ -164,9 +173,9 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="locationBudget" name="locationBudget" min="0" max="20000" value="${locationBudget}" type="number" onchange="calculateTotalBudget()" required /><span
-                                                class="input-group-addon"
-                                            >&#128;</span>
+                                            <input class="form-control" id="locationBudget" name="locationBudget" min="0" max="20000" value="${locationBudget}" type="number"
+                                                onchange="calculateTotalBudget()" required
+                                            /><span class="input-group-addon">&#128;</span>
                                         </div></td>
                                 </tr>
                                 <tr>
@@ -174,9 +183,9 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="foodBudget" name="foodBudget" min="0" max="30000" value="${foodBudget}" type="number" onchange="calculateTotalBudget()" required /><span
-                                                class="input-group-addon"
-                                            >&#128;</span>
+                                            <input class="form-control" id="foodBudget" name="foodBudget" min="0" max="30000" value="${foodBudget}" type="number" onchange="calculateTotalBudget()"
+                                                required
+                                            /><span class="input-group-addon">&#128;</span>
                                         </div></td>
                                 </tr>
                                 <tr>
@@ -184,9 +193,9 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="drinksBudget" name="drinksBudget" min="0" max="50000" value="${drinksBudget}" type="number" onchange="calculateTotalBudget()" required /><span
-                                                class="input-group-addon"
-                                            >&#128;</span>
+                                            <input class="form-control" id="drinksBudget" name="drinksBudget" min="0" max="50000" value="${drinksBudget}" type="number"
+                                                onchange="calculateTotalBudget()" required
+                                            /><span class="input-group-addon">&#128;</span>
                                         </div></td>
                                 </tr>
                             </table>
@@ -194,7 +203,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="thumbnail">
-                            <img src="img/food.jpg" alt="...">
+                            <img src="img/foodBig.jpg" alt="...">
                             <div class="caption">
                                 <h3>Food</h3>
                             </div>
@@ -204,7 +213,9 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="meatAmount" name="meatAmount" type="number" min="0" max="500" value="${meatAmount}" required /><span class="input-group-addon">KG</span>
+                                            <input class="form-control" id="meatAmount" name="meatAmount" type="number" min="0" max="500" value="${meatAmount}" required /><span
+                                                class="input-group-addon"
+                                            >KG</span>
                                         </div></td>
                                 </tr>
                                 <tr>
@@ -212,7 +223,9 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="garnishAmount" name="garnishAmount" min="0" max="1000" value="${garnishAmount}" type="number" required /><span class="input-group-addon">KG</span>
+                                            <input class="form-control" id="garnishAmount" name="garnishAmount" min="0" max="1000" value="${garnishAmount}" type="number" required /><span
+                                                class="input-group-addon"
+                                            >KG</span>
                                         </div></td>
                                 </tr>
                                 <tr>
@@ -220,7 +233,9 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="snacksAmount" name="snacksAmount" min="0" max="200" value="${snacksAmount}" type="number" required /><span class="input-group-addon">KG</span>
+                                            <input class="form-control" id="snacksAmount" name="snacksAmount" min="0" max="200" value="${snacksAmount}" type="number" required /><span
+                                                class="input-group-addon"
+                                            >KG</span>
                                         </div></td>
                                 </tr>
                             </table>
@@ -228,7 +243,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="thumbnail">
-                            <img src="img/drinks.jpg" alt="...">
+                            <img src="img/drinksBig.jpg" alt="...">
                             <div class="caption">
                                 <h3>Drinks</h3>
                             </div>
@@ -254,7 +269,9 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="spiritsAmount" name="spiritsAmount" min="0" max="500" value="${spiritsAmount}" type="number" /><span class="input-group-addon">L</span>
+                                            <input class="form-control" id="spiritsAmount" name="spiritsAmount" min="0" max="500" value="${spiritsAmount}" type="number" /><span
+                                                class="input-group-addon"
+                                            >L</span>
                                         </div></td>
                                 </tr>
                                 <tr>

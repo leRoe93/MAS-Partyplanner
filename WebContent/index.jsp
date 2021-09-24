@@ -130,26 +130,26 @@
 		}
 	}
 	function checkStorage() {
-/* 		commented out because it does not work everytime fluently
-        if (localStorage.getItem("#collapseOne") != null) {
-			$("#collapseOne").toggle();//to show panel 
-		}
-		if (localStorage.getItem("#collapseTwo") != null) {
-			$("#collapseTwo").toggle();//to show panel 
-		}
-		if (localStorage.getItem("#collapseThree") != null) {
-			$("#collapseThree").toggle();//to show panel 
-		}
-		if (localStorage.getItem("#collapseFour") != null) {
-			$("#collapseFour").toggle();//to show panel 
-		}
-	    localStorage.clear(); */
+		/* 		commented out because it does not work everytime fluently
+		 if (localStorage.getItem("#collapseOne") != null) {
+		 $("#collapseOne").toggle();//to show panel 
+		 }
+		 if (localStorage.getItem("#collapseTwo") != null) {
+		 $("#collapseTwo").toggle();//to show panel 
+		 }
+		 if (localStorage.getItem("#collapseThree") != null) {
+		 $("#collapseThree").toggle();//to show panel 
+		 }
+		 if (localStorage.getItem("#collapseFour") != null) {
+		 $("#collapseFour").toggle();//to show panel 
+		 }
+		 localStorage.clear(); */
 
 	}
 	function save(el) {
-/* 		commented out because it does not work everytime fluently
-        var target = el.getAttribute("data-target")
-		localStorage.setItem(target, target) */
+		/* 		commented out because it does not work everytime fluently
+		 var target = el.getAttribute("data-target")
+		 localStorage.setItem(target, target) */
 	}
 </script>
 </head>
@@ -157,8 +157,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.jsp">
-                	<img id="logo" src="img/MAS_Logo.png" id="logo" alt="">
+                <a class="navbar-brand" href="index.jsp"> <img id="logo" src="img/MAS_Logo.png" id="logo" alt="">
                 </a>
             </div>
             <ul class="nav navbar-nav">
@@ -169,20 +168,16 @@
     </nav>
     <div class="jumbotron jumbotron-fluid text-center">
         <div class="page-header row">
-           <div class="col">
-              	<h1 class="display-4">
-          			 Welcome to the <b>MAS-Partyplanner!</b>
-        		</h1>
-        	</div>
-   		</div>
-   		<div class="container text-center align-items-center">
-       			 <p>Want to organize a party, but don't know how to do it? Benefit from other's experiences!</p>
-    	</div>
+            <div class="col">
+                <h1 class="display-4">
+                    Welcome to the <b>MAS-Partyplanner!</b>
+                </h1>
+            </div>
+        </div>
+        <div class="container text-center align-items-center">
+            <p>Want to organize a party, but don't know how to do it? Benefit from other's experiences!</p>
+        </div>
     </div>
-    
-    
-    
-    
     <div class="container">
         <div class="accordion" id="agentAccordion">
             <form role="form" action="QueryServlet" method="post">
@@ -271,13 +266,10 @@
                             <c:if test="${not empty detailsBudgetAgent}">
                                 ${detailsBudgetAgent}
                             </c:if>
-                            <h2>
-                                Wanna know how much <b>money</b> you'll most likely need for your party? Provide some information and we will tell you!
-                            </h2>
+                            <div class="microserviceTexts">
+                                <p>Wanna know how much money you will need?</p>
+                            </div>
                             <button id="budgetButton" class="btn col-md-4" name="submit-button" value="BudgetAgent" type="submit">Tell me!</button>
-                            <input id="adaptBudgetValuesCheckBox" name="adaptBudgetValuesCheckBox" value="0.0" type="checkbox" onchange="adaptBudgetsToPartyPlan()" /> <label
-                                for="adaptBudgetValuesCheckBox"
-                            >Adapt for party plan?</label>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -289,13 +281,16 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><input class="form-control" id="totalBudget" name="totalBudget" type="number" value="${totalBudget}" readonly /></td>
-                                        <td><input class="form-control" id="locationBudget" name="locationBudget" value="${locationBudget}" type="number" onchange="calculateTotalBudget()" /></td>
-                                        <td><input class="form-control" id="foodBudget" name="foodBudget" value="${foodBudget}" type="number" onchange="calculateTotalBudget()" /></td>
-                                        <td><input class="form-control" id="drinksBudget" name="drinksBudget" value="${drinksBudget}" type="number" onchange="calculateTotalBudget()" /></td>
+                                        <td><div class="input-group"><input class="form-control" id="totalBudget" name="totalBudget" type="number" value="${totalBudget}" readonly /><span class="input-group-addon">€</span></div></td>
+                                        <td><div class="input-group"><input class="form-control" id="locationBudget" name="locationBudget" value="${locationBudget}" type="number" onchange="calculateTotalBudget()" /><span class="input-group-addon">€</span></div></td>
+                                        <td><div class="input-group"><input class="form-control" id="foodBudget" name="foodBudget" value="${foodBudget}" type="number" onchange="calculateTotalBudget()" /><span class="input-group-addon">€</span></div></td>
+                                        <td><div class="input-group"><input class="form-control" id="drinksBudget" name="drinksBudget" value="${drinksBudget}" type="number" onchange="calculateTotalBudget()" /><span class="input-group-addon">€</span></div></td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <input id="adaptBudgetValuesCheckBox" name="adaptBudgetValuesCheckBox" value="0.0" type="checkbox" onchange="adaptBudgetsToPartyPlan()" /> <label
+                                for="adaptBudgetValuesCheckBox"
+                            >Adapt for party plan?</label>
                         </div>
                     </div>
                 </div>
@@ -303,8 +298,9 @@
                 <div class="card">
                     <div class="card-header" id="headingTwo">
                         <h2 class="mb-0">
-                            <button id="buttonFood" class="btn btn-block collapsed" type="button" onClick="save(this)" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Food
-                                Planner</button>
+                            <button id="buttonFood" class="btn btn-block collapsed" type="button" onClick="save(this)" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                aria-controls="collapseTwo"
+                            >Food Planner</button>
                         </h2>
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#agentAccordion">
@@ -318,12 +314,10 @@
                             <c:if test="${not empty detailsFoodAgent}">
                                 ${detailsFoodAgent}
                             </c:if>
-                            <h2>
-                                Wanna know how much <b>food</b> you'll most likely need for your party? Provide some information and we will tell you!
-                            </h2>
+                            <div class="microserviceTexts">
+                                <p>Wanna know how much food you will need?</p>
+                            </div>
                             <button id="foodButton" class="btn col-md-4" name="submit-button" value="FoodAgent" type="submit">Tell me!</button>
-                            <input id="adaptFoodValuesCheckBox" name="adaptFoodValuesCheckBox" value="0.0" type="checkbox" onchange="adaptFoodToPartyPlan()" /> <label for="adaptFoodValuesCheckBox">Adapt
-                                for party plan?</label>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -335,13 +329,15 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><input class="form-control" id="meatAmount" name="meatAmount" type="number" value="${meatAmount}" /></td>
-                                        <td><input class="form-control" id="garnishAmount" name="garnishAmount" value="${garnishAmount}" type="number" /></td>
-                                        <td><input class="form-control" id="snacksAmount" name="snacksAmount" value="${snacksAmount}" type="number" /></td>
-                                        <td><input class="form-control" id="foodBudget_Specific" name="foodBudget_Specific" value="${foodBudget_Specific}" type="number" /></td>
+                                        <td><div class="input-group"><input class="form-control" id="meatAmount" name="meatAmount" type="number" value="${meatAmount}" /><span class="input-group-addon">KG</span></div></td>
+                                        <td><div class="input-group"><input class="form-control" id="garnishAmount" name="garnishAmount" value="${garnishAmount}" type="number" /><span class="input-group-addon">KG</span></div></td>
+                                        <td><div class="input-group"><input class="form-control" id="snacksAmount" name="snacksAmount" value="${snacksAmount}" type="number" /><span class="input-group-addon">KG</span></div></td>
+                                        <td><div class="input-group"><input class="form-control" id="foodBudget_Specific" name="foodBudget_Specific" value="${foodBudget_Specific}" type="number" /><span class="input-group-addon">€</span></div></td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <input id="adaptFoodValuesCheckBox" name="adaptFoodValuesCheckBox" value="0.0" type="checkbox" onchange="adaptFoodToPartyPlan()" /> <label for="adaptFoodValuesCheckBox">Adapt
+                                for party plan?</label>
                         </div>
                     </div>
                 </div>
@@ -349,8 +345,9 @@
                 <div class="card">
                     <div class="card-header" id="headingThree">
                         <h2 class="mb-0">
-                            <button id="buttonDrinks" class="btn btn-block collapsed" type="button" onClick="save(this)" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Drinks
-                                Planner</button>
+                            <button id="buttonDrinks" class="btn btn-block collapsed" type="button" onClick="save(this)" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                aria-controls="collapseThree"
+                            >Drinks Planner</button>
                         </h2>
                     </div>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#agentAccordion">
@@ -364,13 +361,10 @@
                             <c:if test="${not empty detailsDrinksAgent}">
                                 ${detailsDrinksAgent}
                             </c:if>
-                            <h2>
-                                Wanna know how much <b>drinks</b> you'll most likely need for your party? Provide some information and we will tell you!
-                            </h2>
+                            <div class="microserviceTexts">
+                                <p>Wanna know how much drinks you will need?</p>
+                            </div>
                             <button id="drinksButton" class="btn col-md-4" name="submit-button" value="DrinksAgent" type="submit">Tell me!</button>
-                            <input id="adaptDrinksValuesCheckBox" name="adaptDrinksValuesCheckBox" value="0.0" type="checkbox" onchange="adaptDrinksToPartyPlan()" /> <label
-                                for="adaptDrinksValuesCheckBox"
-                            >Adapt for party plan?</label>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -383,14 +377,19 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><input class="form-control" id="beerAmount" name="beerAmount" type="number" value="${beerAmount}" /></td>
-                                        <td><input class="form-control" id="wineAmount" name="wineAmount" value="${wineAmount}" type="number" /></td>
-                                        <td><input class="form-control" id="spiritsAmount" name="spiritsAmount" value="${spiritsAmount}" type="number" /></td>
-                                        <td><input class="form-control" id="softsAmount" name="softsAmount" value="${softsAmount}" type="number" /></td>
-                                        <td><input class="form-control" id="drinksBudget_Specific" name="foodBudget_Specific" value="${drinksBudget_Specific}" type="number" /></td>
+                                        <td><div class="input-group">
+                                                <input class="form-control" id="beerAmount" name="beerAmount" type="number" value="${beerAmount}" /> <span class="input-group-addon">L</span>
+                                            </div></td>
+                                        <td><div class="input-group"><input class="form-control" id="wineAmount" name="wineAmount" value="${wineAmount}" type="number" /><span class="input-group-addon">L</span></div></td>
+                                        <td><div class="input-group"><input class="form-control" id="spiritsAmount" name="spiritsAmount" value="${spiritsAmount}" type="number" /><span class="input-group-addon">L</span></div></td>
+                                        <td><div class="input-group"><input class="form-control" id="softsAmount" name="softsAmount" value="${softsAmount}" type="number" /><span class="input-group-addon">L</span></div></td>
+                                        <td><div class="input-group"><input class="form-control" id="drinksBudget_Specific" name="foodBudget_Specific" value="${drinksBudget_Specific}" type="number" /><span class="input-group-addon">€</span></div></td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <input id="adaptDrinksValuesCheckBox" name="adaptDrinksValuesCheckBox" value="0.0" type="checkbox" onchange="adaptDrinksToPartyPlan()" /> <label
+                                for="adaptDrinksValuesCheckBox"
+                            >Adapt for party plan?</label>
                         </div>
                     </div>
                 </div>
@@ -399,8 +398,9 @@
             <div class="card">
                 <div class="card-header" id="headingFour">
                     <h2 class="mb-0">
-                        <button id="buttonParty" class="btn btn-block collapsed" type="button" onClick="save(this)" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Party
-                            Planner</button>
+                        <button id="buttonParty" class="btn btn-block collapsed" type="button" onClick="save(this)" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false"
+                            aria-controls="collapseFour"
+                        >Party Planner</button>
                     </h2>
                 </div>
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#agentAccordion">
@@ -410,6 +410,9 @@
                                  <c:if test="${not empty caseId}">
                             </c:if>
                         </c:if>
+                        <div class="microserviceTexts">
+                            <p>Wanna plan your wholesome party?</p>
+                        </div>
                         <form role="form" action="CreateCaseServlet" method="post">
                             <table class="table">
                                 <thead>
@@ -480,7 +483,9 @@
                                 <tbody>
                                     <tr>
                                         <td><input class="form-control" id="totalBudgetPlanner" name="totalBudgetPlanner" type="number" value="0.0" readonly required /></td>
-                                        <td><input class="form-control" id="locationBudgetPlanner" name="locationBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()" required /></td>
+                                        <td><input class="form-control" id="locationBudgetPlanner" name="locationBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()"
+                                            required
+                                        /></td>
                                         <td><input class="form-control" id="foodBudgetPlanner" name="foodBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()" required /></td>
                                         <td><input class="form-control" id="drinksBudgetPlanner" name="drinksBudgetPlanner" value="0.0" type="number" onchange="calculateTotalBudget()" required /></td>
                                     </tr>
@@ -520,7 +525,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <button class="btn col-md-4 btn-success" type="submit">Save Party to Database!</button>
+                            <button class="btn btn-block" type="submit">Save Party to Database!</button>
                             <label for="sendMailCheckBox">Shall we drop you an eMail with your party details?</label> <input id="sendMailCheckBox" name="sendMailCheckBox" type="checkbox"
                                 onchange="toggleEmailInput()"
                             /> <input class="form-control" id="email" name="email" type="email" placeholder="your.mail@someMail.com" style="visibility: hidden;" />

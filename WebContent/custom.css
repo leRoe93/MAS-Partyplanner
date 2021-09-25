@@ -95,9 +95,12 @@ a:hover, a:active, a:focus {
 	margin-bottom: 10px;
 	box-shadow: 0px 0px 5px white;
 	text-align: center;
-	font-style: italic;
 	font-weight: bold;
 	
+}
+
+.quote {
+	font-style: italic;
 }
 
 .agentResponse {
@@ -106,6 +109,7 @@ a:hover, a:active, a:focus {
 
 .question {
 	font-size: 150%;
+	font-style: none !important;
 }
 
 #budgetButton, #foodButton, #drinksButton {
@@ -205,7 +209,7 @@ background: radial-gradient(circle, rgba(121,121,121,1) 0%, rgba(69,69,69,1) 60%
     text-shadow: 0px 0px 5px black, 0px 0px 10px black;
 }
 #buttonBudget:hover, #buttonFood:hover, #buttonDrinks:hover, #buttonParty:hover {
-    box-shadow: 0px 0px 0px 10px #ff3300;
+    box-shadow: 0px 0px 0px 3px #ff3300;
     cursor: pointer;
 }
 

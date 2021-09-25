@@ -300,9 +300,8 @@
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#agentAccordion">
                         <div class="card-body text-center">
                             <div class="microserviceTexts">
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-                                    vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                                <span class="question">Want to know how much <b>money</b> you will most likely need?
+                                <p><span class="quote">“You should always live within your income, even if you have to borrow to do so.”</span><br>- Josh Billings</p>
+                                <span class="question">Want to know how much <span class="orangeText">money</span> you will most likely need?
                                 </span>
                             </div>
                             <c:if test="${not empty messageBudgetAgent}">
@@ -367,7 +366,9 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#agentAccordion">
                         <div class="card-body text-center">
                             <div class="microserviceTexts">
-                                <p>Wanna know how much food you will need?</p>
+                                <p><span class="quote">“If there were more food and fewer people, this would be a perfect party.”</span><br>- Ron Swanson</p>
+                                <span class="question">Want to know how much <span class="orangeText">food</span> you will most likely need?
+                                </span>
                             </div>
                             <c:if test="${not empty messageFoodAgent}">
                                 <div class="agentResponse">${messageFoodAgent}</div>
@@ -430,7 +431,9 @@
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#agentAccordion">
                         <div class="card-body text-center">
                             <div class="microserviceTexts">
-                                <p>Wanna know how much drinks you will need?</p>
+                                <p><span class="quote">“Here's to alcohol: the cause of, and solution to all of life's problems.”</span><br>- Homer Simpson</p>
+                                <span class="question">Want to know how much <span class="orangeText">drinks</span> you will most likely need?
+                                </span>
                             </div>
                             <c:if test="${not empty messageDrinksAgent}">
                                 <div class="agentResponse">${messageDrinksAgent}</div>
@@ -501,7 +504,9 @@
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#agentAccordion">
                     <div class="card-body text-center">
                         <div class="microserviceTexts">
-                            <p>Wanna plan your wholesome party?</p>
+                              <p><span class="quote">“Wine, good food, family & friends. That's what it's all about.”</span><br>- Heather P.</p>
+                                <span class="question">Want to plan your very own <span class="orangeText">party from start to end</span>?
+                                </span>
                         </div>
                         <form role="form" action="CreateCaseServlet" method="post">
                             <div class="row">

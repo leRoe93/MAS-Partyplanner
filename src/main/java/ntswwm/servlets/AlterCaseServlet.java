@@ -42,33 +42,40 @@ public class AlterCaseServlet extends HttpServlet {
             throws ServletException, IOException {
         doGet(request, response);
 
-        var message = "Your feedback has been successfully saved, others now can benefit from your experience!";
+        var message = "<span class='success-true'><span class='glyphicon glyphicon-ok'></span>Your feedback has been successfully saved, others now can benefit from your experience!</span>";
 
-        Instance caseToBeAltered = searchCaseById(request.getParameter("id"));
+        try {
 
-        Iterator<String> it = request.getParameterNames().asIterator();
-        while (it.hasNext()) {
-            String paramName = it.next();
-            AttributeDesc aDesc = CBRManager.CONCEPT.getAttributeDesc(paramName);
+            Instance caseToBeAltered = searchCaseById(request.getParameter("id"));
 
-            // Special case, after providing feedback a case is always considered to be
-            // verified
-            try {
-                if (paramName.equals("verified")) {
-                    caseToBeAltered.addAttribute(aDesc, aDesc.getAttribute("yes"));
-                } else {
-                    caseToBeAltered.addAttribute(aDesc, aDesc.getAttribute(request.getParameter(paramName).toString()));
+            Iterator<String> it = request.getParameterNames().asIterator();
+            while (it.hasNext()) {
+                String paramName = it.next();
+                AttributeDesc aDesc = CBRManager.CONCEPT.getAttributeDesc(paramName);
+
+                // Special case, after providing feedback a case is always considered to be
+                // verified
+                try {
+                    if (paramName.equals("verified")) {
+                        caseToBeAltered.addAttribute(aDesc, aDesc.getAttribute("yes"));
+                    } else {
+                        caseToBeAltered.addAttribute(aDesc,
+                                aDesc.getAttribute(request.getParameter(paramName).toString()));
+                    }
+
+                } catch (ParseException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
-
-            } catch (ParseException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
             }
-        }
 
-        CBRManager.PROJECT.addInstance(caseToBeAltered);
-        CBRManager.CASE_BASE.addCase(caseToBeAltered);
-        CBRManager.PROJECT.save();
+            CBRManager.PROJECT.addInstance(caseToBeAltered);
+            CBRManager.CASE_BASE.addCase(caseToBeAltered);
+            CBRManager.PROJECT.save();
+        } catch (Exception e) {
+            e.printStackTrace();
+            message = "<span class='success-false'><span class='glyphicon glyphicon-remove'></span>Something went wrong, please try again later!</span>";
+        }
 
         request.setAttribute("message", message);
         request.getRequestDispatcher("/feedback.jsp").forward(request, response);

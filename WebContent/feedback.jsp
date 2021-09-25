@@ -71,6 +71,7 @@
         </c:if>
         <c:if test="${not empty id}">
             <form role="form" action="AlterCaseServlet" method="post">
+            <input name="id" value="${id}" hidden type="text" />
                 <div class="row">
                     <div class="col-md-3">
                         <div class="thumbnail">

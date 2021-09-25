@@ -163,7 +163,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="totalBudget" name="totalBudget" type="number" min="0" max="100000" value="${totalBudget}" readonly required /><span
+                                            <input class="form-control" id="totalBudget" name="totalBudget" type="number" step=".01" min="0" max="100000" value="${totalBudget}" readonly required /><span
                                                 class="input-group-addon"
                                             >&#128;</span>
                                         </div></td>
@@ -173,7 +173,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="locationBudget" name="locationBudget" min="0" max="20000" value="${locationBudget}" type="number"
+                                            <input class="form-control" id="locationBudget" name="locationBudget" step=".01" min="0" max="20000" value="${locationBudget}" type="number"
                                                 onchange="calculateTotalBudget()" required
                                             /><span class="input-group-addon">&#128;</span>
                                         </div></td>
@@ -183,7 +183,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="foodBudget" name="foodBudget" min="0" max="30000" value="${foodBudget}" type="number" onchange="calculateTotalBudget()"
+                                            <input class="form-control" id="foodBudget" name="foodBudget" step=".01" min="0" max="30000" value="${foodBudget}" type="number" onchange="calculateTotalBudget()"
                                                 required
                                             /><span class="input-group-addon">&#128;</span>
                                         </div></td>
@@ -193,7 +193,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="drinksBudget" name="drinksBudget" min="0" max="50000" value="${drinksBudget}" type="number"
+                                            <input class="form-control" id="drinksBudget" name="drinksBudget" step=".01" min="0" max="50000" value="${drinksBudget}" type="number"
                                                 onchange="calculateTotalBudget()" required
                                             /><span class="input-group-addon">&#128;</span>
                                         </div></td>
@@ -213,7 +213,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="meatAmount" name="meatAmount" type="number" min="0" max="500" value="${meatAmount}" required /><span
+                                            <input class="form-control" id="meatAmount" name="meatAmount" type="number" step=".01" min="0" max="500" value="${meatAmount}" required /><span
                                                 class="input-group-addon"
                                             >KG</span>
                                         </div></td>
@@ -223,7 +223,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="garnishAmount" name="garnishAmount" min="0" max="1000" value="${garnishAmount}" type="number" required /><span
+                                            <input class="form-control" id="garnishAmount" name="garnishAmount" step=".01" min="0" max="1000" value="${garnishAmount}" type="number" required /><span
                                                 class="input-group-addon"
                                             >KG</span>
                                         </div></td>
@@ -233,7 +233,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="snacksAmount" name="snacksAmount" min="0" max="200" value="${snacksAmount}" type="number" required /><span
+                                            <input class="form-control" id="snacksAmount" name="snacksAmount" step=".01" min="0" max="200" value="${snacksAmount}" type="number" required /><span
                                                 class="input-group-addon"
                                             >KG</span>
                                         </div></td>
@@ -253,7 +253,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="beerAmount" name="beerAmount" min="0" max="1000" type="number" value="${beerAmount }" /><span class="input-group-addon">L</span>
+                                            <input class="form-control" id="beerAmount" name="beerAmount" step=".01" min="0" max="1000" type="number" value="${beerAmount }" /><span class="input-group-addon">L</span>
                                         </div>
                                 </tr>
                                 <tr>
@@ -261,7 +261,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="wineAmount" name="wineAmount" min="0" max="1000" value="${wineAmount}" type="number" /><span class="input-group-addon">L</span>
+                                            <input class="form-control" id="wineAmount" name="wineAmount" step=".01" min="0" max="1000" value="${wineAmount}" type="number" /><span class="input-group-addon">L</span>
                                         </div></td>
                                 </tr>
                                 <tr>
@@ -269,7 +269,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="spiritsAmount" name="spiritsAmount" min="0" max="500" value="${spiritsAmount}" type="number" /><span
+                                            <input class="form-control" id="spiritsAmount" name="spiritsAmount" step=".01" min="0" max="500" value="${spiritsAmount}" type="number" /><span
                                                 class="input-group-addon"
                                             >L</span>
                                         </div></td>
@@ -279,7 +279,7 @@
                                 </tr>
                                 <tr>
                                     <td><div class="input-group">
-                                            <input class="form-control" id="softsAmount" name="softsAmount" min="0" max="5000" value="${softsAmount}" type="number" /><span class="input-group-addon">L</span>
+                                            <input class="form-control" id="softsAmount" name="softsAmount" step=".01" min="0" max="5000" value="${softsAmount}" type="number" /><span class="input-group-addon">L</span>
                                         </div></td>
                                 </tr>
                             </table>

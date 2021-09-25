@@ -16,6 +16,11 @@
 <script type="text/javascript">
 	window.onload = function() {
 		fillInDefaults();
+		syncMonth();
+		syncYear();
+		syncGuestCount();
+		syncOccasion();
+		syncLocationType();
 		loadVisibility.set('loadingGif_budgetButton', 'false');
 		loadVisibility.set('loadingGif_foodButton', 'false');
 		loadVisibility.set('loadingGif_drinksButton', 'false');

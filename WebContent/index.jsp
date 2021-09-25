@@ -16,12 +16,12 @@
 <script type="text/javascript">
 	window.onload = function() {
 		fillInDefaults();
-		checkStorage();
-    	loadVisibility.set('loadingGif_budgetButton', 'false');
-    	loadVisibility.set('loadingGif_foodButton', 'false');
-    	loadVisibility.set('loadingGif_drinksButton', 'false');
-    	loadVisibility.set('loadingGif_savePartyButton', 'false');
+		loadVisibility.set('loadingGif_budgetButton', 'false');
+		loadVisibility.set('loadingGif_foodButton', 'false');
+		loadVisibility.set('loadingGif_drinksButton', 'false');
+		loadVisibility.set('loadingGif_savePartyButton', 'false');
 	}
+
 	var loadVisibility = new Map();
 
 	function showGif(el) {
@@ -30,9 +30,6 @@
 	}
 
 	function toggleLoadGifs() {
-		alert("Toggle load called")
-		alert(loadVisibility);
-
 		if (loadVisibility.get("loadingGif_budgetButton") == 'true') {
 			document.getElementById("loadingGif_budgetButton").style.display = "block";
 		}
@@ -61,7 +58,6 @@
 	}
 
 	function calculateTotalBudget() {
-
 		// For the budget planner section
 		var totalSum = 0;
 		totalSum += parseFloat(document.getElementById('foodBudget').value)
@@ -150,26 +146,40 @@
 	}
 
 	function checkStorage() {
-		/* 		commented out because it does not work everytime fluently
-		 if (localStorage.getItem("#collapseOne") != null) {
-		 $("#collapseOne").toggle();//to show panel 
-		 }
-		 if (localStorage.getItem("#collapseTwo") != null) {
-		 $("#collapseTwo").toggle();//to show panel 
-		 }
-		 if (localStorage.getItem("#collapseThree") != null) {
-		 $("#collapseThree").toggle();//to show panel 
-		 }
-		 if (localStorage.getItem("#collapseFour") != null) {
-		 $("#collapseFour").toggle();//to show panel 
-		 }
-		 localStorage.clear(); */
+/* 		alert("Check storage called") */
+		/* 		commented out because it does not work everytime fluently */
+/* 		if (localStorage.getItem("#collapseOne") != null) {
+			alert("collapseOne")
+			$("#collapseOne").toggle();//to show panel 
+		}
+		if (localStorage.getItem("#collapseTwo") != null) {
+			alert("collapseTwo")
 
+			$("#collapseTwo").toggle();//to show panel 
+		}
+		if (localStorage.getItem("#collapseThree") != null) {
+			alert("collapseThree")
+
+			$("#collapseThree").toggle();//to show panel 
+		}
+		if (localStorage.getItem("#collapseFour") != null) {
+			alert("collapseFour")
+
+			$("#collapseFour").toggle();//to show panel 
+		} */
 	}
 	function save(el) {
-		/* 		commented out because it does not work everytime fluently
-		 var target = el.getAttribute("data-target")
-		 localStorage.setItem(target, target) */
+		/* 		commented out because it does not work everytime fluently */
+/* 		alert("Save called")
+		var target = el.getAttribute("data-target")
+		if (localStorage.getItem(target) != null) {
+			alert("Local storage already has entry for " + target)
+			localStorage.removeItem(target);
+		} else {
+	         alert("Local storage has no entry for " + target)
+
+			localStorage.setItem(target, target);
+		} */
 	}
 </script>
 </head>

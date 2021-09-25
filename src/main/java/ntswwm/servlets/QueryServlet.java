@@ -80,7 +80,15 @@ public class QueryServlet extends HttpServlet {
                     System.out.println("### QUERY PARAMS ###");
                     while (it.hasNext()) {
                         var paramName = it.next();
-                        message.addUserDefinedParameter(paramName, request.getParameter(paramName));
+                        var param = request.getParameter(paramName);
+                        if (param == null) {
+                            param = "0.00";
+                        } else {
+                            if (param.equals("")) {
+                                param = "0.00";
+                            }
+                        }
+                        message.addUserDefinedParameter(paramName, param);
                         System.out.println(paramName + ":" + request.getParameter(paramName));
                     }
                     myAgent.send(message);
@@ -203,8 +211,16 @@ public class QueryServlet extends HttpServlet {
                 } else if (desc instanceof FloatDesc) {
                     FloatDesc descFloat = (FloatDesc) desc;
                     localFunction = descFloat.getFct("default function");
+                    var param = request.getParameter(key);
+                    if (param == null) {
+                        param = "0.00";
+                    } else {
+                        if (param.equals("")) {
+                            param = "0.00";
+                        }
+                    }
                     similarity = localFunction
-                            .calculateSimilarity(descFloat.getAttribute(Float.parseFloat(request.getParameter(key))),
+                            .calculateSimilarity(descFloat.getAttribute(Float.parseFloat(param)),
                                     descFloat.getAttribute(Float
                                             .parseFloat(instance.getFirst().getAttForDesc(desc).getValueAsString())))
                             .getRoundedValue();

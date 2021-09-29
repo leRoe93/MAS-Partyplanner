@@ -1,6 +1,11 @@
 # Compiled class file
 *.class
 
+bin/
+logs/
+dependency-reduced-pom.xml
+**/*DS_Store
+
 # Log file
 *.log
 
@@ -11,7 +16,6 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
@@ -22,3 +26,9 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /target/
+
+#myCBR stuff
+**/*.myCB
+**/*.myCBR
+**/*.myExp
+**/*.config

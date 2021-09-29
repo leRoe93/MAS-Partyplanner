@@ -300,7 +300,7 @@
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#agentAccordion">
                         <div class="card-body text-center">
                             <div class="microserviceTexts">
-                                <p><span class="quote">“You should always live within your income, even if you have to borrow to do so.”</span><br>- Josh Billings</p>
+                                <p><span class="quote">&#34You should always live within your income, even if you have to borrow to do so.&#34</span><br>- Josh Billings</p>
                                 <span class="question">Want to know how much <span class="orangeText">money</span> you will most likely need?
                                 </span>
                             </div>
@@ -366,7 +366,7 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#agentAccordion">
                         <div class="card-body text-center">
                             <div class="microserviceTexts">
-                                <p><span class="quote">“If there were more food and fewer people, this would be a perfect party.”</span><br>- Ron Swanson</p>
+                                <p><span class="quote">&#34If there were more food and fewer people, this would be a perfect party.&#34</span><br>- Ron Swanson</p>
                                 <span class="question">Want to know how much <span class="orangeText">food</span> you will most likely need?
                                 </span>
                             </div>
@@ -431,7 +431,7 @@
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#agentAccordion">
                         <div class="card-body text-center">
                             <div class="microserviceTexts">
-                                <p><span class="quote">“Here's to alcohol: the cause of, and solution to all of life's problems.”</span><br>- Homer Simpson</p>
+                                <p><span class="quote">&#34Here's to alcohol: the cause of, and solution to all of life's problems.&#34</span><br>- Homer Simpson</p>
                                 <span class="question">Want to know how much <span class="orangeText">drinks</span> you will most likely need?
                                 </span>
                             </div>
@@ -504,7 +504,7 @@
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#agentAccordion">
                     <div class="card-body text-center">
                         <div class="microserviceTexts">
-                              <p><span class="quote">“Wine, good food, family & friends. That's what it's all about.”</span><br>- Heather P.</p>
+                              <p><span class="quote">&#34Wine, good food, family & friends. That's what it's all about.&#34</span><br>- Heather P.</p>
                                 <span class="question">Want to plan your very own <span class="orangeText">party from start to end</span>?
                                 </span>
                         </div>

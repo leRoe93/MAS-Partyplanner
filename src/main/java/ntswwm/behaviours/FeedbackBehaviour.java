@@ -8,6 +8,11 @@ import ntswwm.bean.CBRManager;
 
 public class FeedbackBehaviour extends CyclicBehaviour {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 7863160890814703367L;
+
     @Override
     public void action() {
         // TODO Auto-generated method stub

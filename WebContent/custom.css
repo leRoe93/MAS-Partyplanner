@@ -1,15 +1,231 @@
 
 .jumbotron{
     align-items:center;
-    display:flex;
     background-image:url('img/bar_banner.jpg');
     background-size:cover;
     background-color:#898888;
     height:500px;
-    color:white;
+    color:white; 
 }
 
-#id{
-	background-color:white;
-	color:black;
+.id1{
+	background-color:#222222;
+	color:white;
+	width:60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#logo {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+#id:hover{border-color:#ff3300;}
+#id:focus{outline:none; border-color:#ff3300;}
+#id:active {border-color:#ff3300;}
+#id:selected {border-color:#ff3300;}
+
+h1 {
+	color:#ff3300;
+}
+
+.jumbotron-fluid {
+	padding-right: 0;
+}
+
+.button:hover {
+	font-weight: bold !important;
+	color: white !important;
+}
+
+button {
+    background-color:#ff3300;
+    border-color: #ff3300;
+}
+
+#buttonFeedback {
+	margin-top: 10px;
+}
+
+.page-header {
+	border-color:#ff3300;
+}
+.thumbnail {
+	background:#222222 !important;
+}
+.caption h3 {
+	text-align: center;
+	color:white;
+}
+
+.form-control:hover{background-color:#ff3300 !important;border-color:#ff3300;}
+.form-control:focus{background-color:#222222 !important;border-color:#222222; color: white;}
+.form-control:active {background-color:#222222 !important;border-color:#222222; color: white;}
+
+.form-control { 
+	color: black;
+}
+
+a {
+	color: #ff3300;
+}
+
+
+a:hover, a:active, a:focus {
+    font-weight:bold;
+    color: #ff3300;
+}
+
+#footerLogo {
+	height: 50px;
+}
+
+#loadingGif, #loadingGif_budgetButton, #loadingGif_foodButton, #loadingGif_drinksButton, #loadingGif_savePartyButton {
+    display:none;
+}
+.loadingGifImage {
+	height: 80px;
+}
+
+.microserviceTexts {
+	padding: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	box-shadow: 0px 0px 5px white;
+	text-align: center;
+	font-weight: bold;
+	
+}
+
+.quote {
+	font-style: italic;
+}
+
+.agentResponse {
+	text-align: center;
+}
+
+.question {
+	font-size: 150%;
+	font-style: none !important;
+}
+
+#budgetButton, #foodButton, #drinksButton {
+	width: 100px;
+	margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.table-agents {
+    background-color:#222222;
+}
+
+.jumbotron h1 {
+	text-shadow: 0px 0px 5px black, 0px 0px 10px black;
+}
+
+#savePartyButton {
+	margin-bottom: 10px;
+}
+
+#verifyPartyButton {
+	margin-bottom: 50px;
+}
+
+#email {
+    margin-bottom: 50px;
+    background-color: #222222;
+}
+
+#introText {
+	text-shadow: 0px 0px 5px black, 0px 0px 10px black;
+}
+.orangeText {
+	text-shadow: 0px 0px 5px #ff3300, 0px 0px 5px #ff3300;
+	font-weight: bold;
+}
+
+body {
+background: rgb(121,121,121);
+background: radial-gradient(circle, rgba(121,121,121,1) 0%, rgba(69,69,69,1) 60%, rgba(34,34,32,1) 100%);
+	color: white;
+}
+
+.glyphicon {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.success-true {
+	font-weight: bold;
+	color: #96d082;
+}
+.success-false {
+	color: #ff8080;
+	font-weight: bold;
+}
+
+#buttonBudget {
+	background-image:url('img/budget.jpg') !important;
+    background-size:cover;
+    border: none;
+    height: 100px !important;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 0px 0px 5px black, 0px 0px 10px black;
+}
+#buttonFood {
+	background-image:url('img/food.jpg') !important;
+    background-size:cover;
+    border: none;
+    height: 100px !important;
+        color: white;
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 0px 0px 5px black, 0px 0px 10px black;
+}
+#buttonDrinks {
+	background-image:url('img/drinks.jpg') !important;
+    background-size:cover;
+    border: none;
+    height: 100px !important;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 0px 0px 5px black, 0px 0px 10px black;
+}
+#buttonParty {
+	background-image:url('img/party.jpg') !important;
+    background-size:cover;
+    border: none;
+    height: 100px !important; 
+    color: white;
+    font-size: 50px;
+    font-weight: bold; 
+    text-shadow: 0px 0px 5px black, 0px 0px 10px black;
+}
+#buttonBudget:hover, #buttonFood:hover, #buttonDrinks:hover, #buttonParty:hover {
+    box-shadow: 0px 0px 0px 3px #ff3300;
+    cursor: pointer;
+}
+
+#buttonParty.btn.collapsed {
+	margin-bottom:60px;
+}
+
+hr {
+	color: #ff3300;
+	background-color: #ff3300;
+	height: 2px;
+	border: none;
+}
+
+footer {
+	margin-top: 30px !important;
+    border-top: 3px solid #ff3300;
+    background-color: #222222;
 }

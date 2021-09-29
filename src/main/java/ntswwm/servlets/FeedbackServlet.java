@@ -21,7 +21,7 @@ import ntswwm.bean.CBRManager;
 import ntswwm.platform.AgentPlatform;
 
 /**
- * Servlet implementation class QueryServlet
+ * Servlet implementation class FeedbackServlet
  */
 @WebServlet("/FeedbackServlet")
 public class FeedbackServlet extends HttpServlet {
@@ -49,8 +49,8 @@ public class FeedbackServlet extends HttpServlet {
         doGet(request, response);
 
         var id = request.getParameter("id");
-        var message = "Successfully retrieved party ID: " + id
-                + " - please adjust the above values and verify the party!";
+        var message = "<span class='success-true'><span class='glyphicon glyphicon-ok'></span>Successfully retrieved party ID: "
+                + id + " - please adjust the above values and verify the party!</span>";
 
         JadeGateway.init(null, AgentPlatform.PROPERTIES);
         try {
@@ -92,7 +92,8 @@ public class FeedbackServlet extends HttpServlet {
 
             // Need exit condition based on time, if there is no case in the stack
             if (timeOut == 5000) {
-                message = "Sorry, we could not find any party for ID: " + id + " - please check your input.";
+                message = "<span class='success-false'><span class='glyphicon glyphicon-remove'></span>Sorry, we could not find any party for ID: "
+                        + id + " - please check your input.</span>";
                 timeOuted = true;
                 break;
             }

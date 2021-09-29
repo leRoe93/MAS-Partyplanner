@@ -20,6 +20,13 @@ public class RetrievalBehaviour extends CyclicBehaviour {
      */
     private static final long serialVersionUID = -4550436136565114827L;
 
+    String agentType;
+
+    public RetrievalBehaviour(String agentType) {
+        super();
+        this.agentType = agentType;
+    }
+
     @Override
     public void action() {
         // TODO Auto-generated method stub
@@ -31,26 +38,15 @@ public class RetrievalBehaviour extends CyclicBehaviour {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        System.out.println("Waiting for message to be received");
+        System.out.println("[" + this.agentType + "] Waiting for retrieval request...");
 
         if (msg != null) {
-            var agentType = msg.getUserDefinedParameter("agentType");
-            System.out.println("I received a retrieval request from agent type: " + agentType);
-            setActiveAmalgamationFct(agentType);
-            switch (agentType) {
+            // var agentType = msg.getUserDefinedParameter("agentType");
+            System.out
+                    .println("[" + this.agentType + "] Received retrieval request from agent type: " + this.agentType);
+            setActiveAmalgamationFct(this.agentType);
 
-            case "BudgetAgent":
-                AgentToServletStack.BUDGET_AGENT_INSTANCES.add(getMostSimilarCase(msg));
-                break;
-            case "FoodAgent":
-                break;
-            case "DrinksAgent":
-                break;
-            default:
-                System.err.println("Message received from unsupport agent type: ");
-                System.exit(-1);
-
-            }
+            AgentToServletStack.QUERY_INSTANCES.get(this.agentType).add(getMostSimilarCase(msg));
         }
 
     }
@@ -61,6 +57,8 @@ public class RetrievalBehaviour extends CyclicBehaviour {
 
         for (AmalgamationFct function : CBRManager.CONCEPT.getAvailableAmalgamFcts()) {
             if (function.getName().contains(agentType)) {
+                System.out.println(
+                        "Picked amalgamation function '" + function.getName() + "' for agent type: " + agentType);
                 CBRManager.CONCEPT.setActiveAmalgamFct(function);
             }
         }
@@ -68,10 +66,7 @@ public class RetrievalBehaviour extends CyclicBehaviour {
 
     private Pair<Instance, Similarity> getMostSimilarCase(ACLMessage msg) {
         Retrieval ret = new Retrieval(CBRManager.CONCEPT, CBRManager.CASE_BASE);
-        ret.setRetrievalMethod(RetrievalMethod.RETRIEVE_K_SORTED);
-        ret.setK(1);
-        ret.start();
-
+        ret.setRetrievalMethod(RetrievalMethod.RETRIEVE_SORTED);
         Instance query = ret.getQueryInstance();
 
         for (String paramName : CBRManager.CONCEPT.getAllAttributeDescs().keySet()) {
@@ -88,7 +83,18 @@ public class RetrievalBehaviour extends CyclicBehaviour {
             }
         }
 
-        return ret.getResult().get(0);
+        ret.start();
+
+        System.out.println("Descending retrieved cases to find a verified one");
+        // Try to find a verified case by descending the retrieved cases
+        for (int i = 0; i < ret.getResult().size(); i++) {
+            if (ret.getResult().get(i).getFirst().getAttForDesc(CBRManager.CONCEPT.getAttributeDesc("verified"))
+                    .getValueAsString().equals("yes")) {
+                return ret.getResult().get(i);
+            }
+        }
+
+        return null;
     }
 
 }
